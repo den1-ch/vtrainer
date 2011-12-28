@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vocabulary Trainer</string>
+    
+    <string name="vocabulary">Vocabulary</string>
+    <string name="categories">Categories</string>
+    <string name="exercises">Exercises</string>
+    <string name="library">Library</string>
+        
+</resources>
