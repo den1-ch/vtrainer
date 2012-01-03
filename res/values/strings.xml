@@ -6,5 +6,11 @@
     <string name="categories">Categories</string>
     <string name="exercises">Exercises</string>
     <string name="library">Library</string>
-        
+
+    <string-array name="vocabulary_array">
+        <item>Oksana;Оксана</item>
+        <item>soon;незабаром</item>
+        <item>Hew year;новий рік</item>
+        <item>good morning;добрий ранок</item>
+    </string-array>    
 </resources>

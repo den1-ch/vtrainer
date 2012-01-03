@@ -22,6 +22,11 @@
             android:name=".Vocabulary" 
             android:label="@string/vocabulary">
         </activity>
+        
+        <provider 
+            android:name="com.vtrainer.provider.VocabularyProvider"
+			android:authorities="com.vtrainer.provider.VocabularyProvider"
+			android:exported="false" />
     </application>
 
 </manifest>
