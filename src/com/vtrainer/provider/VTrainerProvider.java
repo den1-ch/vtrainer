@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import com.vtrainer.activity.R;
 import com.vtrainer.logging.Logger;
-import com.vtrainer.provider.VocabularyProviderMetaData.VocabularyTableMetaData;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -18,8 +17,8 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 
-public class VocabularyProvider extends ContentProvider {
-  private static final String TAG = "VocabularyProvider";
+public class VTrainerProvider extends ContentProvider {
+  private static final String TAG = "VTrainerProvider";
   
   private static HashMap<String, String> vocabularyProjectionMap;
 
@@ -36,11 +35,11 @@ public class VocabularyProvider extends ContentProvider {
   private static final UriMatcher uriMatcher;
   
   private static final int WORD_COLLECTION_URI_INDICATOR = 1;
-  private static final int SINGLE_WORDURI_INDICATOR      = 2;
+  private static final int SINGLE_WORD_URI_INDICATOR     = 2;
   static {
     uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    uriMatcher.addURI(VocabularyProviderMetaData.AUTHORITY, VocabularyTableMetaData.TABLE_NAME, WORD_COLLECTION_URI_INDICATOR);
-    uriMatcher.addURI(VocabularyProviderMetaData.AUTHORITY, VocabularyTableMetaData.TABLE_NAME + "/#", SINGLE_WORDURI_INDICATOR);
+    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyTableMetaData.TABLE_NAME, WORD_COLLECTION_URI_INDICATOR);
+    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyTableMetaData.TABLE_NAME + "/#", SINGLE_WORD_URI_INDICATOR);
   }
   
   /**
@@ -49,18 +48,23 @@ public class VocabularyProvider extends ContentProvider {
    */
   
   private static class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String WORD_DELIMITER = ";";
+    private static final String WORD_DELIMITER = ";"; //TODO move
     
     private Context context;
     
     public DatabaseHelper(Context context) {
-      super(context, VocabularyProviderMetaData.DATABASE_NAME, null, VocabularyProviderMetaData.DATABASE_VERSION);
+      super(context, VTrainerProviderMetaData.DATABASE_NAME, null, VTrainerProviderMetaData.DATABASE_VERSION);
       
       this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+      createVocabularyTable(db);
+      fillVocabularyData(db);
+    }
+    
+    private void createVocabularyTable(SQLiteDatabase db) {
       StringBuilder sb = new StringBuilder();
       sb.append("CREATE TABLE ");
       sb.append(VocabularyTableMetaData.TABLE_NAME);
@@ -76,11 +80,9 @@ public class VocabularyProvider extends ContentProvider {
       sb.append(VocabularyTableMetaData.PROGRESS);
       sb.append(" INTEGER );");
       
-      Logger.debug(TAG, "Create db. SQL: \n" + sb.toString());
+      Logger.debug(TAG, "Create table:" + VocabularyTableMetaData.TABLE_NAME + ". SQL: \n" + sb.toString());
 
       db.execSQL(sb.toString());   
-      
-      fillVocabularyData(db);
     }
     
     private void fillVocabularyData(SQLiteDatabase db) { //TODO update #3
@@ -130,7 +132,7 @@ public class VocabularyProvider extends ContentProvider {
         qb.setTables(VocabularyTableMetaData.TABLE_NAME);
         qb.setProjectionMap(vocabularyProjectionMap);
         break;
-      case SINGLE_WORDURI_INDICATOR:
+      case SINGLE_WORD_URI_INDICATOR:
         qb.setTables(VocabularyTableMetaData.TABLE_NAME);
         qb.setProjectionMap(vocabularyProjectionMap);
         qb.appendWhere(VocabularyTableMetaData._ID + "=" + uri.getPathSegments().get(1));

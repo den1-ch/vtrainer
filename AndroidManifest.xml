@@ -24,8 +24,8 @@
         </activity>
         
         <provider 
-            android:name="com.vtrainer.provider.VocabularyProvider"
-			android:authorities="com.vtrainer.provider.VocabularyProvider"
+            android:name="com.vtrainer.provider.VTrainerProvider"
+			android:authorities="com.vtrainer.provider.VTrainerProvider"
 			android:exported="false" />
     </application>
 

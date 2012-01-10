@@ -1,6 +1,6 @@
 package com.vtrainer.activity;
 
-import com.vtrainer.provider.VocabularyProviderMetaData.VocabularyTableMetaData;
+import com.vtrainer.provider.VocabularyTableMetaData;
 
 import android.app.ListActivity;
 import android.database.Cursor;
