@@ -12,5 +12,16 @@
         <item>soon;незабаром</item>
         <item>Hew year;новий рік</item>
         <item>good morning;добрий ранок</item>
-    </string-array>    
+    </string-array>
+    
+    <string name="add_new_word">Add new..</string>
+    
+    <string name="add_new_word_title">New word</string>
+    <string name="hint_foreign_word">foreign word</string>
+    <string name="hint_translation_word">translation word</string>
+    
+    <string name="add_new_word_save">Save</string>
+    <string name="add_new_word_cancel">Cancel</string>
+    
+    <string name="requered_field_is_empty">Some data is empty</string>
 </resources>

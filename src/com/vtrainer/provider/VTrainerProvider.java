@@ -7,10 +7,12 @@ import com.vtrainer.activity.R;
 import com.vtrainer.logging.Logger;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
@@ -25,7 +27,7 @@ public class VTrainerProvider extends ContentProvider {
   static {
     vocabularyProjectionMap = new HashMap<String, String>();
     vocabularyProjectionMap.put(VocabularyTableMetaData._ID, VocabularyTableMetaData._ID);
-    vocabularyProjectionMap.put(VocabularyTableMetaData.NATIVE_WORD, VocabularyTableMetaData.NATIVE_WORD);
+    vocabularyProjectionMap.put(VocabularyTableMetaData.TRANSLATION_WORD, VocabularyTableMetaData.TRANSLATION_WORD);
     vocabularyProjectionMap.put(VocabularyTableMetaData.FOREIGN_WORD, VocabularyTableMetaData.FOREIGN_WORD);
     vocabularyProjectionMap.put(VocabularyTableMetaData.DATE_CREATED, VocabularyTableMetaData.DATE_CREATED);
     vocabularyProjectionMap.put(VocabularyTableMetaData.PROGRESS, VocabularyTableMetaData.PROGRESS);
@@ -71,14 +73,14 @@ public class VTrainerProvider extends ContentProvider {
       sb.append(" ( \n");
       sb.append(VocabularyTableMetaData._ID);
       sb.append(" INTEGER PRIMARY KEY, \n");
-      sb.append(VocabularyTableMetaData.NATIVE_WORD);
-      sb.append(" VARCHAR(50), \n");
+      sb.append(VocabularyTableMetaData.TRANSLATION_WORD);
+      sb.append(" VARCHAR(50) NOT NULL, \n");
       sb.append(VocabularyTableMetaData.FOREIGN_WORD);
-      sb.append(" VARCHAR(50), \n");
+      sb.append(" VARCHAR(50) NOT NULL, \n");
       sb.append(VocabularyTableMetaData.DATE_CREATED);
-      sb.append(" INTEGER, \n");
+      sb.append(" INTEGER NOT NULL, \n");
       sb.append(VocabularyTableMetaData.PROGRESS);
-      sb.append(" INTEGER );");
+      sb.append(" INTEGER NOT NULL);");
       
       Logger.debug(TAG, "Create table:" + VocabularyTableMetaData.TABLE_NAME + ". SQL: \n" + sb.toString());
 
@@ -95,10 +97,10 @@ public class VTrainerProvider extends ContentProvider {
       
         int index = word.indexOf(WORD_DELIMITER);
         
-        cv.put(VocabularyTableMetaData.NATIVE_WORD, word.substring(0, index));
+        cv.put(VocabularyTableMetaData.TRANSLATION_WORD, word.substring(0, index));
         cv.put(VocabularyTableMetaData.FOREIGN_WORD, word.substring(index + 1));
         cv.put(VocabularyTableMetaData.DATE_CREATED, timestamp);
-        cv.put(VocabularyTableMetaData.PROGRESS, 0);
+        cv.put(VocabularyTableMetaData.PROGRESS, VocabularyTableMetaData.INITIAL_PROGRESS);
 
         db.insert(VocabularyTableMetaData.TABLE_NAME, null, cv);      
       }
@@ -179,13 +181,42 @@ public class VTrainerProvider extends ContentProvider {
 
   @Override
   public Uri insert(Uri uri, ContentValues values) {
-    // TODO Auto-generated method stub
+    //validate uri
+    if (uriMatcher.match(uri) != WORD_COLLECTION_URI_INDICATOR) {
+      if (Logger.isDebugMode()) {
+        throw new IllegalArgumentException("Unknown URI " + uri);
+      } else {
+        return null;
+      }
+    }
+    
+    if (values.containsKey(VocabularyTableMetaData.TRANSLATION_WORD) == false) {
+      throw new SQLException(VocabularyTableMetaData.TRANSLATION_WORD + " is null");
+    }
+    
+    if (values.containsKey(VocabularyTableMetaData.FOREIGN_WORD) == false) {
+      throw new SQLException(VocabularyTableMetaData.FOREIGN_WORD + " is null");
+    }
+ 
+    values.put(VocabularyTableMetaData.DATE_CREATED, Calendar.getInstance().getTimeInMillis());
+    values.put(VocabularyTableMetaData.PROGRESS, VocabularyTableMetaData.INITIAL_PROGRESS);
+    
+    SQLiteDatabase db = dbHelper.getWritableDatabase();
+    long rowId = db.insert(VocabularyTableMetaData.TABLE_NAME, null, values);
+    
+    if (rowId > 0) {
+      Uri insertedUri = ContentUris.withAppendedId(VocabularyTableMetaData.CONTENT_URI, rowId);
+      
+      getContext().getContentResolver().notifyChange(uri, null);
+      
+      return insertedUri;
+    }
+    
     return null;
   }
 
   @Override
-  public int update(Uri uri, ContentValues values, String selection,
-      String[] selectionArgs) {
+  public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
     // TODO Auto-generated method stub
     return 0;
   }
