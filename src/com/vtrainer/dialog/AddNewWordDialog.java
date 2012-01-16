@@ -52,7 +52,7 @@ public class AddNewWordDialog extends Dialog {
         cv.put(VocabularyTableMetaData.FOREIGN_WORD, etForeingWord.getText().toString());
         cv.put(VocabularyTableMetaData.TRANSLATION_WORD, etTranslationWord.getText().toString());
         
-        if (getContext().getContentResolver().insert(VocabularyTableMetaData.CONTENT_URI, cv) != null) {
+        if (getContext().getContentResolver().insert(VocabularyTableMetaData.WORDS_URI, cv) != null) {
           dataSaveListener.saved();
         }        
         

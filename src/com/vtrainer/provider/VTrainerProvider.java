@@ -205,7 +205,7 @@ public class VTrainerProvider extends ContentProvider {
     long rowId = db.insert(VocabularyTableMetaData.TABLE_NAME, null, values);
     
     if (rowId > 0) {
-      Uri insertedUri = ContentUris.withAppendedId(VocabularyTableMetaData.CONTENT_URI, rowId);
+      Uri insertedUri = ContentUris.withAppendedId(VocabularyTableMetaData.WORDS_URI, rowId);
       
       getContext().getContentResolver().notifyChange(uri, null);
       

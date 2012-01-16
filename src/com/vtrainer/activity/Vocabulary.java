@@ -5,8 +5,8 @@ import com.vtrainer.dialog.AddNewWordDialog.OnDataSaveListener;
 import com.vtrainer.logging.Logger;
 import com.vtrainer.provider.VocabularyTableMetaData;
 
+import android.app.Activity;
 import android.app.Dialog;
-import android.app.ListActivity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,53 +15,41 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.GridView;
+import android.widget.SimpleCursorAdapter;
 
-public class Vocabulary extends ListActivity {
+public class Vocabulary extends Activity {
+  private final String [] COUNM_NAMES = new String[] { VocabularyTableMetaData.FOREIGN_WORD, VocabularyTableMetaData.FOREIGN_WORD };
+  private final int []    VIEW_IDS    = new int[]    { R.id.foreign_word, R.id.translated_word};
+  private final String [] PROJECTION  = new String[] { VocabularyTableMetaData._ID, VocabularyTableMetaData.FOREIGN_WORD, VocabularyTableMetaData.TRANSLATION_WORD };
+
   private AddNewWordDialog dlgAddNewWord;
+  private GridView gv;
   
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    setContentView(R.layout.vocabulary);
    
+    gv = (GridView) findViewById(R.id.gv_vocabulary);
+
     updateData();
     
-    ListView lv = getListView();
-    lv.setTextFilterEnabled(true);
-
-    lv.setOnItemClickListener(new OnItemClickListener() {
+    gv.setOnItemClickListener(new OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
       }
-
     });
 
   }
 
   private void updateData() {
-    Cursor cur = null;
-    String[] vocabulary = null;
-    try {
-      cur = getContentResolver().query(VocabularyTableMetaData.CONTENT_URI, 
-        new String[] {VocabularyTableMetaData.FOREIGN_WORD, VocabularyTableMetaData.TRANSLATION_WORD}, null, null, null);
-      
-      if (cur.moveToFirst()) {
-        vocabulary = new String[cur.getCount()];
-        int counter = 0;
-        do {
-          String foreignWord = cur.getString(cur.getColumnIndex(VocabularyTableMetaData.FOREIGN_WORD));
-          String nativeWord = cur.getString(cur.getColumnIndex(VocabularyTableMetaData.TRANSLATION_WORD));
+    Cursor cur = getContentResolver().query(VocabularyTableMetaData.WORDS_URI, PROJECTION, null, null, null);
 
-          vocabulary[counter++] = foreignWord + " - " + nativeWord; //TODO use format  
-        } while (cur.moveToNext());
-      }
-      
-    } finally {
-      cur.close();
-    }
+    SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cur, COUNM_NAMES, VIEW_IDS);
     
-    setListAdapter(new ArrayAdapter<String>(this, R.layout.vocabulary, vocabulary));
+    gv.setAdapter(adapter);
   }
   
   @Override
@@ -104,7 +92,6 @@ public class Vocabulary extends ListActivity {
       
       dlgAddNewWord = new AddNewWordDialog(this, dataSaveListener);
     }
-   // dlgAddNewWord.clear();
 
     dlgAddNewWord.show();
   }

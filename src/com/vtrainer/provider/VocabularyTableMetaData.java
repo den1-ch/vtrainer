@@ -5,7 +5,8 @@ import android.provider.BaseColumns;
 
 public class VocabularyTableMetaData implements BaseColumns {
   public static final String TABLE_NAME         = "vocabulary";
-  public static final Uri    CONTENT_URI        = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY + "/vocabulary");
+  public static final Uri    WORDS_URI          = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY + "/" + TABLE_NAME);
+  public static final Uri    WORD_URI           = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY + "/" + TABLE_NAME + "/#");
   
   //columns
   public static final String FOREIGN_WORD       = "foreign_word"; // string
