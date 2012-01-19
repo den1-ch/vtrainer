@@ -9,6 +9,7 @@
         android:id="@+id/et_foreing_word"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:singleLine="true"
         android:hint="@string/hint_foreign_word">
 
         <requestFocus />
@@ -18,6 +19,7 @@
         android:id="@+id/et_translation_word"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:singleLine="true"
         android:hint="@string/hint_translation_word"/>
     
     <TableLayout
