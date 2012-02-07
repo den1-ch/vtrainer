@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/wt_trained_word"
+        android:layout_width="200dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:gravity="center_vertical"
+        android:padding="5dp" />
+
+    <RadioGroup
+        android:id="@+id/wt_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignRight="@+id/wt_trained_word"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <RadioButton
+            android:id="@+id/wt_word_translate_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/wt_word_translate_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/wt_word_translate_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/wt_word_translate_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/wt_next_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="onNextButtonClick"
+        android:text="@string/wt_next_button" />
+
+</RelativeLayout>

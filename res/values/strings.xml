@@ -2,11 +2,19 @@
 <resources>
     <string name="app_name">Vocabulary Trainer</string>
     
-    <string name="vocabulary">Vocabulary</string>
-    <string name="categories">Categories</string>
-    <string name="exercises">Exercises</string>
-    <string name="library">Library</string>
+    <!-- Main activity -->
+    
+    <string name="m_vocabulary">Vocabulary</string>
+    <string name="m_categories">Categories</string>
+    <string name="m_trainings">Trainings</string>
+    <string name="m_library">Library</string>
 
+    <!-- Vocabulary activity -->
+
+    <string name="vocabulary_title">Vocabulary</string>
+
+    <string name="v_mi_add_new_word">Add new..</string>
+    
     <string-array name="vocabulary_array">
         <item>Oksana;Оксана</item>
         <item>soon;незабаром</item>
@@ -14,14 +22,30 @@
         <item>good morning;добрий ранок</item>
     </string-array>
     
-    <string name="add_new_word">Add new..</string>
+    <!-- "Add new  -->
     
-    <string name="add_new_word_title">New word</string>
-    <string name="hint_foreign_word">foreign word</string>
-    <string name="hint_translation_word">translation word</string>
+    <string name="an_title">New word</string>
+    <string name="an_hint_foreign_word">foreign word</string>
+    <string name="an_hint_translation_word">translation word</string>
     
-    <string name="add_new_word_save">Save</string>
-    <string name="add_new_word_cancel">Cancel</string>
+    <string name="an_save">Save</string>
+    <string name="an_cancel">Cancel</string>
+    
+    <!-- Warning messages -->
     
     <string name="requered_field_is_empty">Some data is empty</string>
+    
+    <!-- Trainings activity -->
+
+    <string name="trainings_title">Trainings</string>
+
+    <string name="t_word_translate_1">Ukr to En</string>
+    <string name="t_word_translate_2">En to Ukr</string>
+    
+    <!-- Training word translate activity -->
+
+    <string name="wt_next_button">Next</string>
+    
+    <string name="wt_translateWord">Translate Word</string>
+    
 </resources>

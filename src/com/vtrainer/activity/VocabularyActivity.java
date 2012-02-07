@@ -18,10 +18,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.SimpleCursorAdapter;
 
-public class Vocabulary extends Activity {
-  private final String [] COUNM_NAMES = new String[] { VocabularyTableMetaData.FOREIGN_WORD, VocabularyTableMetaData.FOREIGN_WORD };
+public class VocabularyActivity extends Activity {
+  private final String [] COUNM_NAMES = new String[] { VocabularyTableMetaData.FOREIGN_WORD_FN, VocabularyTableMetaData.TRANSLATION_WORD_FN };
   private final int []    VIEW_IDS    = new int[]    { R.id.foreign_word, R.id.translated_word};
-  private final String [] PROJECTION  = new String[] { VocabularyTableMetaData._ID, VocabularyTableMetaData.FOREIGN_WORD, VocabularyTableMetaData.TRANSLATION_WORD };
+  private final String [] PROJECTION  = new String[] { VocabularyTableMetaData._ID, VocabularyTableMetaData.FOREIGN_WORD_FN, VocabularyTableMetaData.TRANSLATION_WORD_FN };
 
   private AddNewWordDialog dlgAddNewWord;
   private GridView gv;
@@ -67,9 +67,7 @@ public class Vocabulary extends Activity {
         showAddNewWordDilalog();
         break;
       default:
-        if (Logger.isDebugMode()) {
-          throw new IllegalArgumentException("Unknown menu item " + menuItem.getTitle());
-        }
+        Logger.error("VocabularyActivity", "Unknown menu item " + menuItem.getTitle(), getApplicationContext());
         break;
     }
     return true;

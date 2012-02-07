@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:hint="@string/hint_foreign_word">
+        android:hint="@string/an_hint_foreign_word">
 
         <requestFocus />
     </EditText>
@@ -20,7 +20,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:hint="@string/hint_translation_word"/>
+        android:hint="@string/an_hint_translation_word"/>
     
     <TableLayout
         android:id="@+id/tableLayout1"
@@ -31,13 +31,13 @@
             android:id="@+id/add_new_word_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_new_word_save" />
+            android:text="@string/an_save" />
 
         <Button
             android:id="@+id/add_new_word_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_new_word_cancel" />
+            android:text="@string/an_cancel" />
     </TableLayout>
 
 </LinearLayout>

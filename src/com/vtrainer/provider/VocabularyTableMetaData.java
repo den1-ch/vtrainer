@@ -4,17 +4,17 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class VocabularyTableMetaData implements BaseColumns {
-  public static final String TABLE_NAME         = "vocabulary";
-  public static final Uri    WORDS_URI          = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY + "/" + TABLE_NAME);
-  public static final Uri    WORD_URI           = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY + "/" + TABLE_NAME + "/#");
+  public static final String TABLE_NAME = "vocabulary";
+  public static final Uri    WORDS_URI  = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY + "/" + TABLE_NAME);
+  public static final Uri    WORD_URI   = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY + "/" + TABLE_NAME + "/#");
   
   //columns
-  public static final String FOREIGN_WORD       = "foreign_word"; // string
-  public static final String TRANSLATION_WORD   = "translation_word";  // string
-  public static final String DATE_CREATED       = "date_created"; // long
-  public static final String PROGRESS           = "progress";     // byte, max 100
+  public static final String FOREIGN_WORD_FN     = "foreign_word"; // string
+  public static final String TRANSLATION_WORD_FN = "translation_word";  // string
+  public static final String DATE_CREATED_FN     = "date_created"; // long
+  public static final String PROGRESS_FN         = "progress";     // byte, max 100
 
-  public static final int    INITIAL_PROGRESS   = 0;
+  public static final int    INITIAL_PROGRESS = 0;
   
-  public static final String DEFAULT_SORT_ORDER = DATE_CREATED + " DESC"; 
+  public static final String DEFAULT_SORT_ORDER = DATE_CREATED_FN + " DESC"; 
 }

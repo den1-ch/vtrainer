@@ -31,7 +31,7 @@ public class AddNewWordDialog extends Dialog {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.dialog_add_new_word);
 
-    setTitle(R.string.add_new_word_title);
+    setTitle(R.string.an_title);
     setCancelable(true);
     
     // setImageResource(R.drawable.add_new_word);
@@ -49,8 +49,8 @@ public class AddNewWordDialog extends Dialog {
         }
         
         ContentValues cv = new ContentValues();
-        cv.put(VocabularyTableMetaData.FOREIGN_WORD, etForeingWord.getText().toString());
-        cv.put(VocabularyTableMetaData.TRANSLATION_WORD, etTranslationWord.getText().toString());
+        cv.put(VocabularyTableMetaData.FOREIGN_WORD_FN, etForeingWord.getText().toString());
+        cv.put(VocabularyTableMetaData.TRANSLATION_WORD_FN, etTranslationWord.getText().toString());
         
         if (getContext().getContentResolver().insert(VocabularyTableMetaData.WORDS_URI, cv) != null) {
           dataSaveListener.saved();

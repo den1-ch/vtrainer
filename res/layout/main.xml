@@ -9,21 +9,21 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="@string/vocabulary" />
+        android:text="@string/m_vocabulary" />
 
     <Button
         android:id="@+id/categories"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/categories" />
+        android:text="@string/m_categories" />
     <Button
-        android:id="@+id/exercises"
+        android:id="@+id/trainings"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/exercises" />
+        android:text="@string/m_trainings" />
     <Button
         android:id="@+id/liblary"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/library" />
+        android:text="@string/m_library" />
 </LinearLayout>

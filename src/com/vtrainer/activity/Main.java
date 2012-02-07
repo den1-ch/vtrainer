@@ -16,20 +16,25 @@ public class Main extends Activity implements OnClickListener {
 
     Button btnVocabulary = (Button) findViewById(R.id.vocabulary);
     btnVocabulary.setOnClickListener(this);
+
+    Button btnTrainings = (Button) findViewById(R.id.trainings);
+    btnTrainings.setOnClickListener(this);
   }
 
   @Override
   public void onClick(View v) {
+  	Intent intent;
     switch (v.getId()) {
       case R.id.vocabulary:
-        Intent intent = new Intent(this, Vocabulary.class);
-        startActivity(intent);
+        intent = new Intent(this, VocabularyActivity.class);
+      break;
+      case R.id.trainings:
+        intent = new Intent(this, TrainingsActivity.class);
       break;
     default:
-      break;
+      return;
     }
 
-    // TODO Auto-generated method stub
-
+    startActivity(intent);
   }
 }
