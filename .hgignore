@@ -1,0 +1,6 @@
+syntax: glob
+*.class
+bin/classes.dex
+bin/resources.ap_
+gen/com/vtrainer/activity/BuildConfig.java
+gen/com/vtrainer/activity/R.java
