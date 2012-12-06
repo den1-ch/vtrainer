@@ -6,40 +6,46 @@
 
     <TextView
         android:id="@+id/wt_trained_word"
-        android:layout_width="200dp"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:gravity="center_vertical"
-        android:padding="5dp" />
+        android:padding="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <RadioGroup
         android:id="@+id/wt_radio_group"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_alignRight="@+id/wt_trained_word"
-        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wt_trained_word"
+        android:layout_alignParentLeft="true"
         android:orientation="vertical"
         android:padding="10dp" >
 
         <RadioButton
             android:id="@+id/wt_word_translate_1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClick"/>
+        
         <RadioButton
             android:id="@+id/wt_word_translate_2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClick"/>
+        
         <RadioButton
             android:id="@+id/wt_word_translate_3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClick"/>
+            
 
         <RadioButton
             android:id="@+id/wt_word_translate_4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClick"/>
     </RadioGroup>
 
     <Button

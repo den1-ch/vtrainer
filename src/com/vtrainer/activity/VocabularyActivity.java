@@ -3,7 +3,7 @@ package com.vtrainer.activity;
 import com.vtrainer.dialog.AddNewWordDialog;
 import com.vtrainer.dialog.AddNewWordDialog.OnDataSaveListener;
 import com.vtrainer.logging.Logger;
-import com.vtrainer.provider.VocabularyTableMetaData;
+import com.vtrainer.provider.VocabularyMetaData;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -19,9 +19,9 @@ import android.widget.GridView;
 import android.widget.SimpleCursorAdapter;
 
 public class VocabularyActivity extends Activity {
-  private final String [] COUNM_NAMES = new String[] { VocabularyTableMetaData.FOREIGN_WORD_FN, VocabularyTableMetaData.TRANSLATION_WORD_FN };
+  private final String [] COUNM_NAMES = new String[] { VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
   private final int []    VIEW_IDS    = new int[]    { R.id.foreign_word, R.id.translated_word};
-  private final String [] PROJECTION  = new String[] { VocabularyTableMetaData._ID, VocabularyTableMetaData.FOREIGN_WORD_FN, VocabularyTableMetaData.TRANSLATION_WORD_FN };
+  private final String [] PROJECTION  = new String[] { VocabularyMetaData._ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
 
   private AddNewWordDialog dlgAddNewWord;
   private GridView gv;
@@ -45,7 +45,7 @@ public class VocabularyActivity extends Activity {
   }
 
   private void updateData() {
-    Cursor cur = getContentResolver().query(VocabularyTableMetaData.WORDS_URI, PROJECTION, null, null, null);
+    Cursor cur = getContentResolver().query(VocabularyMetaData.WORDS_URI, PROJECTION, null, null, null);
 
     SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cur, COUNM_NAMES, VIEW_IDS);
     

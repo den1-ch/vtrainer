@@ -1,7 +1,7 @@
 package com.vtrainer.dialog;
 
 import com.vtrainer.activity.R;
-import com.vtrainer.provider.VocabularyTableMetaData;
+import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;
 
 import android.app.Dialog;
@@ -49,10 +49,10 @@ public class AddNewWordDialog extends Dialog {
         }
         
         ContentValues cv = new ContentValues();
-        cv.put(VocabularyTableMetaData.FOREIGN_WORD_FN, etForeingWord.getText().toString());
-        cv.put(VocabularyTableMetaData.TRANSLATION_WORD_FN, etTranslationWord.getText().toString());
+        cv.put(VocabularyMetaData.FOREIGN_WORD, etForeingWord.getText().toString());
+        cv.put(VocabularyMetaData.TRANSLATION_WORD, etTranslationWord.getText().toString());
         
-        if (getContext().getContentResolver().insert(VocabularyTableMetaData.WORDS_URI, cv) != null) {
+        if (getContext().getContentResolver().insert(VocabularyMetaData.WORDS_URI, cv) != null) {
           dataSaveListener.saved();
         }        
         

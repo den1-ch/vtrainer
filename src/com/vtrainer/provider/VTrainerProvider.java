@@ -1,7 +1,6 @@
 package com.vtrainer.provider;
 
 import java.util.Calendar;
-import java.util.HashMap;
 
 import com.vtrainer.activity.R;
 import com.vtrainer.logging.Logger;
@@ -21,28 +20,7 @@ import android.text.TextUtils;
 
 public class VTrainerProvider extends ContentProvider {
   private static final String TAG = "VTrainerProvider";
-  
-  private static HashMap<String, String> vocabularyProjectionMap;
-  private static HashMap<String, String> trainingProjectionMap;
 
-  static {
-    vocabularyProjectionMap = new HashMap<String, String>();
-    vocabularyProjectionMap.put(VocabularyTableMetaData._ID, VocabularyTableMetaData._ID);
-    vocabularyProjectionMap.put(VocabularyTableMetaData.TRANSLATION_WORD_FN, VocabularyTableMetaData.TRANSLATION_WORD_FN);
-    vocabularyProjectionMap.put(VocabularyTableMetaData.FOREIGN_WORD_FN, VocabularyTableMetaData.FOREIGN_WORD_FN);
-    vocabularyProjectionMap.put(VocabularyTableMetaData.DATE_CREATED_FN, VocabularyTableMetaData.DATE_CREATED_FN);
-    vocabularyProjectionMap.put(VocabularyTableMetaData.PROGRESS_FN, VocabularyTableMetaData.PROGRESS_FN);
-
-    trainingProjectionMap = new HashMap<String, String>();
-    trainingProjectionMap.put(TrainingTableMetaData._ID, TrainingTableMetaData._ID);
-    trainingProjectionMap.put(TrainingTableMetaData.TYPE_FN, TrainingTableMetaData.TYPE_FN);
-    trainingProjectionMap.put(TrainingTableMetaData.WORD_ID_FN, TrainingTableMetaData.WORD_ID_FN);
-    trainingProjectionMap.put(VocabularyTableMetaData.FOREIGN_WORD_FN, VocabularyTableMetaData.FOREIGN_WORD_FN); //todo check
-    trainingProjectionMap.put(VocabularyTableMetaData.TRANSLATION_WORD_FN, VocabularyTableMetaData.TRANSLATION_WORD_FN); //todo check
-    trainingProjectionMap.put(TrainingTableMetaData.PROGRESS_FN, TrainingTableMetaData.PROGRESS_FN);
-    trainingProjectionMap.put(TrainingTableMetaData.DATE_LAST_STUDY_FN, TrainingTableMetaData.DATE_LAST_STUDY_FN);
-  }
-  
   //provide a mechanism to identify all uri patterns
   private static final UriMatcher uriMatcher;
   
@@ -53,11 +31,11 @@ public class VTrainerProvider extends ContentProvider {
   
   static {
     uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyTableMetaData.TABLE_NAME, ALL_WORD_COLLECTION_URI_INDICATOR);
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyTableMetaData.TABLE_NAME + "/#", COUNT_WORD_URI_INDICATOR);
+    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.TABLE_NAME, ALL_WORD_COLLECTION_URI_INDICATOR);
+    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.TABLE_NAME + "/#", COUNT_WORD_URI_INDICATOR);
 
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingTableMetaData.TABLE_NAME + "/#", TRAINING_URI_INDICATOR);
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingTableMetaData.TABLE_NAME + "/count", TRAINING_COUNT_URI_INDICATOR);
+    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TABLE_NAME + "/#", TRAINING_URI_INDICATOR);
+    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TABLE_NAME + "/count", TRAINING_COUNT_URI_INDICATOR);
   }
   
   private DatabaseHelper dbHelper;
@@ -66,7 +44,6 @@ public class VTrainerProvider extends ContentProvider {
    * Setup/Create Database
    * This class helps open, create, and upgrade the db
    */
-  
   private static class DatabaseHelper extends SQLiteOpenHelper {
     private static final String WORD_DELIMITER = ";"; //TODO move
     
@@ -89,20 +66,20 @@ public class VTrainerProvider extends ContentProvider {
     private void createVocabularyTable(SQLiteDatabase db) {
       StringBuilder sb = new StringBuilder();
       sb.append("CREATE TABLE ");
-      sb.append(VocabularyTableMetaData.TABLE_NAME);
+      sb.append(VocabularyMetaData.TABLE_NAME);
       sb.append(" ( \n");
-      sb.append(VocabularyTableMetaData._ID);
+      sb.append(VocabularyMetaData._ID);
       sb.append(" INTEGER PRIMARY KEY, \n");
-      sb.append(VocabularyTableMetaData.TRANSLATION_WORD_FN);
+      sb.append(VocabularyMetaData.TRANSLATION_WORD);
       sb.append(" VARCHAR(50) NOT NULL, \n");
-      sb.append(VocabularyTableMetaData.FOREIGN_WORD_FN);
+      sb.append(VocabularyMetaData.FOREIGN_WORD);
       sb.append(" VARCHAR(50) NOT NULL, \n");
-      sb.append(VocabularyTableMetaData.DATE_CREATED_FN);
+      sb.append(VocabularyMetaData.DATE_CREATED_FN);
       sb.append(" INTEGER NOT NULL, \n");
-      sb.append(VocabularyTableMetaData.PROGRESS_FN);
+      sb.append(VocabularyMetaData.PROGRESS_FN);
       sb.append(" INTEGER NOT NULL);");
       
-      Logger.debug(TAG, "Create table:" + VocabularyTableMetaData.TABLE_NAME + ". SQL: \n" + sb.toString());
+      Logger.debug(TAG, "Create table:" + VocabularyMetaData.TABLE_NAME + ". SQL: \n" + sb.toString());
 
       db.execSQL(sb.toString());   
     }
@@ -110,20 +87,20 @@ public class VTrainerProvider extends ContentProvider {
     private void createTrainingTable(SQLiteDatabase db) {
       StringBuilder sb = new StringBuilder();
       sb.append("CREATE TABLE ");
-      sb.append(TrainingTableMetaData.TABLE_NAME);
+      sb.append(TrainingMetaData.TABLE_NAME);
       sb.append(" ( \n");
-      sb.append(TrainingTableMetaData._ID);
+      sb.append(TrainingMetaData._ID);
       sb.append(" INTEGER PRIMARY KEY, \n");
-      sb.append(TrainingTableMetaData.TYPE_FN);
+      sb.append(TrainingMetaData.TYPE);
       sb.append(" INTEGER NOT NULL, \n");
-      sb.append(TrainingTableMetaData.WORD_ID_FN);
+      sb.append(TrainingMetaData.WORD_ID);
       sb.append(" INTEGER NOT NULL, \n");
-      sb.append(TrainingTableMetaData.PROGRESS_FN);
+      sb.append(TrainingMetaData.PROGRESS);
       sb.append(" INTEGER NOT NULL, \n");
-      sb.append(TrainingTableMetaData.DATE_LAST_STUDY_FN);
+      sb.append(TrainingMetaData.DATE_LAST_STUDY);
       sb.append(" INTEGER NOT NULL);");
       
-      Logger.debug(TAG, "Create table:" + TrainingTableMetaData.TABLE_NAME + ". SQL: \n" + sb.toString());
+      Logger.debug(TAG, "Create table:" + TrainingMetaData.TABLE_NAME + ". SQL: \n" + sb.toString());
 
       db.execSQL(sb.toString());   
     }
@@ -138,19 +115,19 @@ public class VTrainerProvider extends ContentProvider {
       
         int index = word.indexOf(WORD_DELIMITER);
         
-        cv.put(VocabularyTableMetaData.TRANSLATION_WORD_FN, word.substring(0, index));
-        cv.put(VocabularyTableMetaData.FOREIGN_WORD_FN, word.substring(index + 1));
-        cv.put(VocabularyTableMetaData.DATE_CREATED_FN, timestamp);
-        cv.put(VocabularyTableMetaData.PROGRESS_FN, VocabularyTableMetaData.INITIAL_PROGRESS);
+        cv.put(VocabularyMetaData.TRANSLATION_WORD, word.substring(0, index));
+        cv.put(VocabularyMetaData.FOREIGN_WORD, word.substring(index + 1));
+        cv.put(VocabularyMetaData.DATE_CREATED_FN, timestamp);
+        cv.put(VocabularyMetaData.PROGRESS_FN, VocabularyMetaData.INITIAL_PROGRESS);
 
-        long wordId = db.insert(VocabularyTableMetaData.TABLE_NAME, null, cv);
+        long wordId = db.insert(VocabularyMetaData.TABLE_NAME, null, cv);
         
         fillTrainingData(db, wordId);
       }
     }
 
     private void fillTrainingData(SQLiteDatabase db, long wordId) {
-      addWordToTraining(db, wordId, TrainingTableMetaData.Type.ForeignWordTranslation.getId());
+      addWordToTraining(db, wordId, TrainingMetaData.Type.ForeignWordTranslation.getId());
       //TODO add new trainings types
     }
     
@@ -159,20 +136,20 @@ public class VTrainerProvider extends ContentProvider {
     	
       ContentValues cv = new ContentValues();
 
-      cv.put(TrainingTableMetaData.TYPE_FN, trainingId);
-      cv.put(TrainingTableMetaData.WORD_ID_FN, wordId);
-      cv.put(TrainingTableMetaData.PROGRESS_FN, 0);
-      cv.put(TrainingTableMetaData.DATE_LAST_STUDY_FN, 0);
+      cv.put(TrainingMetaData.TYPE, trainingId);
+      cv.put(TrainingMetaData.WORD_ID, wordId);
+      cv.put(TrainingMetaData.PROGRESS, 0);
+      cv.put(TrainingMetaData.DATE_LAST_STUDY, 0);
 
-      db.insert(TrainingTableMetaData.TABLE_NAME, null, cv);      
+      db.insert(TrainingMetaData.TABLE_NAME, null, cv);      
     }
     
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
       Logger.debug(TAG, "Upgrading db from version" + oldVersion + " to " + newVersion); //TODO save user data #1
       
-      db.execSQL("DROP TABLE IF EXISTS " + VocabularyTableMetaData.TABLE_NAME);
-      db.execSQL("DROP TABLE IF EXISTS " + TrainingTableMetaData.TABLE_NAME);
+      db.execSQL("DROP TABLE IF EXISTS " + VocabularyMetaData.TABLE_NAME);
+      db.execSQL("DROP TABLE IF EXISTS " + TrainingMetaData.TABLE_NAME);
       onCreate(db);
     }
     
@@ -187,35 +164,24 @@ public class VTrainerProvider extends ContentProvider {
   
   public Cursor getCountWordAvalaibleToTraining(String type) {
     return dbHelper.getReadableDatabase().rawQuery(
-      "SELECT COUNT(*) FROM " + TrainingTableMetaData.TABLE_NAME + " WHERE " + TrainingTableMetaData.TYPE_FN + " = " + type, null); //TODO add where by time 
+      "SELECT COUNT(*) FROM " + TrainingMetaData.TABLE_NAME + " WHERE " + TrainingMetaData.TYPE + " = " + type, null); //TODO add where by time 
   }
   
   @Override
   public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
     SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
     
-    String orderBy = null;
     String limit = null;
     switch (uriMatcher.match(uri)) {
       case ALL_WORD_COLLECTION_URI_INDICATOR:
-        qb.setTables(VocabularyTableMetaData.TABLE_NAME);
-        qb.setProjectionMap(vocabularyProjectionMap);
-        orderBy = VocabularyTableMetaData.DEFAULT_SORT_ORDER;
+        qb.setTables(VocabularyMetaData.TABLE_NAME);
         break;
       case COUNT_WORD_URI_INDICATOR:
-        qb.setTables(VocabularyTableMetaData.TABLE_NAME);
-        qb.setProjectionMap(vocabularyProjectionMap);
+        qb.setTables(VocabularyMetaData.TABLE_NAME);
         limit = uri.getPathSegments().get(1);
-        orderBy = VocabularyTableMetaData.DEFAULT_SORT_ORDER;
         break;
       case TRAINING_URI_INDICATOR:
-        qb.setTables(TrainingTableMetaData.TABLE_NAME +", " + VocabularyTableMetaData.TABLE_NAME);
-        qb.setProjectionMap(trainingProjectionMap);
-        qb.appendWhere(
-          TrainingTableMetaData.TABLE_NAME + "." + TrainingTableMetaData.WORD_ID_FN + " = " + VocabularyTableMetaData.TABLE_NAME 
-          + "." + VocabularyTableMetaData._ID + " AND " + TrainingTableMetaData.TYPE_FN + "=" + uri.getPathSegments().get(1));
-        orderBy = TrainingTableMetaData.DEFAULT_SORT_ORDER;
-        limit = "1";
+        prepareSelectWordsForTrainingQuery(uri, qb);
         break;
       case TRAINING_COUNT_URI_INDICATOR:  
         return getCountWordAvalaibleToTraining(uri.getPathSegments().get(1));
@@ -225,22 +191,26 @@ public class VTrainerProvider extends ContentProvider {
         return null;
     }
     
-    //if sort order not specified use the default
-    if (TextUtils.isEmpty(sortOrder)) {
-      orderBy = sortOrder;
-    }
-    
     Logger.debug(TAG, qb.buildQuery(projection, selection, selectionArgs, null, null, sortOrder, limit));
 
     //get db and run the query
     SQLiteDatabase db = dbHelper.getReadableDatabase();
-    Cursor cursor = qb.query(db, projection, selection, selectionArgs, null, null, orderBy, limit);
+    Cursor cursor = qb.query(db, projection, selection, selectionArgs, null, null, sortOrder, limit);
     
     //tell the cursor what uri to watch so it knows when its source data changes
     cursor.setNotificationUri(getContext().getContentResolver(), uri);
     
     return cursor;
   }
+
+    private void prepareSelectWordsForTrainingQuery(Uri uri, SQLiteQueryBuilder qb) {
+        qb.setTables(VocabularyMetaData.TABLE_NAME + " LEFT OUTER JOIN " + TrainingMetaData.TABLE_NAME + " ON ( "
+                + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.WORD_ID + " = " + VocabularyMetaData.TABLE_NAME
+                + "." + VocabularyMetaData._ID + " )");
+
+        qb.appendWhere(TrainingMetaData.TYPE + "=" + uri.getPathSegments().get(1) + " AND "
+                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() / 1000 - 60 * 60 * 12));
+    }
   
   @Override
   public int delete(Uri arg0, String arg1, String[] arg2) {
@@ -266,24 +236,24 @@ public class VTrainerProvider extends ContentProvider {
   }
   
   private Uri addNewWord(Uri uri, ContentValues values) {
-    if (values.containsKey(VocabularyTableMetaData.TRANSLATION_WORD_FN) == false) {
-      throw new SQLException(VocabularyTableMetaData.TRANSLATION_WORD_FN + " is null");
+    if (values.containsKey(VocabularyMetaData.TRANSLATION_WORD) == false) {
+      throw new SQLException(VocabularyMetaData.TRANSLATION_WORD + " is null");
     }
     
-    if (values.containsKey(VocabularyTableMetaData.FOREIGN_WORD_FN) == false) {
-      throw new SQLException(VocabularyTableMetaData.FOREIGN_WORD_FN + " is null");
+    if (values.containsKey(VocabularyMetaData.FOREIGN_WORD) == false) {
+      throw new SQLException(VocabularyMetaData.FOREIGN_WORD + " is null");
     }
  
-    values.put(VocabularyTableMetaData.DATE_CREATED_FN, Calendar.getInstance().getTimeInMillis());
-    values.put(VocabularyTableMetaData.PROGRESS_FN, VocabularyTableMetaData.INITIAL_PROGRESS);
+    values.put(VocabularyMetaData.DATE_CREATED_FN, Calendar.getInstance().getTimeInMillis());
+    values.put(VocabularyMetaData.PROGRESS_FN, VocabularyMetaData.INITIAL_PROGRESS);
     
     SQLiteDatabase db = dbHelper.getWritableDatabase();
-    long rowId = db.insert(VocabularyTableMetaData.TABLE_NAME, null, values);
+    long rowId = db.insert(VocabularyMetaData.TABLE_NAME, null, values);
     
     if (rowId > 0) {
     	dbHelper.fillTrainingData(db, rowId);
     	
-    	Uri insertedUri = ContentUris.withAppendedId(VocabularyTableMetaData.WORDS_URI, rowId);
+    	Uri insertedUri = ContentUris.withAppendedId(VocabularyMetaData.WORDS_URI, rowId);
       
       getContext().getContentResolver().notifyChange(uri, null);
       

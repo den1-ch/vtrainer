@@ -26,6 +26,7 @@ public class TrainingsActivity extends Activity implements OnClickListener {
 
   @Override
   public void onClick(View v) {
+    //TODO #16 add check available count word to study 
     Intent intent;
     switch (v.getId()) {
       case R.id.t_word_translate_1:
