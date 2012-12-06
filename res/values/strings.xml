@@ -20,6 +20,31 @@
         <item>soon;незабаром</item>
         <item>Hew year;новий рік</item>
         <item>good morning;добрий ранок</item>
+        <item>good;добрий</item>
+        <item>morning;ранок</item>
+        <item>new;новий</item>
+        <item>year;рік</item>
+        <item>seatbelt;ремінь безпеки</item>
+        <item>ticket;квиток</item>
+        <item>gate;вихід (на посадку)</item>
+        <item>security;контроль безпеки</item>
+        <item>passport;паспорт</item>
+        <item>turbulence;турбулентність</item>
+        <item>connecting flight;політ із пересадками</item>
+        <item>to land;приземляти</item>
+        <item>helicopter;вертоліт</item>
+        <item>check-in desk;стіл реєстрації</item>
+        <item>hand luggage;ручна поклажа</item>
+        <item>baggage;багаж</item>
+        <item>boarding card;посадковий талон</item>
+        <item>arrivals;прибуття</item>
+        <item>departures;відправлення</item>
+        <item>runway;злітно-посадочна смуга</item>
+        <item>flight attendant;бортпровідник</item>
+        <item>pilot;пілот</item>
+        <item>aisle seat;місце біля проходу</item>
+        <item>window seat;місце біля вікна</item>
+        <item>take-off;зліт</item>
     </string-array>
     
     <!-- "Add new  -->
