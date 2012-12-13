@@ -123,8 +123,10 @@ public class TranslateWordTrainingActivity extends Activity {
     }
 	
 	public void onNextButtonClick(View view) {
-        validateAnswer();
-        
+	    if ((btnSelectedWord == null) || !validateAnswer()) {
+	        return;
+	    }
+	    
         Handler handler = new Handler(); 
         handler.postDelayed(new Runnable() { 
              public void run() { 
@@ -140,20 +142,23 @@ public class TranslateWordTrainingActivity extends Activity {
     }
 
     private void reinitialize() {
-        if (btnSelectedWord != null) {
-             btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
-             btnSelectedWord = null;
-         }                 
+         btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
+         btnSelectedWord = null;
+
          translateWords[corectWordAnswerPosition].setChecked(false);
+         translateWords[corectWordAnswerPosition].setTextColor(Constans.DEFAULT_COLOR);
     } 
 
-    private void validateAnswer() {
+    private boolean validateAnswer() {
+        boolean result = true;
         if (!translateWords[corectWordAnswerPosition].isChecked()) {
             translateWords[corectWordAnswerPosition].setChecked(true);
-            if (btnSelectedWord != null) {
-                btnSelectedWord.setTextColor(Constans.ERROR_COLOR);
-            }
+            translateWords[corectWordAnswerPosition].setTextColor(Constans.RIGHT_ANSWER_COLOR);
+
+            btnSelectedWord.setTextColor(Constans.ERROR_COLOR);
+            result = false;
         }
+        return result;
     }
 	
 }

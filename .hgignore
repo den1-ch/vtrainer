@@ -5,3 +5,4 @@ bin/resources.ap_
 gen/com/vtrainer/activity/BuildConfig.java
 gen/com/vtrainer/activity/R.java
 bin/*
+.settings
