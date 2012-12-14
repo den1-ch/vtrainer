@@ -127,6 +127,7 @@ public class VTrainerProvider extends ContentProvider {
 
     private void fillTrainingData(SQLiteDatabase db, long wordId) {
       addWordToTraining(db, wordId, TrainingMetaData.Type.ForeignWordTranslation.getId());
+      addWordToTraining(db, wordId, TrainingMetaData.Type.NativeWordTranslation.getId());
       //TODO add new trainings types
     }
     

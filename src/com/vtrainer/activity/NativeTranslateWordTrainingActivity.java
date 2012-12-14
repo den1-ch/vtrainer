@@ -13,6 +13,6 @@ public class NativeTranslateWordTrainingActivity extends AbsractTranslateWordTra
     }
     
     protected String getTrainingId() {
-        return TrainingMetaData.Type.ForeignWordTranslation.getIdAsString();
+        return TrainingMetaData.Type.NativeWordTranslation.getIdAsString();
     }
 }

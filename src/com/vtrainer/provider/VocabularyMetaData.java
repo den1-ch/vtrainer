@@ -12,8 +12,8 @@ public class VocabularyMetaData implements BaseColumns {
   //columns
   public static final String FOREIGN_WORD     = "foreign_word"; // string
   public static final String TRANSLATION_WORD = "translation_word";  // string
-  public static final String DATE_CREATED_FN     = "date_created"; // long
-  public static final String PROGRESS_FN         = "progress";     // byte, max 100
+  public static final String DATE_CREATED_FN  = "date_created"; // long
+  public static final String PROGRESS_FN      = "progress";     // byte, max 100
 
   public static final int    INITIAL_PROGRESS = 0;
   
