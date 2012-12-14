@@ -7,10 +7,12 @@ import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.BaseColumns;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -18,7 +20,7 @@ import android.widget.TextView;
 public class TranslateWordTrainingActivity extends Activity {
 	private static final int TRANSLATED_WORD_COUNT = 4;
 	
-	private final String [] PROJECTION  = new String[] { VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+	private final String [] PROJECTION  = new String[] { TrainingMetaData.WORD_ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
 	
 	private final Uri NEW_TRANINED_WORD_URI = Uri.withAppendedPath(TrainingMetaData.CONTENT_URI, TrainingMetaData.Type.ForeignWordTranslation.getIdAsString());
 
@@ -28,6 +30,8 @@ public class TranslateWordTrainingActivity extends Activity {
 	private RadioButton [] translateWords = new RadioButton[TRANSLATED_WORD_COUNT];
 	
 	private RadioButton btnSelectedWord;
+
+    private int trainedWordID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,8 +78,10 @@ public class TranslateWordTrainingActivity extends Activity {
                 return false;
             }
 
-            tvTrainedWord.setText(cursorTraining.getString(cursorTraining.getColumnIndex(PROJECTION[0])));
-            translateWords[corectWordAnswerPosition].setText(cursorTraining.getString(cursorTraining.getColumnIndex(PROJECTION[1])));
+            tvTrainedWord.setText(cursorTraining.getString(cursorTraining.getColumnIndex(getWordQuestionFieldName())));
+            trainedWordID = cursorTraining.getInt(cursorTraining.getColumnIndex(TrainingMetaData.WORD_ID));
+            
+            translateWords[corectWordAnswerPosition].setText(cursorTraining.getString(cursorTraining.getColumnIndex(getWordAnswerFieldName())));
         } finally {
             cursorTraining.close();
         }
@@ -114,7 +120,11 @@ public class TranslateWordTrainingActivity extends Activity {
         return VocabularyMetaData.TRANSLATION_WORD;
     }
 	
-	private void generateNewCorectWordAnswerPosition() {
+    protected String getWordQuestionFieldName() {
+        return VocabularyMetaData.FOREIGN_WORD;
+    }
+    
+    private void generateNewCorectWordAnswerPosition() {
 		corectWordAnswerPosition = new Random().nextInt(TRANSLATED_WORD_COUNT);
 	}
 	
@@ -126,7 +136,7 @@ public class TranslateWordTrainingActivity extends Activity {
 	    if ((btnSelectedWord == null) || !validateAnswer()) {
 	        return;
 	    }
-	    
+	    updateTrainedWordInfo();
         Handler handler = new Handler(); 
         handler.postDelayed(new Runnable() { 
              public void run() { 
@@ -137,10 +147,18 @@ public class TranslateWordTrainingActivity extends Activity {
                  }
              }
 
-        }, 1000);        
-        
+        }, 1000);
     }
 
+	private void updateTrainedWordInfo() {
+	    ContentValues cv = new ContentValues();
+	    cv.put(TrainingMetaData.DATE_LAST_STUDY, System.currentTimeMillis());
+        
+	    String where = TrainingMetaData.TYPE + "=? AND " + TrainingMetaData.WORD_ID + " =?"; 
+	    getContentResolver().update(NEW_TRANINED_WORD_URI, cv, where, 
+           new String[] {TrainingMetaData.Type.ForeignWordTranslation.getIdAsString(), Integer.toString(trainedWordID)});
+	}
+	
     private void reinitialize() {
          btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
          btnSelectedWord = null;
@@ -159,6 +177,5 @@ public class TranslateWordTrainingActivity extends Activity {
             result = false;
         }
         return result;
-    }
-	
+    }	
 }

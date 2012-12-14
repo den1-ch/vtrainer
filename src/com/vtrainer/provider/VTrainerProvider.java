@@ -16,7 +16,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.text.TextUtils;
 
 public class VTrainerProvider extends ContentProvider {
   private static final String TAG = "VTrainerProvider";
@@ -209,7 +208,7 @@ public class VTrainerProvider extends ContentProvider {
                 + "." + VocabularyMetaData._ID + " )");
 
         qb.appendWhere(TrainingMetaData.TYPE + "=" + uri.getPathSegments().get(1) + " AND "
-                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() / 1000 - 60 * 60 * 12));
+                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() / 1000 - 60 * 60 * 1));
     }
   
   @Override
@@ -236,11 +235,11 @@ public class VTrainerProvider extends ContentProvider {
   }
   
   private Uri addNewWord(Uri uri, ContentValues values) {
-    if (values.containsKey(VocabularyMetaData.TRANSLATION_WORD) == false) {
+    if (!values.containsKey(VocabularyMetaData.TRANSLATION_WORD)) {
       throw new SQLException(VocabularyMetaData.TRANSLATION_WORD + " is null");
     }
     
-    if (values.containsKey(VocabularyMetaData.FOREIGN_WORD) == false) {
+    if (!values.containsKey(VocabularyMetaData.FOREIGN_WORD)) {
       throw new SQLException(VocabularyMetaData.FOREIGN_WORD + " is null");
     }
  
@@ -263,10 +262,25 @@ public class VTrainerProvider extends ContentProvider {
     return null;
   }
 
-  @Override
-  public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
+    @Override
+    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        switch (uriMatcher.match(uri)) {
+        case TRAINING_URI_INDICATOR:
+            if ((values.size() != 1) || !values.containsKey(TrainingMetaData.DATE_LAST_STUDY)) {
+                throw new SQLException("Update do not suported. Values: " + values.toString());
+            }
+            
+            break;
+        default:
+            Logger.error(TAG, "Unknown URI " + uri, getContext());
+            return 0;
+        }
+      
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int count = db.update(TrainingMetaData.TABLE_NAME, values, selection, selectionArgs);
+        if (count > 0) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+        return count;
+    }
 }
