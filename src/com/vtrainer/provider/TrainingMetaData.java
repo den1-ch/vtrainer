@@ -19,7 +19,7 @@ public class TrainingMetaData implements BaseColumns {
   public static final String DEFAULT_SORT_ORDER = DATE_LAST_STUDY + " DESC";
 
   public static enum Type { 
-      ForeignWordTranslation(1); 
+      ForeignWordTranslation(1), NativeWordTranslation(2); 
       
       private int id;
     

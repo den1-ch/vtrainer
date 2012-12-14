@@ -12,22 +12,21 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.BaseColumns;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-public class TranslateWordTrainingActivity extends Activity {
-	private static final int TRANSLATED_WORD_COUNT = 4;
+public abstract class AbsractTranslateWordTrainingActivity extends Activity {
+	private static final int PROPOSAL_WORD_COUNT = 4;
 	
 	private final String [] PROJECTION  = new String[] { TrainingMetaData.WORD_ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
 	
-	private final Uri NEW_TRANINED_WORD_URI = Uri.withAppendedPath(TrainingMetaData.CONTENT_URI, TrainingMetaData.Type.ForeignWordTranslation.getIdAsString());
+	private final Uri NEW_TRANINED_WORD_URI = Uri.withAppendedPath(TrainingMetaData.CONTENT_URI, getTrainingId());
 
 	private int corectWordAnswerPosition;
 	
 	private TextView tvTrainedWord;
-	private RadioButton [] translateWords = new RadioButton[TRANSLATED_WORD_COUNT];
+	private RadioButton [] translateWords = new RadioButton[PROPOSAL_WORD_COUNT];
 	
 	private RadioButton btnSelectedWord;
 
@@ -53,7 +52,13 @@ public class TranslateWordTrainingActivity extends Activity {
         initData();
     }
 
-//	private int getCountWordToTrain() {
+    protected abstract String getWordAnswerFieldName();
+    
+    protected abstract String getWordQuestionFieldName();
+    
+    protected abstract String getTrainingId();
+
+    //	private int getCountWordToTrain() {
 //    Cursor countCursor = null;
 //    try {
 //      Uri uri = Uri.withAppendedPath(VocabularyTableMetaData.WORDS_URI, Integer.toString(TRANSLATED_WORD_COUNT)); // TODO must be updated; proposal data can not be // static must be random
@@ -93,7 +98,7 @@ public class TranslateWordTrainingActivity extends Activity {
     private void initProposalsData() {
         Cursor proposalsCursor = null;
         try {
-            Uri uri = Uri.withAppendedPath(VocabularyMetaData.WORDS_URI, Integer.toString(TRANSLATED_WORD_COUNT - 1));
+            Uri uri = Uri.withAppendedPath(VocabularyMetaData.WORDS_URI, Integer.toString(PROPOSAL_WORD_COUNT - 1));
 
             String orderBy = "RANDOM()";
             String where = getWordAnswerFieldName() + "!= \"" + translateWords[corectWordAnswerPosition].getText().toString() + "\"";
@@ -116,16 +121,8 @@ public class TranslateWordTrainingActivity extends Activity {
         }
     }
 
-    protected String getWordAnswerFieldName() {
-        return VocabularyMetaData.TRANSLATION_WORD;
-    }
-	
-    protected String getWordQuestionFieldName() {
-        return VocabularyMetaData.FOREIGN_WORD;
-    }
-    
     private void generateNewCorectWordAnswerPosition() {
-		corectWordAnswerPosition = new Random().nextInt(TRANSLATED_WORD_COUNT);
+		corectWordAnswerPosition = new Random().nextInt(PROPOSAL_WORD_COUNT);
 	}
 	
     public void onRadioButtonClick(View view) {
@@ -155,8 +152,8 @@ public class TranslateWordTrainingActivity extends Activity {
 	    cv.put(TrainingMetaData.DATE_LAST_STUDY, System.currentTimeMillis());
         
 	    String where = TrainingMetaData.TYPE + "=? AND " + TrainingMetaData.WORD_ID + " =?"; 
-	    getContentResolver().update(NEW_TRANINED_WORD_URI, cv, where, 
-           new String[] {TrainingMetaData.Type.ForeignWordTranslation.getIdAsString(), Integer.toString(trainedWordID)});
+	    getContentResolver().update(
+	        NEW_TRANINED_WORD_URI, cv, where, new String[] {getTrainingId(), Integer.toString(trainedWordID)});
 	}
 	
     private void reinitialize() {

@@ -30,10 +30,10 @@ public class TrainingsActivity extends Activity implements OnClickListener {
     Intent intent;
     switch (v.getId()) {
       case R.id.t_word_translate_1:
-        intent = new Intent(this, TranslateWordTrainingActivity.class);
+        intent = new Intent(this, ForeignTranslateWordTrainingActivity.class);
         break;
       case R.id.t_word_translate_2:
-        intent = null;
+          intent = new Intent(this, NativeTranslateWordTrainingActivity.class);
         break;
       default:
         return;
