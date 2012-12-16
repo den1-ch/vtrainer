@@ -75,4 +75,79 @@
     <string name="wt_translateWord">Translate Word</string>
     
     <string name="no_word_for_training">No words for study</string>
+    
+    <!-- Categories -->
+    <string-array name="cat_clothes_array">
+        <item>belt;ремінь</item>
+        <item>blouse;блуза</item>
+        <item>cardigan;кардиган</item>
+        <item>dress;cукня</item>
+        <item>gloves;рукавички</item>
+        <item>jacket;куртка</item>
+        <item>jeans;джинси</item>
+        <item>jumper;перемичка</item>
+        <item>overcoat;пальто</item>
+        <item>pullover;пуловер</item>
+        <item>raincoat;плащ</item>
+        <item>scarf;шарф</item>
+        <item>shirt;сорочка</item>
+        <item>t-shirt;футболка</item>
+        <item>tie;краватка </item>
+        <item>skirt;спідниця</item>
+        <item>mini-skirt;міні-спідниця</item>
+        <item>shorts;шорти</item>
+        <item>socks;шкарпетки</item>
+        <item>suit;костюм</item>
+        <item>sweater;светр</item>
+        <item>trousers;брюки</item>
+        <item>jogging suit;спортивний костюм</item>
+        <item>tracksuit;спортивний костюм</item>
+        <item>bikini;бікіні</item>
+        <item>swimming trunks;плавки</item>
+        <item>boots;черевики</item>
+        <item>sandals;сандалі</item>
+        <item>slippers;тапки</item>
+        <item>shoes;взуття</item>
+        <item>trainers;тренерів</item>
+        <item>sneakers;кросівки</item>
+        <item>bra;бюстгальтер</item>
+        <item>knickers;дамські панталони</item>
+        <item>panties;трусики</item>
+        <item>pants;брюки</item>
+        <item>tights;колготки</item>
+        <item>vest;жилет</item>
+        <item>beret;берет</item>
+        <item>hat;капелюх</item>
+        <item>helmet;шолом</item>
+        <item>cotton;бавовна</item>
+        <item>denim;джинси</item>
+        <item>leather;шкіра</item>
+        <item>linen;білизна</item>
+        <item>rubber;гумовий</item>
+        <item>silk;шовк</item>
+        <item>suede;замша</item>
+        <item>wool;вовна</item>
+        <item>woolen;шерстяній</item>
+        <item>plastic;пластик</item>
+        <item>nylon;нейлон</item>
+        <item>polyester;поліестер</item>
+        <item>designer;дизайнер</item>
+        <item>fashion;мода</item>
+        <item>fashionable;модний</item>
+        <item>trend;тенденція</item>
+        <item>trendy;модний</item>
+        <item>unfashionable;немодний</item>
+        <item>flowery;квітчастий</item>
+        <item>patterned;візерунковий</item>
+        <item>spot;пляма</item>
+        <item>spotted;плямистий</item>
+        <item>stripe;смуга</item>
+        <item>striped;смугастий</item>
+        <item>tartan;шотландка</item>
+        <item>contact lenses;контактні лінзи</item>
+        <item>earrings;сережки</item>
+        <item>glasses;окуляри</item>
+        <item>jewelry;ювелірні вироби</item>
+        <item>ring;кільце</item>
+    </string-array>
 </resources>
