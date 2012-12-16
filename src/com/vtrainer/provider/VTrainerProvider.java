@@ -209,7 +209,7 @@ public class VTrainerProvider extends ContentProvider {
                 + "." + VocabularyMetaData._ID + " )");
 
         qb.appendWhere(TrainingMetaData.TYPE + "=" + uri.getPathSegments().get(1) + " AND "
-                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() / 1000 - 60 * 60 * 1));
+                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - 60 * 60 * 1 * 1000));
     }
   
   @Override
