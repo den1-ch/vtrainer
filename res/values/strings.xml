@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Vocabulary Trainer</string>
     
+    <string name="caption_ok">Ok</string>
     <!-- Main activity -->
     
     <string name="m_vocabulary">Vocabulary</string>
@@ -73,4 +74,5 @@
     
     <string name="wt_translateWord">Translate Word</string>
     
+    <string name="no_word_for_training">No words for study</string>
 </resources>

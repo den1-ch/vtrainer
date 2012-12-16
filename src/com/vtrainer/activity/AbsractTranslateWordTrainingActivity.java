@@ -7,7 +7,10 @@ import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,20 +39,19 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // if (initData()) {
-        // } else {
-        //
-        // }
         setContentView(R.layout.translate_word_training);
 
         tvTrainedWord = (TextView) findViewById(R.id.wt_trained_word);
-    
+
         translateWords[0] = (RadioButton) findViewById(R.id.wt_word_translate_1);
         translateWords[1] = (RadioButton) findViewById(R.id.wt_word_translate_2);
         translateWords[2] = (RadioButton) findViewById(R.id.wt_word_translate_3);
         translateWords[3] = (RadioButton) findViewById(R.id.wt_word_translate_4);
-
-        initData();
+        
+        if (!initData()) {
+            setContentView(R.layout.empty);
+            showNoWordForStudyDialog();
+        }
     }
 
     protected abstract String getWordAnswerFieldName();
@@ -76,23 +78,25 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         generateNewCorectWordAnswerPosition();
 
         Cursor cursorTraining = null;
+        boolean result;
         try {
             cursorTraining = getContentResolver().query(NEW_TRANINED_WORD_URI, PROJECTION, null, null, "RANDOM()");
 
-            if (!cursorTraining.moveToFirst()) {
-                return false;
-            }
+            result = cursorTraining.moveToFirst();
 
-            tvTrainedWord.setText(cursorTraining.getString(cursorTraining.getColumnIndex(getWordQuestionFieldName())));
-            trainedWordID = cursorTraining.getInt(cursorTraining.getColumnIndex(TrainingMetaData.WORD_ID));
-            
-            translateWords[corectWordAnswerPosition].setText(cursorTraining.getString(cursorTraining.getColumnIndex(getWordAnswerFieldName())));
+            if (result) {
+                tvTrainedWord.setText(cursorTraining.getString(cursorTraining.getColumnIndex(getWordQuestionFieldName())));
+                trainedWordID = cursorTraining.getInt(cursorTraining.getColumnIndex(TrainingMetaData.WORD_ID));
+
+                translateWords[corectWordAnswerPosition].setText(cursorTraining.getString(cursorTraining.getColumnIndex(getWordAnswerFieldName())));
+
+                initProposalsData();
+            }
         } finally {
             cursorTraining.close();
         }
-        initProposalsData();
 
-        return true;
+        return result;
     }
 
     private void initProposalsData() {
@@ -140,7 +144,7 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
                  reinitialize();
                  
                  if (!initData()) {
-                     // TODO
+                     showNoWordForStudyDialog();
                  }
              }
 
@@ -175,4 +179,20 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         }
         return result;
     }	
+    
+    private void showNoWordForStudyDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.no_word_for_training);
+        
+        builder.setPositiveButton(R.string.caption_ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(getBaseContext(), TrainingsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }
