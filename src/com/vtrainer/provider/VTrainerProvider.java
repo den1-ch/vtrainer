@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import com.vtrainer.activity.R;
 import com.vtrainer.logging.Logger;
+import com.vtrainer.utils.Constans;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -49,7 +50,7 @@ public class VTrainerProvider extends ContentProvider {
     private Context context;
     
     public DatabaseHelper(Context context) {
-      super(context, VTrainerProviderMetaData.DATABASE_NAME, null, VTrainerProviderMetaData.DATABASE_VERSION);
+      super(context, VTrainerProviderMetaData.DATABASE_NAME, null, Constans.IS_TEST_MODE ? VTrainerProviderMetaData.DATABASE_VERSION * 10 : VTrainerProviderMetaData.DATABASE_VERSION);
       
       this.context = context;
     }
@@ -106,7 +107,7 @@ public class VTrainerProvider extends ContentProvider {
     
     private void fillVocabularyStaticData(SQLiteDatabase db) { //TODO update #3
       Logger.debug(TAG, "Fill vocabulary static data.");
-      String[] vocabulary = context.getResources().getStringArray(R.array.vocabulary_array);
+      String[] vocabulary = context.getResources().getStringArray(Constans.IS_TEST_MODE ? R.array.test_vocabulary_array: R.array.vocabulary_array);
       long timestamp = Calendar.getInstance().getTimeInMillis();
       ContentValues cv = new ContentValues();
       for(int i = 0; i < vocabulary.length; i++) {

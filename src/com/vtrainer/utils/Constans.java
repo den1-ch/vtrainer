@@ -9,5 +9,6 @@ public class Constans {
     public static final int REQUERED_FIELD_HINT_COLOR = Color.RED;
     public static final int FIELD_HINT_COLOR = Color.GRAY;
     public static final int RIGHT_ANSWER_COLOR = Color.GREEN;
-
+    
+    public static final boolean IS_TEST_MODE = true; 
 }

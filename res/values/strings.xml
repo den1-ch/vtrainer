@@ -16,7 +16,7 @@
 
     <string name="v_mi_add_new_word">Add new..</string>
     
-    <string-array name="vocabulary_array">
+    <string-array name="test_vocabulary_array">
         <item>Oksana;Оксана</item>
         <item>soon;незабаром</item>
         <item>Hew year;новий рік</item>
@@ -25,6 +25,9 @@
         <item>morning;ранок</item>
         <item>new;новий</item>
         <item>year;рік</item>
+    </string-array>
+    
+    <string-array name="vocabulary_array">
         <item>seatbelt;ремінь безпеки</item>
         <item>ticket;квиток</item>
         <item>gate;вихід (на посадку)</item>
