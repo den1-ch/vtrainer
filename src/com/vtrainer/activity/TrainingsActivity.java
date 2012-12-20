@@ -1,5 +1,7 @@
 package com.vtrainer.activity;
 
+import com.vtrainer.R;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

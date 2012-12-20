@@ -1,6 +1,6 @@
 package com.vtrainer.dialog;
 
-import com.vtrainer.activity.R;
+import com.vtrainer.R;
 import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;
 

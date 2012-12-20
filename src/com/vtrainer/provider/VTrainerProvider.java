@@ -2,7 +2,7 @@ package com.vtrainer.provider;
 
 import java.util.Calendar;
 
-import com.vtrainer.activity.R;
+import com.vtrainer.R;
 import com.vtrainer.logging.Logger;
 import com.vtrainer.utils.Constans;
 
@@ -61,6 +61,7 @@ public class VTrainerProvider extends ContentProvider {
       createTrainingTable(db);
       
       fillVocabularyStaticData(db);
+      fillCategoriesData(db);
     }
     
     private void createVocabularyTable(SQLiteDatabase db) {
@@ -70,6 +71,8 @@ public class VTrainerProvider extends ContentProvider {
       sb.append(" ( \n");
       sb.append(VocabularyMetaData._ID);
       sb.append(" INTEGER PRIMARY KEY, \n");
+      sb.append(VocabularyMetaData.CATEGOTY_ID);
+      sb.append(" INTEGER NOT NULL, \n");
       sb.append(VocabularyMetaData.TRANSLATION_WORD);
       sb.append(" VARCHAR(50) NOT NULL, \n");
       sb.append(VocabularyMetaData.FOREIGN_WORD);
@@ -108,24 +111,38 @@ public class VTrainerProvider extends ContentProvider {
     private void fillVocabularyStaticData(SQLiteDatabase db) { //TODO update #3
       Logger.debug(TAG, "Fill vocabulary static data.");
       String[] vocabulary = context.getResources().getStringArray(Constans.IS_TEST_MODE ? R.array.test_vocabulary_array: R.array.vocabulary_array);
-      long timestamp = Calendar.getInstance().getTimeInMillis();
-      ContentValues cv = new ContentValues();
-      for(int i = 0; i < vocabulary.length; i++) {
-        String word = vocabulary[i];
-      
-        int index = word.indexOf(WORD_DELIMITER);
-        
-        cv.put(VocabularyMetaData.TRANSLATION_WORD, word.substring(0, index));
-        cv.put(VocabularyMetaData.FOREIGN_WORD, word.substring(index + 1));
-        cv.put(VocabularyMetaData.DATE_CREATED_FN, timestamp);
-        cv.put(VocabularyMetaData.PROGRESS_FN, VocabularyMetaData.INITIAL_PROGRESS);
+      fillVocabularyData(db, vocabulary, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID, true);
+    }
+    
+    private void fillCategoriesData(SQLiteDatabase db) {
+        Logger.debug(TAG, "Fill categories static data.");
 
-        long wordId = db.insert(VocabularyMetaData.TABLE_NAME, null, cv);
-        
-        fillTrainingData(db, wordId);
-      }
+        fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_clothes_array), R.array.cat_clothes_array, false);
+        fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_traits_array), R.array.cat_traits_array, false);
     }
 
+    private void fillVocabularyData(SQLiteDatabase db, String[] data, int categoryId, boolean isAddToTraining) {
+        long timestamp = Calendar.getInstance().getTimeInMillis();
+        ContentValues cv = new ContentValues();
+        for (int i = 0; i < data.length; i++) {
+            String word = data[i];
+
+            int index = word.indexOf(WORD_DELIMITER);
+
+            cv.put(VocabularyMetaData.CATEGOTY_ID, categoryId);
+            cv.put(VocabularyMetaData.TRANSLATION_WORD, word.substring(0, index));
+            cv.put(VocabularyMetaData.FOREIGN_WORD, word.substring(index + 1));
+            cv.put(VocabularyMetaData.DATE_CREATED_FN, timestamp);
+            cv.put(VocabularyMetaData.PROGRESS_FN, VocabularyMetaData.INITIAL_PROGRESS);
+
+            long wordId = db.insert(VocabularyMetaData.TABLE_NAME, null, cv);
+
+            if (isAddToTraining) {
+                fillTrainingData(db, wordId);
+            }
+        }
+    }
+    
     private void fillTrainingData(SQLiteDatabase db, long wordId) {
       addWordToTraining(db, wordId, TrainingMetaData.Type.ForeignWordTranslation.getId());
       addWordToTraining(db, wordId, TrainingMetaData.Type.NativeWordTranslation.getId());

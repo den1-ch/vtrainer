@@ -2,6 +2,7 @@ package com.vtrainer.activity;
 
 import java.util.Random;
 
+import com.vtrainer.R;
 import com.vtrainer.provider.TrainingMetaData;
 import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;

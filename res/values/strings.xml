@@ -80,6 +80,12 @@
     <string name="no_word_for_training">No words for study</string>
     
     <!-- Categories -->
+    
+    <string name="categories_title">Categories</string>
+    
+    <string name="cat1_title">Clothes</string>
+    <string name="cat2_title">Traits</string>
+    
     <string-array name="cat_clothes_array">
         <item>belt;ремінь</item>
         <item>blouse;блуза</item>
@@ -154,7 +160,7 @@
         <item>ring;кільце</item>
     </string-array>
     
-    <string-array name="cat_еraits_array">
+    <string-array name="cat_traits_array">
         <item>absent-minded;розсіяний</item>
         <item>active;активний</item>
         <item>adventurous;авантюрний</item>

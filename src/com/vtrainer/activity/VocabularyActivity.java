@@ -1,5 +1,6 @@
 package com.vtrainer.activity;
 
+import com.vtrainer.R;
 import com.vtrainer.dialog.AddNewWordDialog;
 import com.vtrainer.dialog.AddNewWordDialog.OnDataSaveListener;
 import com.vtrainer.logging.Logger;
@@ -26,6 +27,8 @@ public class VocabularyActivity extends Activity {
   private AddNewWordDialog dlgAddNewWord;
   private GridView gv;
   
+  private int categoryId;
+  
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -34,6 +37,7 @@ public class VocabularyActivity extends Activity {
    
     gv = (GridView) findViewById(R.id.gv_vocabulary);
 
+    categoryId = getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_ID);
     updateData();
     
     gv.setOnItemClickListener(new OnItemClickListener() {
@@ -45,7 +49,8 @@ public class VocabularyActivity extends Activity {
   }
 
   private void updateData() {
-    Cursor cur = getContentResolver().query(VocabularyMetaData.WORDS_URI, PROJECTION, null, null, null);
+    Cursor cur = getContentResolver().query(VocabularyMetaData.WORDS_URI, PROJECTION, 
+        VocabularyMetaData.CATEGOTY_ID + " = ?", new String[] { Integer.toString(categoryId) }, null);
 
     SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cur, COUNM_NAMES, VIEW_IDS);
     
