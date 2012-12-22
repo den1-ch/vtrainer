@@ -11,7 +11,6 @@ import android.app.Dialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,15 +18,17 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.SimpleCursorAdapter;
 
-public class VocabularyActivity extends Activity {
-  private final String [] COUNM_NAMES = new String[] { VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
-  private final int []    VIEW_IDS    = new int[]    { R.id.foreign_word, R.id.translated_word};
-  private final String [] PROJECTION  = new String[] { VocabularyMetaData._ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+public class VocabularyActivity extends Activity {    
+    private final int MENU_GROUP_ID = 1;
+    
+    private final String[] COUNM_NAMES = new String[] { VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+    private final int[] VIEW_IDS = new int[] { R.id.foreign_word, R.id.translated_word };
+    private final String[] PROJECTION = new String[] { VocabularyMetaData._ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
 
-  private AddNewWordDialog dlgAddNewWord;
-  private GridView gv;
-  
-  private int categoryId;
+    private AddNewWordDialog dlgAddNewWord;
+    private GridView gv;
+
+    private int categoryId;
   
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,10 @@ public class VocabularyActivity extends Activity {
 
   }
 
+    private boolean isMain() {
+        return (categoryId == VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
+    }
+  
   private void updateData() {
     Cursor cur = getContentResolver().query(VocabularyMetaData.WORDS_URI, PROJECTION, 
         VocabularyMetaData.CATEGOTY_ID + " = ?", new String[] { Integer.toString(categoryId) }, null);
@@ -57,13 +62,16 @@ public class VocabularyActivity extends Activity {
     gv.setAdapter(adapter);
   }
   
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-    
-    inflater.inflate(R.menu.vocabulary_menu, menu);
-    return true;
-  }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (isMain()) {
+            menu.add(MENU_GROUP_ID, Menu.FIRST, Menu.FIRST, R.string.v_mi_add_new_word);
+        } else {
+            menu.add(MENU_GROUP_ID, Menu.FIRST, Menu.FIRST, "").setTitle("");
+        }
+
+        return super.onCreateOptionsMenu(menu);
+    }
   
   @Override
   public boolean onOptionsItemSelected(MenuItem menuItem) {
