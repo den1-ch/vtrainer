@@ -18,6 +18,8 @@ public class VocabularyMetaData implements BaseColumns {
   public static final String DATE_CREATED_FN  = "date_created"; // long
   public static final String PROGRESS_FN      = "progress";     // byte, max 100
 
+  public static final String CATEGOTY_NAME    = "category_name"; // non db column
+  
   public static final int INITIAL_PROGRESS = 0;
   
   public static final int MAIN_VOCABULARY_CATEGORY_ID = 1;

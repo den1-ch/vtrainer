@@ -24,10 +24,12 @@ public class CategoriesActivity extends Activity implements OnClickListener {
       case R.id.btn_cat1:
         intent = new Intent(this, VocabularyActivity.class);
         intent.putExtra(VocabularyMetaData.CATEGOTY_ID, R.array.cat_clothes_array);
+        intent.putExtra(VocabularyMetaData.CATEGOTY_NAME, R.string.cat1_title);
         break;
       case R.id.btn_cat2:
           intent = new Intent(this, VocabularyActivity.class);
           intent.putExtra(VocabularyMetaData.CATEGOTY_ID, R.array.cat_traits_array);
+          intent.putExtra(VocabularyMetaData.CATEGOTY_NAME, R.string.cat2_title);
         break;
       default:
         return;

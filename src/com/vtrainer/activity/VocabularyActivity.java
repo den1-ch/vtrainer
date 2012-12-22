@@ -33,24 +33,28 @@ public class VocabularyActivity extends Activity {
 
     private int categoryId;
   
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.vocabulary);
-   
-    gv = (GridView) findViewById(R.id.gv_vocabulary);
+        setContentView(R.layout.vocabulary);
 
-    categoryId = getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_ID);
-    updateData();
-    
-    gv.setOnItemClickListener(new OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-      }
-    });
+        gv = (GridView) findViewById(R.id.gv_vocabulary);
 
-  }
+        categoryId = getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_ID);
+
+        if (!isMain()) {
+            setTitle(getResources().getString(getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_NAME)));
+        }
+        updateData();
+
+        gv.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            }
+        });
+
+    }
 
     private boolean isMain() {
         return (categoryId == VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
