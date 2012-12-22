@@ -25,7 +25,7 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
 	
 	private final String [] PROJECTION  = new String[] { TrainingMetaData.WORD_ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
 	
-	private final Uri NEW_TRANINED_WORD_URI = Uri.withAppendedPath(TrainingMetaData.CONTENT_URI, getTrainingId());
+	private final Uri NEW_TRANINED_WORD_URI = Uri.withAppendedPath(TrainingMetaData.TRAINING_WORD_URI, getTrainingId());
 
 	private int corectWordAnswerPosition;
 	

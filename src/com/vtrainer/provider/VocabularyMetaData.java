@@ -6,8 +6,10 @@ import android.provider.BaseColumns;
 public class VocabularyMetaData implements BaseColumns {
   public static final String TABLE_NAME = "vocabulary";
   
-  public static final Uri    WORDS_URI  = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, TABLE_NAME);
-  public static final Uri    WORD_URI   = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, TABLE_NAME + "/#");
+  public static final String WORDS_PATH = TABLE_NAME;
+
+  public static final Uri WORDS_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, WORDS_PATH);
+  public static final Uri WORD_URI  = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, TABLE_NAME + "/#");
   
   //columns
   public static final String CATEGOTY_ID      = "category_id"; // int

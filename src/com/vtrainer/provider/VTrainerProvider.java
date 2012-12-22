@@ -24,17 +24,17 @@ public class VTrainerProvider extends ContentProvider {
   //provide a mechanism to identify all uri patterns
   private static final UriMatcher uriMatcher;
   
-  private static final int ALL_WORD_COLLECTION_URI_INDICATOR = 1;
-  private static final int COUNT_WORD_URI_INDICATOR          = 2;
-  private static final int TRAINING_URI_INDICATOR            = 3;
-  private static final int TRAINING_COUNT_URI_INDICATOR      = 4;
+  private static final int WORDS_URI_INDICATOR          = 1;
+  private static final int COUNT_WORD_URI_INDICATOR     = 2;
+  private static final int TRAINING_WORD_URI_INDICATOR  = 3;
+  private static final int TRAINING_COUNT_URI_INDICATOR = 4;
   
   static {
     uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.TABLE_NAME, ALL_WORD_COLLECTION_URI_INDICATOR);
+    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.WORDS_PATH, WORDS_URI_INDICATOR);
     uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.TABLE_NAME + "/#", COUNT_WORD_URI_INDICATOR);
 
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TABLE_NAME + "/#", TRAINING_URI_INDICATOR);
+    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TRAINING_WORD_PATH, TRAINING_WORD_URI_INDICATOR);
     uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TABLE_NAME + "/count", TRAINING_COUNT_URI_INDICATOR);
   }
   
@@ -57,57 +57,15 @@ public class VTrainerProvider extends ContentProvider {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-      createVocabularyTable(db);
-      createTrainingTable(db);
-      
+        Logger.debug(TAG, "Create table:" + VocabularyMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getVocabularyTableSQL());
+        db.execSQL(SQLBuilder.getVocabularyTableSQL());
+        Logger.debug(TAG, "Create table:" + TrainingMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getTrainingTable());
+        db.execSQL(SQLBuilder.getTrainingTable());
+        
       fillVocabularyStaticData(db);
       fillCategoriesData(db);
     }
-    
-    private void createVocabularyTable(SQLiteDatabase db) {
-      StringBuilder sb = new StringBuilder();
-      sb.append("CREATE TABLE ");
-      sb.append(VocabularyMetaData.TABLE_NAME);
-      sb.append(" ( \n");
-      sb.append(VocabularyMetaData._ID);
-      sb.append(" INTEGER PRIMARY KEY, \n");
-      sb.append(VocabularyMetaData.CATEGOTY_ID);
-      sb.append(" INTEGER NOT NULL, \n");
-      sb.append(VocabularyMetaData.TRANSLATION_WORD);
-      sb.append(" VARCHAR(50) NOT NULL, \n");
-      sb.append(VocabularyMetaData.FOREIGN_WORD);
-      sb.append(" VARCHAR(50) NOT NULL, \n");
-      sb.append(VocabularyMetaData.DATE_CREATED_FN);
-      sb.append(" INTEGER NOT NULL, \n");
-      sb.append(VocabularyMetaData.PROGRESS_FN);
-      sb.append(" INTEGER NOT NULL);");
-      
-      Logger.debug(TAG, "Create table:" + VocabularyMetaData.TABLE_NAME + ". SQL: \n" + sb.toString());
 
-      db.execSQL(sb.toString());   
-    }
-    
-    private void createTrainingTable(SQLiteDatabase db) {
-      StringBuilder sb = new StringBuilder();
-      sb.append("CREATE TABLE ");
-      sb.append(TrainingMetaData.TABLE_NAME);
-      sb.append(" ( \n");
-      sb.append(TrainingMetaData._ID);
-      sb.append(" INTEGER PRIMARY KEY, \n");
-      sb.append(TrainingMetaData.TYPE);
-      sb.append(" INTEGER NOT NULL, \n");
-      sb.append(TrainingMetaData.WORD_ID);
-      sb.append(" INTEGER NOT NULL, \n");
-      sb.append(TrainingMetaData.PROGRESS);
-      sb.append(" INTEGER NOT NULL, \n");
-      sb.append(TrainingMetaData.DATE_LAST_STUDY);
-      sb.append(" INTEGER NOT NULL);");
-      
-      Logger.debug(TAG, "Create table:" + TrainingMetaData.TABLE_NAME + ". SQL: \n" + sb.toString());
-
-      db.execSQL(sb.toString());   
-    }
-    
     private void fillVocabularyStaticData(SQLiteDatabase db) { //TODO update #3
       Logger.debug(TAG, "Fill vocabulary static data.");
       String[] vocabulary = context.getResources().getStringArray(Constans.IS_TEST_MODE ? R.array.test_vocabulary_array: R.array.vocabulary_array);
@@ -191,14 +149,14 @@ public class VTrainerProvider extends ContentProvider {
     
     String limit = null;
     switch (uriMatcher.match(uri)) {
-      case ALL_WORD_COLLECTION_URI_INDICATOR:
+      case WORDS_URI_INDICATOR:
         qb.setTables(VocabularyMetaData.TABLE_NAME);
         break;
       case COUNT_WORD_URI_INDICATOR:
         qb.setTables(VocabularyMetaData.TABLE_NAME);
         limit = uri.getPathSegments().get(1);
         break;
-      case TRAINING_URI_INDICATOR:
+      case TRAINING_WORD_URI_INDICATOR:
         prepareSelectWordsForTrainingQuery(uri, qb);
         break;
       case TRAINING_COUNT_URI_INDICATOR:  
@@ -245,7 +203,7 @@ public class VTrainerProvider extends ContentProvider {
   @Override
   public Uri insert(Uri uri, ContentValues values) {
     switch (uriMatcher.match(uri)) {
-      case ALL_WORD_COLLECTION_URI_INDICATOR:
+      case WORDS_URI_INDICATOR:
         return addNewWord(uri, values);
     	default:
         Logger.error(TAG, "Unknown URI " + uri, getContext());
@@ -273,9 +231,9 @@ public class VTrainerProvider extends ContentProvider {
     	
     	Uri insertedUri = ContentUris.withAppendedId(VocabularyMetaData.WORDS_URI, rowId);
       
-      getContext().getContentResolver().notifyChange(uri, null);
+        getContext().getContentResolver().notifyChange(uri, null);
       
-      return insertedUri;
+        return insertedUri;
     }
     
     return null;
@@ -284,7 +242,7 @@ public class VTrainerProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         switch (uriMatcher.match(uri)) {
-        case TRAINING_URI_INDICATOR:
+        case TRAINING_WORD_URI_INDICATOR:
             if ((values.size() != 1) || !values.containsKey(TrainingMetaData.DATE_LAST_STUDY)) {
                 throw new SQLException("Update do not suported. Values: " + values.toString());
             }

@@ -5,14 +5,17 @@ import android.provider.BaseColumns;
 
 public class TrainingMetaData implements BaseColumns {
   public static final String TABLE_NAME = "training";
-  public static final Uri    CONTENT_URI        = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY + "/training/#");
-  public static final Uri    TRAINING_COUNT_URI = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY + "/training/count");
+  
+  public static final String TRAINING_WORD_PATH = TABLE_NAME + "/#";
 
+  public static final Uri TRAINING_WORD_URI  = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, TABLE_NAME);
+  public static final Uri TRAINING_COUNT_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, "/training/count");
+  
   // columns
-  public static final String TYPE             = "type"; // int - enum
-  public static final String WORD_ID          = "word_id"; //int
-  public static final String PROGRESS         = "progress"; // byte, max 100
-  public static final String DATE_LAST_STUDY  = "date_last_study"; //long
+  public static final String TYPE            = "type"; // int - enum
+  public static final String WORD_ID         = "word_id"; //int
+  public static final String PROGRESS        = "progress"; // byte, max 100
+  public static final String DATE_LAST_STUDY = "date_last_study"; //long
   
   public static final int INITIAL_PROGRESS = 0;
 
