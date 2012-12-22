@@ -21,6 +21,9 @@ import android.widget.SimpleCursorAdapter;
 public class VocabularyActivity extends Activity {    
     private final int MENU_GROUP_ID = 1;
     
+    private final int MENU_ITEM_ADD_NEW_WORD = 1;    
+    private final int MENU_ITEM_ADD_ALL_TO_STUDY = 2;
+
     private final String[] COUNM_NAMES = new String[] { VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
     private final int[] VIEW_IDS = new int[] { R.id.foreign_word, R.id.translated_word };
     private final String[] PROJECTION = new String[] { VocabularyMetaData._ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
@@ -65,31 +68,34 @@ public class VocabularyActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (isMain()) {
-            menu.add(MENU_GROUP_ID, Menu.FIRST, Menu.FIRST, R.string.v_mi_add_new_word);
+            menu.add(MENU_GROUP_ID, MENU_ITEM_ADD_NEW_WORD, Menu.FIRST, R.string.v_mi_add_new_word);
         } else {
-            menu.add(MENU_GROUP_ID, Menu.FIRST, Menu.FIRST, "").setTitle("");
+            menu.add(MENU_GROUP_ID, MENU_ITEM_ADD_ALL_TO_STUDY, Menu.FIRST, R.string.v_mi_add_all_to_study);
         }
 
         return super.onCreateOptionsMenu(menu);
     }
   
-  @Override
-  public boolean onOptionsItemSelected(MenuItem menuItem) {
-    switch (menuItem.getItemId()) {
-      case R.id.add_new_word:
-        showAddNewWordDilalog();
-        break;
-      default:
-        Logger.error("VocabularyActivity", "Unknown menu item " + menuItem.getTitle(), getApplicationContext());
-        break;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+        case MENU_ITEM_ADD_NEW_WORD:
+            showAddNewWordDilalog();
+            break;
+        default:
+            Logger.error("VocabularyActivity", "Unknown menu item " + menuItem.getTitle(), getApplicationContext());
+            return false;
+        }
+        return true;
     }
-    return true;
-  }
-  
-  @Override
-  protected Dialog onCreateDialog(int id)  {
-    return dlgAddNewWord;
-  }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        if (isMain()) {
+            return dlgAddNewWord;
+        }
+        return null;
+    }
   
   private void showAddNewWordDilalog() {
     if (dlgAddNewWord == null) {

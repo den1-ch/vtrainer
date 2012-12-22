@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-  <item 
-      android:id="@+id/add_new_word" 
-      android:title="@string/v_mi_add_new_word">
-  </item>    
-
-</menu>
