@@ -215,8 +215,7 @@ public class VTrainerProvider extends ContentProvider {
     }
   
     private Uri addCategoryToTrain(Uri uri, ContentValues values) {
-        //dbHelper.getWritableDatabase().execSQL(sql, bindArgs)
-        // TODO Auto-generated method stub
+        dbHelper.fillTrainingData(dbHelper.getWritableDatabase(), values.getAsInteger(VocabularyMetaData.CATEGOTY_ID));
         return null;
     }
 

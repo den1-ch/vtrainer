@@ -8,6 +8,7 @@ import com.vtrainer.provider.VocabularyMetaData;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -86,11 +87,19 @@ public class VocabularyActivity extends Activity {
         case MENU_ITEM_ADD_NEW_WORD:
             showAddNewWordDilalog();
             break;
+        case MENU_ITEM_ADD_ALL_TO_STUDY:
+            addCatagoryToStudy();
+            break;
         default:
             Logger.error("VocabularyActivity", "Unknown menu item " + menuItem.getTitle(), getApplicationContext());
-            return false;
         }
         return true;
+    }
+
+    private void addCatagoryToStudy() {
+        ContentValues cv = new ContentValues();
+        cv.put(VocabularyMetaData.CATEGOTY_ID, categoryId);
+        getContentResolver().insert(VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_URI, cv);
     }
 
     @Override
