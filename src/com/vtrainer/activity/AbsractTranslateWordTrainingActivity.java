@@ -3,6 +3,7 @@ package com.vtrainer.activity;
 import java.util.Random;
 
 import com.vtrainer.R;
+import com.vtrainer.logging.Logger;
 import com.vtrainer.provider.TrainingMetaData;
 import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;
@@ -23,18 +24,21 @@ import android.widget.TextView;
 public abstract class AbsractTranslateWordTrainingActivity extends Activity {
 	private static final int PROPOSAL_WORD_COUNT = 4;
 	
-	private final String [] PROJECTION  = new String[] { TrainingMetaData.WORD_ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+	private final String [] PROJECTION  = new String[] { 
+	        TrainingMetaData.WORD_ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD, TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.PROGRESS };
 	
 	private final Uri NEW_TRANINED_WORD_URI = Uri.withAppendedPath(TrainingMetaData.TRAINING_WORD_URI, getTrainingId());
 
 	private int corectWordAnswerPosition;
 	
 	private TextView tvTrainedWord;
+    private TextView tvTrainedWordProgress;
 	private RadioButton [] translateWords = new RadioButton[PROPOSAL_WORD_COUNT];
 	
 	private RadioButton btnSelectedWord;
 
     private int trainedWordID;
+    private int trainedWordProgress;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         setContentView(R.layout.translate_word_training);
 
         tvTrainedWord = (TextView) findViewById(R.id.wt_trained_word);
+        tvTrainedWordProgress = (TextView) findViewById(R.id.wt_progress);
 
         translateWords[0] = (RadioButton) findViewById(R.id.wt_word_translate_1);
         translateWords[1] = (RadioButton) findViewById(R.id.wt_word_translate_2);
@@ -87,6 +92,9 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
 
             if (result) {
                 tvTrainedWord.setText(cursorTraining.getString(cursorTraining.getColumnIndex(getWordQuestionFieldName())));
+                trainedWordProgress = cursorTraining.getInt(cursorTraining.getColumnIndex(TrainingMetaData.PROGRESS)) + 1;
+                tvTrainedWordProgress.setText(Integer.toString(trainedWordProgress - 1));
+
                 trainedWordID = cursorTraining.getInt(cursorTraining.getColumnIndex(TrainingMetaData.WORD_ID));
 
                 translateWords[corectWordAnswerPosition].setText(cursorTraining.getString(cursorTraining.getColumnIndex(getWordAnswerFieldName())));
@@ -149,17 +157,17 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
                  }
              }
 
-        }, 1000);
+        }, 1);
     }
 
 	private void updateTrainedWordInfo() {
 	    ContentValues cv = new ContentValues();
-	    cv.put(TrainingMetaData.DATE_LAST_STUDY, System.currentTimeMillis());
+	    cv.put(TrainingMetaData.PROGRESS, getTrainedWordProgress());
         
 	    String where = TrainingMetaData.TYPE + "=? AND " + TrainingMetaData.WORD_ID + " =?"; 
 	    getContentResolver().update(
 	        NEW_TRANINED_WORD_URI, cv, where, new String[] {getTrainingId(), Integer.toString(trainedWordID)});
-	}
+    }
 	
     private void reinitialize() {
          btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
@@ -176,11 +184,22 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
             translateWords[corectWordAnswerPosition].setTextColor(Constans.RIGHT_ANSWER_COLOR);
 
             btnSelectedWord.setTextColor(Constans.ERROR_COLOR);
+            setTrainedWordProgress(-2);
+            
             result = false;
         }
+        
         return result;
     }	
     
+    private void setTrainedWordProgress(int progress) {
+        this.trainedWordProgress += progress;
+    }
+    
+    private int getTrainedWordProgress() {
+        return trainedWordProgress;
+    }
+
     private void showNoWordForStudyDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.no_word_for_training);

@@ -158,6 +158,7 @@ public class VTrainerProvider extends ContentProvider {
         limit = uri.getPathSegments().get(1);
         break;
       case TRAINING_WORD_URI_INDICATOR:
+        limit = "1";
         prepareSelectWordsForTrainingQuery(uri, qb);
         break;
       case TRAINING_COUNT_URI_INDICATOR:  
@@ -181,7 +182,7 @@ public class VTrainerProvider extends ContentProvider {
   }
 
     private void prepareSelectWordsForTrainingQuery(Uri uri, SQLiteQueryBuilder qb) {
-        qb.setTables(VocabularyMetaData.TABLE_NAME + " LEFT OUTER JOIN " + TrainingMetaData.TABLE_NAME + " ON ( "
+        qb.setTables(VocabularyMetaData.TABLE_NAME + " INNER JOIN " + TrainingMetaData.TABLE_NAME + " ON ( "
                 + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.WORD_ID + " = " + VocabularyMetaData.TABLE_NAME
                 + "." + VocabularyMetaData._ID + " )");
 
@@ -266,9 +267,10 @@ private Uri addNewWord(Uri uri, ContentValues values) {
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         switch (uriMatcher.match(uri)) {
         case TRAINING_WORD_URI_INDICATOR:
-            if ((values.size() != 1) || !values.containsKey(TrainingMetaData.DATE_LAST_STUDY)) {
+            if ((values.size() != 1) || !values.containsKey(TrainingMetaData.PROGRESS)) {
                 throw new SQLException("Update do not suported. Values: " + values.toString());
             }
+            values.put(TrainingMetaData.DATE_LAST_STUDY, System.currentTimeMillis());
             
             break;
         default:
