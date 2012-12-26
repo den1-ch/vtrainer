@@ -17,4 +17,10 @@
         android:layout_height="wrap_content"
         android:text="@string/cat2_title"
         android:onClick="onClick" />
+    <Button
+        android:id="@+id/btn_cat3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cat3_title"
+        android:onClick="onClick" />
 </LinearLayout>

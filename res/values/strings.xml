@@ -86,6 +86,7 @@
     
     <string name="cat1_title">Clothes</string>
     <string name="cat2_title">Traits</string>
+    <string name="cat3_title">Sport</string>
     
     <string-array name="cat_clothes_array">
         <item>belt;ремінь</item>
@@ -242,12 +243,10 @@
         <item>decisive;вирішальний</item>
         <item>deferential;шанобливий</item>
         <item>demanding;вимогливий</item>
-        <item>demanding;вимогливий</item>
         <item>dependable;надійний</item>
         <item>depressed;подавлений</item>
         <item>desiccated;висушений</item>
         <item>despondent;подавлений</item>
-        <item>determined;певний</item>
         <item>devoted;присвячений</item>
         <item>diligent;старанний</item>
         <item>disaffected;незадоволений</item>
@@ -262,7 +261,6 @@
         <item>dismayed;стривожений</item>
         <item>disorganized;дезорганізований</item>
         <item>disparaging;зневажливий</item>
-        <item>disrespectful;непочтітельний</item>
         <item>dissatisfied;незадоволений</item>
         <item>distressed;проблемний</item>
         <item>domineering;владний</item>
@@ -321,7 +319,6 @@
         <item>good;добрий</item>
         <item>graceful;граціозний</item>
         <item>greedy;жадібний</item>
-        <item>gregarious;стадний</item>
         <item>grouchy;буркотливий</item>
         <item>grumpy;сварливий</item>
         <item>guilty;винний</item>
@@ -389,7 +386,6 @@
         <item>logical;логічний</item>
         <item>lonely;самотній</item>
         <item>loquacious;говіркий</item>
-        <item>loud;голосно</item>
         <item>lovable;привабливий</item>
         <item>loves challenge;любить виклики</item>
         <item>loving;люблячий</item>
@@ -398,7 +394,6 @@
         <item>malicious;зловмисний</item>
         <item>mannerly;ввічливий</item>
         <item>mature;зрілий</item>
-        <item>mean;значити</item>
         <item>meek;лагідний</item>
         <item>merciful;милосердний</item>
         <item>messy;безладний</item>
@@ -431,7 +426,6 @@
         <item>pessimistic;песимістичний</item>
         <item>picky;прискіпливий</item>
         <item>pitiful;жалюгідний</item>
-        <item>plain;рівнина</item>
         <item>playful;грайливий</item>
         <item>pleasant;приємний</item>
         <item>pleasing;приємний</item>
@@ -453,7 +447,7 @@
         <item>rational;раціональний</item>
         <item>reasonable;розумний</item>
         <item>reckless;безрозсудний</item>
-        <item>relaxed;невимушена</item>
+        <item>relaxed;невимушений</item>
         <item>reliable;надійний</item>
         <item>religious;релігійний</item>
         <item>repugnant;огидний</item>
@@ -472,7 +466,7 @@
         <item>safe;безпечний</item>
         <item>satisfied;задоволений</item>
         <item>scared;переляканий</item>
-        <item>scatty;малахольна</item>
+        <item>scatty;малахольний</item>
         <item>scheming;підступний</item>
         <item>scruffy;неохайний</item>
         <item>secretive;потайливий</item>
@@ -483,10 +477,8 @@
         <item>sensitive;чутливий</item>
         <item>sentimental;сентиментальний</item>
         <item>serious;серйозний</item>
-        <item>sharp;гострий</item>
         <item>sharp-witted;дотепний</item>
         <item>shiftless;безпорадний</item>
-        <item>short;короткий</item>
         <item>shrewd;проникливий</item>
         <item>shy;сором`язливий</item>
         <item>silly;дурний</item>
@@ -501,8 +493,6 @@
         <item>solitary;відокремлений</item>
         <item>spendthrift;мот</item>
         <item>spoiled;зіпсований</item>
-        <item>sterile;стерильний</item>
-        <item>stern;кормовий</item>
         <item>stingy;скупий</item>
         <item>strange;дивний</item>
         <item>strict;строгий</item>
@@ -539,8 +529,8 @@
         <item>ugly;потворний</item>
         <item>unconcerned;байдужий</item>
         <item>uncoordinated;неузгоджений</item>
-        <item>undependable;ненадійністю</item>
-        <item>understanding;розуміння</item>
+        <item>undependable;ненадійний</item>
+        <item>understanding;розуміючий</item>
         <item>unfriendly;недружній</item>
         <item>ungrateful;невдячний</item>
         <item>unhappy;нещасний</item>
@@ -563,4 +553,181 @@
         <item>young;молодий</item>
     </string-array>
 
+    <string-array name="cat_sport_array">
+        <item>aerobics;аеробіка</item>
+        <item>archer;лучник</item>
+        <item>archery;стрільба з лука</item>
+        <item>arena;арена</item>
+        <item>arrow;стріла</item>
+        <item>athlete;спортсмен</item>
+        <item>athletics;атлетика</item>
+        <item>badminton;бадмінтон</item>
+        <item>ball;м`яч</item>
+        <item>baseball;бейсбол</item>
+        <item>basketball;баскетбол</item>
+        <item>bat;біта</item>
+        <item>baton;кийок</item>
+        <item>biathlon;біатлон</item>
+        <item>bicycle;велосипед</item>
+        <item>bicycling;їзда на велосипеді</item>
+        <item>bike;велосипед</item>
+        <item>biking;велосипедах</item>
+        <item>billiards;більярд</item>
+        <item>bobsleigh;бобслей</item>
+        <item>boomerang;бумеранг</item>
+        <item>bowling;боулінг</item>
+        <item>boxer;боксер</item>
+        <item>boxing;бокс</item>
+        <item>bronze medal;бронзова медаль</item>
+        <item>canoe;каное</item>
+        <item>canoeing;веслування</item>
+        <item>catch;зловити</item>
+        <item>champion;чемпіон</item>
+        <item>championship;чемпіонат</item>
+        <item>club;клуб</item>
+        <item>coach;тренер</item>
+        <item>compete;конкурувати</item>
+        <item>competition;конкуренція</item>
+        <item>crew;команда</item>
+        <item>cricket;крикет</item>
+        <item>croquet;крокет</item>
+        <item>cue;кий</item>
+        <item>curling;керлінг</item>
+        <item>cyclist;велосипедист</item>
+        <item>dart;дартс</item>
+        <item>dartboard;мішень для дротиків</item>
+        <item>decathlon;десятиборство</item>
+        <item>defense;захист</item>
+        <item>dive;занурення</item>
+        <item>diver;водолаз</item>
+        <item>diving;дайвінг</item>
+        <item>epee;шпага</item>
+        <item>equipment;обладнання</item>
+        <item>field;поле</item>
+        <item>figure skating;фігурне катання</item>
+        <item>fitness;фітнес</item>
+        <item>football;футбол</item>
+        <item>free throw;штрафний кидок</item>
+        <item>frisbee;фрісбі</item>
+        <item>game;гра</item>
+        <item>gear;передача</item>
+        <item>goal;гол</item>
+        <item>goalie;воротар</item>
+        <item>gold medal;золота медаль</item>
+        <item>golf;гольф</item>
+        <item>golfer;гравець у гольф</item>
+        <item>gym;гімнастичний зал</item>
+        <item>gymnast;гімнаст</item>
+        <item>hammer throw;метання молота</item>
+        <item>handball;гандбол</item>
+        <item>hang gliding;дельтапланеризм</item>
+        <item>hardball;бейсбол</item>
+        <item>helmet;шолом</item>
+        <item>high jump;стрибок у висоту</item>
+        <item>hockey;хокей</item>
+        <item>home team;команда господарів поля</item>
+        <item>hoop;обруч</item>
+        <item>ice rink;каток</item>
+        <item>ice skates;ковзани</item>
+        <item>inning;подача</item>
+        <item>javelin;дротик</item>
+        <item>jog;бігати підтюпцем</item>
+        <item>judo;дзюдо</item>
+        <item>jump;стрибати</item>
+        <item>jump rope;скакалка</item>
+        <item>karate;карате</item>
+        <item>kayak;каяк</item>
+        <item>kneepads;наколінники</item>
+        <item>league;ліга</item>
+        <item>long jump;стрибки в довжину</item>
+        <item>lose;програти</item>
+        <item>loser;той хто програв</item>
+        <item>major league;вища ліга</item>
+        <item>martial arts;бойові мистецтва</item>
+        <item>mat;мат</item>
+        <item>medal;медаль</item>
+        <item>minor league;нижча ліга</item>
+        <item>orienteering;спортивне орієнтування</item>
+        <item>paddle;весло</item>
+        <item>paintball;пейнтбол</item>
+        <item>ping pong;пінг-понг</item>
+        <item>pitch;крок</item>
+        <item>play;грати</item>
+        <item>player;гравець</item>
+        <item>playoffs;плей-офф</item>
+        <item>pole vault;стрибок з жердиною</item>
+        <item>polo;поло</item>
+        <item>pool;басейн</item>
+        <item>puck;шайба</item>
+        <item>race;гонки</item>
+        <item>racer;гонщик</item>
+        <item>racket;ракетка</item>
+        <item>racquetball;бадмінтон</item>
+        <item>rafting;рафтинг</item>
+        <item>referee;суддя</item>
+        <item>riding;верхова їзда</item>
+        <item>rink;каток</item>
+        <item>rock climbing;скелелазіння</item>
+        <item>roller skates;роликові ковзани</item>
+        <item>roller skating;катання на роликах</item>
+        <item>rower;весляр</item>
+        <item>rowing;веслування</item>
+        <item>rugby;регбі</item>
+        <item>run;бігти</item>
+        <item>runner;бігун</item>
+        <item>sailing;вітрильний спорт</item>
+        <item>score;рахунок</item>
+        <item>scoreboard;табло</item>
+        <item>shot put;штовхання ядра</item>
+        <item>silver medal;срібна медаль</item>
+        <item>skate;кататися на ковзанах</item>
+        <item>skating rink;ковзанка</item>
+        <item>ski;лижі</item>
+        <item>skier;лижник</item>
+        <item>skiing;катання на лижах</item>
+        <item>slalom;слалом</item>
+        <item>sled;санки</item>
+        <item>sledding;катання на санях</item>
+        <item>snowboard;сноуборд</item>
+        <item>snowshoeing;снігоступи</item>
+        <item>soccer;футбол</item>
+        <item>sport;спорт</item>
+        <item>sportsmanship;спортивну майстерність</item>
+        <item>squash;сквош</item>
+        <item>stadium;стадіон</item>
+        <item>strike;удар</item>
+        <item>stroke;хід</item>
+        <item>surfer;серфер</item>
+        <item>surfing;серфінг</item>
+        <item>swim;плавати</item>
+        <item>swimmer;плавець</item>
+        <item>swimming;плавання</item>
+        <item>synchronized swimming;синхронне плавання</item>
+        <item>table tennis;настільний теніс</item>
+        <item>team;команда</item>
+        <item>teammate;товариш по команді</item>
+        <item>tennis;теніс</item>
+        <item>throw;кидати</item>
+        <item>toboggan;сани</item>
+        <item>track and field;легка атлетика</item>
+        <item>trampoline;батут</item>
+        <item>tug of war;перетягування каната</item>
+        <item>umpire;суддя</item>
+        <item>unicycle;одноколісному велосипеді</item>
+        <item>unicyclist;unicyclist</item>
+        <item>visiting team;команда гостей</item>
+        <item>volley ball;волейбол</item>
+        <item>walk;ходити</item>
+        <item>walking;ходьба</item>
+        <item>water polo;водне поло</item>
+        <item>waterskiing;водні лижі</item>
+        <item>weightlifter;штангіст</item>
+        <item>weightlifting;важка атлетика</item>
+        <item>wetsuit;гідрокостюм</item>
+        <item>win;перемогти</item>
+        <item>winner;переможець</item>
+        <item>winning;перемога</item>
+        <item>wrestler;борець</item>
+        <item>wrestling;боротьба</item>
+    </string-array>
 </resources>

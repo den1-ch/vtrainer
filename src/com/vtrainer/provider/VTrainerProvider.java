@@ -85,6 +85,7 @@ public class VTrainerProvider extends ContentProvider {
 
         fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_clothes_array), R.array.cat_clothes_array, false);
         fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_traits_array), R.array.cat_traits_array, false);
+        fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_sport_array), R.array.cat_sport_array, false);
     }
 
         private void fillVocabularyData(SQLiteDatabase db, String[] data, int categoryId, boolean isAddToTraining) {
