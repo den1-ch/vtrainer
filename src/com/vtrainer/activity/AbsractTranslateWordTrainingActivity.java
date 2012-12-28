@@ -3,7 +3,6 @@ package com.vtrainer.activity;
 import java.util.Random;
 
 import com.vtrainer.R;
-import com.vtrainer.logging.Logger;
 import com.vtrainer.provider.TrainingMetaData;
 import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;
@@ -19,6 +18,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public abstract class AbsractTranslateWordTrainingActivity extends Activity {
@@ -33,6 +33,7 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
 	
 	private TextView tvTrainedWord;
     private TextView tvTrainedWordProgress;
+    private RadioGroup radioGroup;
 	private RadioButton [] translateWords = new RadioButton[PROPOSAL_WORD_COUNT];
 	
 	private RadioButton btnSelectedWord;
@@ -49,6 +50,8 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         tvTrainedWord = (TextView) findViewById(R.id.wt_trained_word);
         tvTrainedWordProgress = (TextView) findViewById(R.id.wt_progress);
 
+        radioGroup = (RadioGroup) findViewById(R.id.wt_radio_group);
+        
         translateWords[0] = (RadioButton) findViewById(R.id.wt_word_translate_1);
         translateWords[1] = (RadioButton) findViewById(R.id.wt_word_translate_2);
         translateWords[2] = (RadioButton) findViewById(R.id.wt_word_translate_3);
@@ -170,12 +173,15 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     }
 	
     private void reinitialize() {
-         btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
-         btnSelectedWord = null;
+        btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
+        btnSelectedWord = null;
 
-         translateWords[corectWordAnswerPosition].setChecked(false);
-         translateWords[corectWordAnswerPosition].setTextColor(Constans.DEFAULT_COLOR);
-    } 
+        radioGroup.clearCheck();
+
+        for (RadioButton button : translateWords) {
+            button.setTextColor(Constans.DEFAULT_COLOR);
+        }
+    }
 
     private boolean validateAnswer() {
         boolean result = true;
