@@ -7,10 +7,13 @@ public class VocabularyMetaData implements BaseColumns {
   public static final String TABLE_NAME = "vocabulary";
   
   public static final String WORDS_PATH = TABLE_NAME;
+  public static final String MAIN_VOCABULARY_PATH = "mainVocabularya";
   public static final String ADD_CATEGORY_TO_TRAINING_PATH = "addCatToTrainings";
   
+  public static final Uri MAIN_VOCABULARY_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, MAIN_VOCABULARY_PATH);
+
   public static final Uri WORDS_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, WORDS_PATH);
-  public static final Uri WORD_URI  = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, TABLE_NAME + "/#");
+  public static final Uri WORD_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, TABLE_NAME + "/#");
   
   public static final Uri ADD_CATEGORY_TO_TRAINING_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, ADD_CATEGORY_TO_TRAINING_PATH);
 
@@ -27,5 +30,5 @@ public class VocabularyMetaData implements BaseColumns {
   
   public static final int MAIN_VOCABULARY_CATEGORY_ID = 1;
   
-  public static final String DEFAULT_SORT_ORDER = DATE_CREATED    + " DESC"; 
+  public static final String DEFAULT_SORT_ORDER = DATE_CREATED + " DESC"; 
 }

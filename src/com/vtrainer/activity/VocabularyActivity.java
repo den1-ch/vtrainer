@@ -27,7 +27,7 @@ public class VocabularyActivity extends Activity {
 
     private final String[] COUNM_NAMES = new String[] { VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
     private final int[] VIEW_IDS = new int[] { R.id.foreign_word, R.id.translated_word };
-    private final String[] PROJECTION = new String[] { VocabularyMetaData._ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+    private final String[] PROJECTION = new String[] { VocabularyMetaData.TABLE_NAME + "." + VocabularyMetaData._ID + " as _id", VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
 
     private AddNewWordDialog dlgAddNewWord;
     private GridView gv;
@@ -61,14 +61,19 @@ public class VocabularyActivity extends Activity {
         return (categoryId == VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
     }
   
-  private void updateData() {
-    Cursor cur = getContentResolver().query(VocabularyMetaData.WORDS_URI, PROJECTION, 
-        VocabularyMetaData.CATEGOTY_ID + " = ?", new String[] { Integer.toString(categoryId) }, null);
+    private void updateData() {
+        Cursor cur;
+        if (isMain()) {
+            cur = getContentResolver().query(VocabularyMetaData.MAIN_VOCABULARY_URI, PROJECTION, null, null, null);
+        } else {
+            cur = getContentResolver().query(VocabularyMetaData.WORDS_URI, PROJECTION, VocabularyMetaData.CATEGOTY_ID + " = ?",
+                    new String[] { Integer.toString(categoryId) }, null);
+        }
 
-    SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cur, COUNM_NAMES, VIEW_IDS);
-    
-    gv.setAdapter(adapter);
-  }
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cur, COUNM_NAMES, VIEW_IDS);
+
+        gv.setAdapter(adapter);
+    }
   
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

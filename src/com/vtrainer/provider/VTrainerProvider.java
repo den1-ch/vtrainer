@@ -18,29 +18,31 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
 public class VTrainerProvider extends ContentProvider {
-  private static final String TAG = "VTrainerProvider";
+    private static final String TAG = "VTrainerProvider";
 
-  //provide a mechanism to identify all uri patterns
-  private static final UriMatcher uriMatcher;
-  
-  private static final int WORDS_URI_INDICATOR               = 1;
-  private static final int COUNT_WORD_URI_INDICATOR          = 2;
-  private static final int TRAINING_WORD_URI_INDICATOR       = 3;
-  private static final int TRAINING_COUNT_URI_INDICATOR      = 4;
-  private static final int ADD_CAT_TO_TRAINING_URI_INDICATOR = 5;
-  
-  static {
-    uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.WORDS_PATH, WORDS_URI_INDICATOR);
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.TABLE_NAME + "/#", COUNT_WORD_URI_INDICATOR);
+    // provide a mechanism to identify all uri patterns
+    private static final UriMatcher uriMatcher;
 
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TRAINING_WORD_PATH, TRAINING_WORD_URI_INDICATOR);
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TABLE_NAME + "/count", TRAINING_COUNT_URI_INDICATOR);
-
-    uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_PATH, ADD_CAT_TO_TRAINING_URI_INDICATOR);
-  }
+    private static final int WORDS_URI_INDICATOR = 1;
+    private static final int COUNT_WORD_URI_INDICATOR = 2;
+    private static final int TRAINING_WORD_URI_INDICATOR = 3;
+    private static final int TRAINING_COUNT_URI_INDICATOR = 4;
+    private static final int ADD_CAT_TO_TRAINING_URI_INDICATOR = 5;
+    private static final int MAIN_VOCABULARY_URI_INDICATOR = 6;
   
-  private DatabaseHelper dbHelper;
+    static {
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.WORDS_PATH, WORDS_URI_INDICATOR);
+        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.TABLE_NAME + "/#", COUNT_WORD_URI_INDICATOR);
+
+        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TRAINING_WORD_PATH, TRAINING_WORD_URI_INDICATOR);
+        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TABLE_NAME + "/count", TRAINING_COUNT_URI_INDICATOR);
+
+        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_PATH, ADD_CAT_TO_TRAINING_URI_INDICATOR);
+        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.MAIN_VOCABULARY_PATH, MAIN_VOCABULARY_URI_INDICATOR);
+    }
+
+    private DatabaseHelper dbHelper;
   
     /**
      * Setup/Create Database This class helps open, create, and upgrade the db
@@ -164,6 +166,10 @@ public class VTrainerProvider extends ContentProvider {
         break;
       case TRAINING_COUNT_URI_INDICATOR:  
         return getCountWordAvalaibleToTraining(uri.getPathSegments().get(1));
+      case MAIN_VOCABULARY_URI_INDICATOR:  
+          joinVocabulryToTraining(qb);
+          qb.setDistinct(true);
+          break;
       default:
         String msg = "Unknown URI" + uri;
         Logger.error(TAG, msg, getContext());
@@ -181,11 +187,15 @@ public class VTrainerProvider extends ContentProvider {
     
     return cursor;
   }
-
-    private void prepareSelectWordsForTrainingQuery(Uri uri, SQLiteQueryBuilder qb) {
+    
+    private void joinVocabulryToTraining(SQLiteQueryBuilder qb) {
         qb.setTables(VocabularyMetaData.TABLE_NAME + " INNER JOIN " + TrainingMetaData.TABLE_NAME + " ON ( "
                 + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.WORD_ID + " = " + VocabularyMetaData.TABLE_NAME
                 + "." + VocabularyMetaData._ID + " )");
+    }
+
+    private void prepareSelectWordsForTrainingQuery(Uri uri, SQLiteQueryBuilder qb) {
+        joinVocabulryToTraining(qb);
 
         qb.appendWhere(TrainingMetaData.TYPE + "=" + uri.getPathSegments().get(1) + " AND "
                 + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - 60 * 60 * 1 * 1000));
