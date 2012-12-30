@@ -44,6 +44,10 @@
             android:label="@string/categories_title" >
         </activity>        
         
+        <activity
+            android:name=".activity.CategoryActivity">
+        </activity>
+        
         <provider
             android:name=".provider.VTrainerProvider"
             android:authorities="com.vtrainer.provider.VTrainerProvider"

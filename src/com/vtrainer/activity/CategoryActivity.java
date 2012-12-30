@@ -1,13 +1,11 @@
 package com.vtrainer.activity;
 
 import com.vtrainer.R;
-import com.vtrainer.dialog.AddNewWordDialog;
-import com.vtrainer.dialog.AddNewWordDialog.OnDataSaveListener;
 import com.vtrainer.logging.Logger;
 import com.vtrainer.provider.VocabularyMetaData;
 
 import android.app.Activity;
-import android.app.Dialog;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,17 +16,19 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.SimpleCursorAdapter;
 
-public class VocabularyActivity extends Activity {    
+public class CategoryActivity extends Activity {
     private final int MENU_GROUP_ID = 1;
-    
-    private final int MENU_ITEM_ADD_NEW_WORD = 1;    
+
+    private final int MENU_ITEM_ADD_ALL_TO_STUDY = 1;
 
     private final String[] COUNM_NAMES = new String[] { VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
     private final int[] VIEW_IDS = new int[] { R.id.foreign_word, R.id.translated_word };
-    private final String[] PROJECTION = new String[] { VocabularyMetaData.TABLE_NAME + "." + VocabularyMetaData._ID + " as _id", VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+    private final String[] PROJECTION = new String[] { VocabularyMetaData._ID, VocabularyMetaData.FOREIGN_WORD,
+            VocabularyMetaData.TRANSLATION_WORD };
 
-    private AddNewWordDialog dlgAddNewWord;
     private GridView gv;
+
+    private int categoryId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,9 @@ public class VocabularyActivity extends Activity {
 
         gv = (GridView) findViewById(R.id.gv_vocabulary);
 
+        categoryId = getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_ID);
+
+        setTitle(getResources().getString(getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_NAME)));
         updateData();
 
         gv.setOnItemClickListener(new OnItemClickListener() {
@@ -48,50 +51,46 @@ public class VocabularyActivity extends Activity {
 
     }
 
+    private boolean isMain() {
+        return (categoryId == VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
+    }
+
     private void updateData() {
-        Cursor cur = getContentResolver().query(VocabularyMetaData.MAIN_VOCABULARY_URI, PROJECTION, null, null, null);
+        Cursor cur;
+        if (isMain()) {
+            cur = getContentResolver().query(VocabularyMetaData.MAIN_VOCABULARY_URI, PROJECTION, null, null, null);
+        } else {
+            cur = getContentResolver().query(VocabularyMetaData.WORDS_URI, PROJECTION, VocabularyMetaData.CATEGOTY_ID + " = ?",
+                    new String[] { Integer.toString(categoryId) }, null);
+        }
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cur, COUNM_NAMES, VIEW_IDS);
 
         gv.setAdapter(adapter);
     }
-  
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(MENU_GROUP_ID, MENU_ITEM_ADD_NEW_WORD, Menu.FIRST, R.string.v_mi_add_new_word);
+        menu.add(MENU_GROUP_ID, MENU_ITEM_ADD_ALL_TO_STUDY, Menu.FIRST, R.string.v_mi_add_all_to_study);
 
         return super.onCreateOptionsMenu(menu);
     }
-  
+
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-        case MENU_ITEM_ADD_NEW_WORD:
-            showAddNewWordDilalog();
+        case MENU_ITEM_ADD_ALL_TO_STUDY:
+            addCategoryToStudy();
             break;
         default:
-            Logger.error("VocabularyActivity", "Unknown menu item " + menuItem.getTitle(), getApplicationContext());
+            Logger.error("CategoryActivity", "Unknown menu item " + menuItem.getTitle(), getApplicationContext());
         }
         return true;
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        return dlgAddNewWord;
+    private void addCategoryToStudy() {
+        ContentValues cv = new ContentValues();
+        cv.put(VocabularyMetaData.CATEGOTY_ID, categoryId);
+        getContentResolver().insert(VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_URI, cv);
     }
-  
-    private void showAddNewWordDilalog() {
-        if (dlgAddNewWord == null) {
-            OnDataSaveListener dataSaveListener = new OnDataSaveListener() {
-                @Override
-                public void saved() {
-                    updateData();
-                }
-            };
-
-            dlgAddNewWord = new AddNewWordDialog(this, dataSaveListener);
-        }
-        dlgAddNewWord.show();
-    }
-  
 }

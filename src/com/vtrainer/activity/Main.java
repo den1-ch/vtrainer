@@ -3,7 +3,6 @@ package com.vtrainer.activity;
 import java.util.Locale;
 
 import com.vtrainer.R;
-import com.vtrainer.provider.VocabularyMetaData;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -37,7 +36,6 @@ public class Main extends Activity implements OnClickListener {
         switch (v.getId()) {
         case R.id.vocabulary:
             intent = new Intent(this, VocabularyActivity.class);
-            intent.putExtra(VocabularyMetaData.CATEGOTY_ID, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
             break;
         case R.id.trainings:
             intent = new Intent(this, TrainingsActivity.class);
