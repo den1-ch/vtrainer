@@ -31,13 +31,13 @@
             android:id="@+id/add_new_word_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/an_save" />
+            android:text="@string/caption_save" />
 
         <Button
             android:id="@+id/add_new_word_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/an_cancel" />
+            android:text="@android:string/cancel" />
     </TableLayout>
 
 </LinearLayout>

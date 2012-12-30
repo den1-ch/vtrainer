@@ -2,7 +2,9 @@
 <resources>
     <string name="app_name">Vocabulary Trainer</string>
     
-    <string name="caption_ok">Ok</string>
+    <string name="confirmation_dialog">Are you sure?</string>
+    <string name="caption_save">Save</string>
+    
     <!-- Main activity -->
     
     <string name="m_vocabulary">Vocabulary</string>
@@ -13,9 +15,8 @@
     <!-- Vocabulary activity -->
 
     <string name="vocabulary_title">Vocabulary</string>
-
+    
     <string name="v_mi_add_new_word">Add new..</string>
-    <string name="v_mi_add_all_to_study">Add all to study</string>
     
     <string-array name="test_vocabulary_array">
         <item>Oksana;Оксана</item>
@@ -58,9 +59,6 @@
     <string name="an_hint_foreign_word">foreign word</string>
     <string name="an_hint_translation_word">translation word</string>
     
-    <string name="an_save">Save</string>
-    <string name="an_cancel">Cancel</string>
-    
     <!-- Warning messages -->
     
     <string name="requered_field_is_empty">Some data is empty</string>
@@ -83,6 +81,9 @@
     <!-- Categories -->
     
     <string name="categories_title">Categories</string>
+    
+    <string name="c_mi_add_all_to_study">Add all to study</string>
+    <string name="c_toast_words_added">Words were added to the vocabulary</string>
     
     <string name="cat1_title">Clothes</string>
     <string name="cat2_title">Traits</string>

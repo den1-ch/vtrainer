@@ -5,7 +5,10 @@ import com.vtrainer.logging.Logger;
 import com.vtrainer.provider.VocabularyMetaData;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 public class CategoryActivity extends Activity {
     private final int MENU_GROUP_ID = 1;
@@ -71,7 +75,7 @@ public class CategoryActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(MENU_GROUP_ID, MENU_ITEM_ADD_ALL_TO_STUDY, Menu.FIRST, R.string.v_mi_add_all_to_study);
+        menu.add(MENU_GROUP_ID, MENU_ITEM_ADD_ALL_TO_STUDY, Menu.FIRST, R.string.c_mi_add_all_to_study);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -80,7 +84,7 @@ public class CategoryActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
         case MENU_ITEM_ADD_ALL_TO_STUDY:
-            addCategoryToStudy();
+            showConfirmationDialog();
             break;
         default:
             Logger.error("CategoryActivity", "Unknown menu item " + menuItem.getTitle(), getApplicationContext());
@@ -88,9 +92,27 @@ public class CategoryActivity extends Activity {
         return true;
     }
 
-    private void addCategoryToStudy() {
-        ContentValues cv = new ContentValues();
-        cv.put(VocabularyMetaData.CATEGOTY_ID, categoryId);
-        getContentResolver().insert(VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_URI, cv);
+    private void showConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.confirmation_dialog);
+        
+        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                ContentValues cv = new ContentValues();
+                cv.put(VocabularyMetaData.CATEGOTY_ID, categoryId);
+                getContentResolver().insert(VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_URI, cv);
+                
+                Toast toast = Toast.makeText(getApplicationContext(), R.string.c_toast_words_added, Toast.LENGTH_SHORT);
+                toast.show();
+                
+                Intent intent = new Intent(getBaseContext(), CategoriesActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        }).show();
     }
 }
