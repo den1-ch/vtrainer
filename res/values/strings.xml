@@ -119,7 +119,6 @@
         <item>sandals;сандалі</item>
         <item>slippers;тапки</item>
         <item>shoes;взуття</item>
-        <item>trainers;тренерів</item>
         <item>sneakers;кросівки</item>
         <item>bra;бюстгальтер</item>
         <item>knickers;дамські панталони</item>
@@ -127,7 +126,6 @@
         <item>pants;брюки</item>
         <item>tights;колготки</item>
         <item>vest;жилет</item>
-        <item>beret;берет</item>
         <item>hat;капелюх</item>
         <item>helmet;шолом</item>
         <item>cotton;бавовна</item>
@@ -142,7 +140,6 @@
         <item>plastic;пластик</item>
         <item>nylon;нейлон</item>
         <item>polyester;поліестер</item>
-        <item>designer;дизайнер</item>
         <item>fashion;мода</item>
         <item>fashionable;модний</item>
         <item>trend;тенденція</item>
@@ -154,7 +151,6 @@
         <item>spotted;плямистий</item>
         <item>stripe;смуга</item>
         <item>striped;смугастий</item>
-        <item>tartan;шотландка</item>
         <item>contact lenses;контактні лінзи</item>
         <item>earrings;сережки</item>
         <item>glasses;окуляри</item>
@@ -237,8 +233,7 @@
         <item>cultured;культурний</item>
         <item>curious;цікавий</item>
         <item>dangerous;небезпечний</item>
-        <item>daring;сміливість</item>
-        <item>daring;сміливість</item>
+        <item>daring;сміливий</item>
         <item>dauntless;безстрашний</item>
         <item>decisive;вирішальний</item>
         <item>deferential;шанобливий</item>
@@ -415,7 +410,6 @@
         <item>obliging;послужливий</item>
         <item>open;відкритий</item>
         <item>optimistic;оптимістичний</item>
-        <item>organised;організовані</item>
         <item>outspoken;відвертий</item>
         <item>patient;спокійний</item>
         <item>patriotic;патріотичний</item>
@@ -538,7 +532,7 @@
         <item>unmerciful;немилосердний</item>
         <item>unselfish;безкорисливий</item>
         <item>unsuitable;невідповідний</item>
-        <item>upset;розстроювати</item>
+        <item>upset;розстроєний</item>
         <item>useful;корисний</item>
         <item>violent;насильницький</item>
         <item>virtuous;доброчесний</item>
@@ -640,7 +634,7 @@
         <item>kneepads;наколінники</item>
         <item>league;ліга</item>
         <item>long jump;стрибки в довжину</item>
-        <item>lose;програти</item>
+        <item>loose;програти</item>
         <item>loser;той хто програв</item>
         <item>major league;вища ліга</item>
         <item>martial arts;бойові мистецтва</item>
