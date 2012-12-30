@@ -12,7 +12,8 @@
         
         <activity
             android:name=".activity.Main"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,31 +22,37 @@
         
         <activity
             android:name=".activity.VocabularyActivity"
-            android:label="@string/vocabulary_title" >
+            android:label="@string/vocabulary_title" 
+            android:screenOrientation="portrait">
         </activity>
         
         <activity
             android:name=".activity.TrainingsActivity"
-            android:label="@string/trainings_title" >
+            android:label="@string/trainings_title" 
+            android:screenOrientation="portrait">
         </activity>
         
         <activity
             android:name=".activity.ForeignTranslateWordTrainingActivity"
-            android:label="@string/wt_translateWord" >
+            android:label="@string/wt_translateWord" 
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
             android:name=".activity.NativeTranslateWordTrainingActivity"
-            android:label="@string/wt_translateWord" >
+            android:label="@string/wt_translateWord" 
+            android:screenOrientation="portrait">
         </activity>        
         
         <activity
             android:name=".activity.CategoriesActivity"
-            android:label="@string/categories_title" >
+            android:label="@string/categories_title"
+            android:screenOrientation="portrait" >
         </activity>        
         
         <activity
-            android:name=".activity.CategoryActivity">
+            android:name=".activity.CategoryActivity"
+            android:screenOrientation="portrait">
         </activity>
         
         <provider
