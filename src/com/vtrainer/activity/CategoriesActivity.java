@@ -22,25 +22,27 @@ public class CategoriesActivity extends Activity implements OnClickListener {
         Intent intent;
         switch (v.getId()) {
         case R.id.btn_cat1:
-            intent = new Intent(this, VocabularyActivity.class);
-            intent.putExtra(VocabularyMetaData.CATEGOTY_ID, R.array.cat_clothes_array);
-            intent.putExtra(VocabularyMetaData.CATEGOTY_NAME, R.string.cat1_title);
+            intent = getIntent(R.array.cat_clothes_array, R.string.cat1_title);
             break;
         case R.id.btn_cat2:
-            intent = new Intent(this, VocabularyActivity.class);
-            intent.putExtra(VocabularyMetaData.CATEGOTY_ID, R.array.cat_traits_array);
-            intent.putExtra(VocabularyMetaData.CATEGOTY_NAME, R.string.cat2_title);
+            intent = getIntent(R.array.cat_traits_array, R.string.cat2_title);
             break;
         case R.id.btn_cat3:
-            intent = new Intent(this, VocabularyActivity.class);
-            intent.putExtra(VocabularyMetaData.CATEGOTY_ID, R.array.cat_sport_array);
-            intent.putExtra(VocabularyMetaData.CATEGOTY_NAME, R.string.cat3_title);
+            intent = getIntent(R.array.cat_sport_array, R.string.cat3_title);
             break;
         default:
             return;
         }
 
         startActivity(intent);
+    }
+    
+    private Intent getIntent(int categoryId, int categoryNameId) {
+        Intent intent = new Intent(this, CategoryActivity.class);
+        intent.putExtra(VocabularyMetaData.CATEGOTY_ID, categoryId);
+        intent.putExtra(VocabularyMetaData.CATEGOTY_NAME, categoryNameId);
+        
+        return intent;
     }
   
 }
