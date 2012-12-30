@@ -74,6 +74,7 @@
 
     <string name="wt_hint_button">Hint</string>
     <string name="wt_next_button">Next</string>
+    <string name="wt_know_button">Know</string>
     
     <string name="wt_translateWord">Translate Word</string>
     

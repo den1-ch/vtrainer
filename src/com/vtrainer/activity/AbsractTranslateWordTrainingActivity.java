@@ -22,25 +22,25 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public abstract class AbsractTranslateWordTrainingActivity extends Activity {
-	private static final int PROPOSAL_WORD_COUNT = 4;
-	
-	private final String [] PROJECTION  = new String[] { 
-	        TrainingMetaData.WORD_ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD, TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.PROGRESS };
-	
-	private final Uri NEW_TRANINED_WORD_URI = Uri.withAppendedPath(TrainingMetaData.TRAINING_WORD_URI, getTrainingId());
+    private static final int PROPOSAL_WORD_COUNT = 4;
 
-	private int corectWordAnswerPosition;
-	
-	private TextView tvTrainedWord;
+    private final String[] PROJECTION = new String[] { TrainingMetaData.WORD_ID, VocabularyMetaData.FOREIGN_WORD,
+            VocabularyMetaData.TRANSLATION_WORD, TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.PROGRESS };
+
+    private final Uri NEW_TRANINED_WORD_URI = Uri.withAppendedPath(TrainingMetaData.TRAINING_WORD_URI, getTrainingId());
+
+    private int corectWordAnswerPosition;
+
+    private TextView tvTrainedWord;
     private TextView tvTrainedWordProgress;
     private RadioGroup radioGroup;
-	private RadioButton [] translateWords = new RadioButton[PROPOSAL_WORD_COUNT];
-	
-	private RadioButton btnSelectedWord;
+    private RadioButton[] translateWords = new RadioButton[PROPOSAL_WORD_COUNT];
+
+    private RadioButton btnSelectedWord;
 
     private int trainedWordID;
     private int trainedWordProgress;
-    
+
     private boolean isHintMode;
 
     @Override
@@ -53,12 +53,12 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         tvTrainedWordProgress = (TextView) findViewById(R.id.wt_progress);
 
         radioGroup = (RadioGroup) findViewById(R.id.wt_radio_group);
-        
+
         translateWords[0] = (RadioButton) findViewById(R.id.wt_word_translate_1);
         translateWords[1] = (RadioButton) findViewById(R.id.wt_word_translate_2);
         translateWords[2] = (RadioButton) findViewById(R.id.wt_word_translate_3);
         translateWords[3] = (RadioButton) findViewById(R.id.wt_word_translate_4);
-        
+
         if (!initData()) {
             setContentView(R.layout.empty);
             showNoWordForStudyDialog();
@@ -66,25 +66,11 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     }
 
     protected abstract String getWordAnswerFieldName();
-    
+
     protected abstract String getWordQuestionFieldName();
-    
+
     protected abstract String getTrainingId();
 
-    //	private int getCountWordToTrain() {
-//    Cursor countCursor = null;
-//    try {
-//      Uri uri = Uri.withAppendedPath(VocabularyTableMetaData.WORDS_URI, Integer.toString(TRANSLATED_WORD_COUNT)); // TODO must be updated; proposal data can not be // static must be random
-//      countCursor = getContentResolver().query(uri, new String[] { getWordAnswerFieldName() }, null, null, null);
-//
-//      countCursor.moveToFirst();
-//
-//      translateWords[index].setText(proposalsCursor.getString(proposalsCursor.getColumnIndex(getWordAnswerFieldName())));
-//    } finally {
-//      countCursor.close();
-//    }
-//	}
-	
     private boolean initData() {
         generateNewCorectWordAnswerPosition();
 
@@ -102,7 +88,8 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
 
                 trainedWordID = cursorTraining.getInt(cursorTraining.getColumnIndex(TrainingMetaData.WORD_ID));
 
-                translateWords[corectWordAnswerPosition].setText(cursorTraining.getString(cursorTraining.getColumnIndex(getWordAnswerFieldName())));
+                translateWords[corectWordAnswerPosition].setText(cursorTraining.getString(cursorTraining
+                        .getColumnIndex(getWordAnswerFieldName())));
 
                 initProposalsData();
             }
@@ -140,22 +127,21 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     }
 
     private void generateNewCorectWordAnswerPosition() {
-		corectWordAnswerPosition = new Random().nextInt(PROPOSAL_WORD_COUNT);
-	}
-	
+        corectWordAnswerPosition = new Random().nextInt(PROPOSAL_WORD_COUNT);
+    }
+
     public void onRadioButtonClick(View view) {
         btnSelectedWord = (RadioButton) view;
     }
-	
-	private void updateTrainedWordInfo() {
-	    ContentValues cv = new ContentValues();
-	    cv.put(TrainingMetaData.PROGRESS, getTrainedWordProgress());
-        
-	    String where = TrainingMetaData.TYPE + "=? AND " + TrainingMetaData.WORD_ID + " =?"; 
-	    getContentResolver().update(
-	        NEW_TRANINED_WORD_URI, cv, where, new String[] {getTrainingId(), Integer.toString(trainedWordID)});
+
+    private void updateTrainedWordInfo() {
+        ContentValues cv = new ContentValues();
+        cv.put(TrainingMetaData.PROGRESS, getTrainedWordProgress());
+
+        String where = TrainingMetaData.TYPE + "=? AND " + TrainingMetaData.WORD_ID + " =?";
+        getContentResolver().update(NEW_TRANINED_WORD_URI, cv, where, new String[] { getTrainingId(), Integer.toString(trainedWordID) });
     }
-	
+
     private void reinitialize() {
         if (btnSelectedWord != null) {
             btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
@@ -179,17 +165,17 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
 
             btnSelectedWord.setTextColor(Constans.ERROR_COLOR);
             setTrainedWordProgress(-2);
-            
+
             result = false;
         }
-        
+
         return result;
-    }	
-    
+    }
+
     private void setTrainedWordProgress(int progress) {
         this.trainedWordProgress += progress;
     }
-    
+
     private int getTrainedWordProgress() {
         return trainedWordProgress;
     }
@@ -197,7 +183,7 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     private void showNoWordForStudyDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.no_word_for_training);
-        
+
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(getBaseContext(), TrainingsActivity.class);
@@ -209,21 +195,25 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-    
+
     public void onNextButtonClick(View view) {
         if (!isHintMode && ((btnSelectedWord == null) || !validateAnswer())) {
             return;
         }
+        prepareNewWordToStudy();
+    }
+
+    private void prepareNewWordToStudy() {
         updateTrainedWordInfo();
-        Handler handler = new Handler(); 
-        handler.postDelayed(new Runnable() { 
-             public void run() { 
-                 reinitialize();
-                 
-                 if (!initData()) {
-                     showNoWordForStudyDialog();
-                 }
-             }
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                reinitialize();
+
+                if (!initData()) {
+                    showNoWordForStudyDialog();
+                }
+            }
 
         }, 1);
     }
@@ -234,7 +224,13 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         isHintMode = true;
         translateWords[corectWordAnswerPosition].setChecked(true);
         setTrainedWordProgress(-1);
-        
+
         radioGroup.setClickable(false);
-   }
+    }
+
+    public void onKnowButtonClick(View view) {
+        trainedWordProgress = TrainingMetaData.MAX_PROGRESS;
+
+        prepareNewWordToStudy();
+    }
 }
