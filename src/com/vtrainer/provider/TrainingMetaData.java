@@ -20,7 +20,9 @@ public class TrainingMetaData implements BaseColumns {
   public static final int INITIAL_PROGRESS = 0;
 
   public static final String DEFAULT_SORT_ORDER = DATE_LAST_STUDY + " DESC";
-
+  
+  public static final int TIME_PERIOD_TO_MEMORIZE_WORD = 60 * 60 * 1 * 1000;
+  
   public static enum Type { 
       ForeignWordTranslation(1), NativeWordTranslation(2); 
       

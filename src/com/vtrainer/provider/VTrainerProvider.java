@@ -198,7 +198,7 @@ public class VTrainerProvider extends ContentProvider {
         joinVocabulryToTraining(qb);
 
         qb.appendWhere(TrainingMetaData.TYPE + "=" + uri.getPathSegments().get(1) + " AND "
-                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - 60 * 60 * 1 * 1000));
+                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - (Constans.IS_TEST_MODE ? 1: TrainingMetaData.TIME_PERIOD_TO_MEMORIZE_WORD)));
     }
   
   @Override
