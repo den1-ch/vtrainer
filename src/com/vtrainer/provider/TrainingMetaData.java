@@ -18,6 +18,7 @@ public class TrainingMetaData implements BaseColumns {
   public static final String DATE_LAST_STUDY = "date_last_study"; //long
   
   public static final int INITIAL_PROGRESS = 0;
+  public static final int MAX_PROGRESS = 4;
 
   public static final String DEFAULT_SORT_ORDER = DATE_LAST_STUDY + " DESC";
   
