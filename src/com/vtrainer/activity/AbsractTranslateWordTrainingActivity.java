@@ -40,6 +40,8 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
 
     private int trainedWordID;
     private int trainedWordProgress;
+    
+    private boolean isHintMode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,24 +147,6 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         btnSelectedWord = (RadioButton) view;
     }
 	
-	public void onNextButtonClick(View view) {
-	    if ((btnSelectedWord == null) || !validateAnswer()) {
-	        return;
-	    }
-	    updateTrainedWordInfo();
-        Handler handler = new Handler(); 
-        handler.postDelayed(new Runnable() { 
-             public void run() { 
-                 reinitialize();
-                 
-                 if (!initData()) {
-                     showNoWordForStudyDialog();
-                 }
-             }
-
-        }, 1);
-    }
-
 	private void updateTrainedWordInfo() {
 	    ContentValues cv = new ContentValues();
 	    cv.put(TrainingMetaData.PROGRESS, getTrainedWordProgress());
@@ -173,14 +157,18 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     }
 	
     private void reinitialize() {
-        btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
-        btnSelectedWord = null;
+        if (btnSelectedWord != null) {
+            btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
+            btnSelectedWord = null;
+        }
 
         radioGroup.clearCheck();
+        radioGroup.setClickable(true);
 
         for (RadioButton button : translateWords) {
             button.setTextColor(Constans.DEFAULT_COLOR);
         }
+        isHintMode = false;
     }
 
     private boolean validateAnswer() {
@@ -221,4 +209,32 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+    
+    public void onNextButtonClick(View view) {
+        if (!isHintMode && ((btnSelectedWord == null) || !validateAnswer())) {
+            return;
+        }
+        updateTrainedWordInfo();
+        Handler handler = new Handler(); 
+        handler.postDelayed(new Runnable() { 
+             public void run() { 
+                 reinitialize();
+                 
+                 if (!initData()) {
+                     showNoWordForStudyDialog();
+                 }
+             }
+
+        }, 1);
+    }
+
+    public void onHintButtonClick(View view) {
+        reinitialize();
+
+        isHintMode = true;
+        translateWords[corectWordAnswerPosition].setChecked(true);
+        setTrainedWordProgress(-1);
+        
+        radioGroup.setClickable(false);
+   }
 }

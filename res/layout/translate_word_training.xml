@@ -58,10 +58,19 @@
     </RadioGroup>
 
     <Button
+        android:id="@+id/wt_hint_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="onHintButtonClick"
+        android:text="@string/wt_hint_button" />
+
+    <Button
         android:id="@+id/wt_next_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/wt_hint_button"
         android:onClick="onNextButtonClick"
         android:text="@string/wt_next_button" />
 
