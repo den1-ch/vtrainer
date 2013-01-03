@@ -727,4 +727,289 @@
         <item>wrestler;борець</item>
         <item>wrestling;боротьба</item>
     </string-array>
+	
+     <string-array name="cat_work_array">
+        <item>accountant;бухгалтер</item>
+        <item>actor;актор</item>
+        <item>actress;акторка</item>
+        <item>architect;архітектор</item>
+        <item>art;мистецтво</item>
+        <item>artist;художник</item>
+        <item>assistant;помічник</item>
+        <item>astronaut;астронавт</item>
+        <item>baker;пекар</item>
+        <item>barman;бармен</item>
+        <item>bonus;премія</item>
+        <item>builder;будівельник</item>
+        <item>businessman;бізнесмен</item>
+        <item>businesswoman;бізнесвумен</item>
+        <item>butcher;мясник</item>
+        <item>cameraman;кінооператор/фотооператор</item>
+        <item>career;карєра</item>
+        <item>carpenter;столяр</item>
+        <item>chef;повар</item>
+        <item>civil servant;державний службовець</item>
+        <item>commute to work;їздити на работу в місто</item>
+        <item>computer operator;оператор ПК</item>
+        <item>contract;контракт</item>
+        <item>copy paper;копіювальний папір</item>
+        <item>curriculum vitae;резюме</item>
+        <item>dancer;танцор</item>
+        <item>dentist;дантист</item>
+        <item>designer;дизайнер</item>
+        <item>director;директор</item>
+        <item>doctor;лікар</item>
+        <item>drama;драма</item>
+        <item>driver;водій</item>
+        <item>dustman;сміттяр</item>
+        <item>economics;экономіка</item>
+        <item>economist;экономіст</item>
+        <item>editor;редактор</item>
+        <item>educator;педагог</item>
+        <item>electrician;электрик</item>
+        <item>employ;намати</item>
+        <item>employer;работодавець</item>
+        <item>engineer;інженер</item>
+        <item>executive;керівник</item>
+        <item>farm;ферма</item>
+        <item>farmer;фермер</item>
+        <item>film director;режисер</item>
+        <item>financial aid;фінансова допомога</item>
+        <item>fire;звільняти</item>
+        <item>fisherman;рибак</item>
+        <item>fishmonger;торговець рибою</item>
+        <item>flight attendant;стюардеса</item>
+        <item>garbage collector;сміттяр</item>
+        <item>get a promotion;отримати підвищення по службі</item>
+        <item>get fired;бути звільненим</item>
+        <item>give a presentation;показати презентацію</item>
+        <item>go home;піти додому</item>
+        <item>go on a business trip;поїхати в ділову поїздку</item>
+        <item>go on vacation;піти в відпустку</item>
+        <item>go out to lunch;піти на обід</item>
+        <item>go to a meeting;піти на зустріч</item>
+        <item>go to work;ходити на работу</item>
+        <item>grant;грант</item>
+        <item>hairdresser;перукар</item>
+        <item>head teacher;директор</item>
+        <item>hire;наймати</item>
+        <item>income;дохід</item>
+        <item>interview;співбесіда</item>
+        <item>jeweller;ювелір</item>
+        <item>journalist;журналіст</item>
+        <item>discipline;дисципліна</item>
+        <item>lawyer;адвокат</item>
+        <item>leader;лідер</item>
+        <item>look for a job;шукати работу</item>
+        <item>manager;менеджер</item>
+        <item>maternity leave;відпустка по вагітності</item>
+        <item>medical insurance;медичне страхування</item>
+        <item>meet with a client;зустрітись с клієнтом</item>
+        <item>miner;шахтар</item>
+        <item>music;музика</item>
+        <item>musician;музикант</item>
+        <item>nurse;медсестра</item>
+        <item>overtime pay;понаднормова оплата</item>
+        <item>painter;художник</item>
+        <item>personal assistant;особистий секретар</item>
+        <item>personnel;персонал</item>
+        <item>photographer;фотограф</item>
+        <item>pilot;пілот</item>
+        <item>plumber;водопровідник</item>
+        <item>police officer;поліцейський</item>
+        <item>politician;політик</item>
+        <item>presenter;ведучий (програми)</item>
+        <item>promotion;підвищення в карєрі</item>
+        <item>psychology;психологія</item>
+        <item>qualification;квалификация</item>
+        <item>qualified;кваліфікований</item>
+        <item>quit;звільнитись</item>
+        <item>receptionist;секретар (в закладі)</item>
+        <item>retire;йти в відставку</item>
+        <item>sailor;моряк</item>
+        <item>salary;заробітня плата</item>
+        <item>salesman;продавець</item>
+        <item>secretary;секретар</item>
+        <item>send a fax;відправити факс</item>
+        <item>shop assistant;продавець</item>
+        <item>sick leave;лікарняний</item>
+        <item>soldier;солдат</item>
+        <item>staff;штат</item>
+        <item>steward;стюард</item>
+        <item>tailor;кравець</item>
+        <item>take a day off;взяти відгул</item>
+        <item>taxes;податки</item>
+        <item>telephone operator;телефонний оператор</item>
+        <item>travel agent;турагент</item>
+        <item>unemployed;безробітний</item>
+        <item>vet;ветеринар</item>
+        <item>wages;заработня плата</item>
+        <item>work agreement;трудовий договір</item>
+        <item>work at a bank;працювати в банку</item>
+        <item>work at a factory;працювати на фабриці</item>
+        <item>work at a hospital;працювати в лікарні</item>
+        <item>work full time;працювати на повну ставку</item>
+        <item>work in an office;працювати в офісі</item>
+        <item>work part time;працювати неповний робочий день</item>
+        <item>write a report;написати звіт</item>
+        <item>writer;письменник</item>
+        <item>judge;судя</item>
+        <item>surgeon;хірург</item>
+        <item>waiter;офіціант</item>
+        <item>analyze;досліджувати</item>
+        <item>ascertain;встановлювати</item>
+        <item>attend;виконувати накази</item>
+        <item>audit;ревізія</item>
+        <item>contribute;співробітничати</item>
+        <item>determine;обчислювати</item>
+        <item>resolve;приймати рішення</item>
+        <item>develop;розвивати</item>
+        <item>define;визначати</item>
+        <item>evolve;розгортати (плани)</item>
+        <item>establish;встановлювати</item>
+        <item>estimate;оцінювати</item>
+        <item>manufacture;виробництво</item>
+        <item>produce;виробляти</item>
+    </string-array>
+	
+    <string-array name="cat_weather_array">
+        <item>air pressure;атмосферний тиск</item>
+        <item>bad;поганий</item>
+        <item>breezy;свіжий</item>
+        <item>climate;клімат</item>
+        <item>cold wind;холодний вітер</item>
+        <item>cool;прохолодний</item>
+        <item>damp;вологість</item>
+        <item>deep snow;глубокий сніг</item>
+        <item>deluge;повінь</item>
+        <item>dew;роса</item>
+        <item>downpour;ливень</item>
+        <item>drizzle;моросіти</item>
+        <item>drizzly;моросящий</item>
+        <item>dry;сухий</item>
+        <item>dust storm;піщана буря</item>
+        <item>fog;туман</item>
+        <item>foggy;туманний</item>
+        <item>frost;мороз</item>
+        <item>frosty;морозний</item>
+        <item>hail;град</item>
+        <item>hailstone;градина</item>
+        <item>heavy rain;проливний дощ</item>
+        <item>heavy snow;сильний снігопад</item>
+        <item>hot;жарко</item>
+        <item>humidity;вологість</item>
+        <item>icy;льодяний</item>
+        <item>indian summer;бабине літо</item>
+        <item>lovely;прекрасний</item>
+        <item>mist;легкий туман</item>
+        <item>overcast;хмарність</item>
+        <item>pleasant;приємний</item>
+        <item>pouring rain;проливний дощ</item>
+        <item>precipitation;осадки</item>
+        <item>rain;дощ</item>
+        <item>rainbow;веселка</item>
+        <item>raindrop;капля дощу</item>
+        <item>rainfall;злива</item>
+        <item>rainstorm;злива з ураганом</item>
+        <item>rainy;дощовий</item>
+        <item>sandstorm;пісчана буря</item>
+        <item>scorching;палючий</item>
+        <item>sleet;дощ зі снігом</item>
+        <item>smoggy;задимлений</item>
+        <item>snow;снег</item>
+        <item>snowdrift;сніговий завал</item>
+        <item>snowfall;снігопад</item>
+        <item>snowflake;сніжинка</item>
+        <item>snowstorm;хурделиця</item>
+        <item>snowy;сніговий</item>
+        <item>storm;шторм</item>
+        <item>sun;солнце</item>
+        <item>sunlight;сонячне світло</item>
+        <item>sunny;сонячно</item>
+        <item>temperature;температура</item>
+        <item>thick fog;густий туман</item>
+        <item>thunder;грім</item>
+        <item>thunderbolt;удар блискавка</item>
+        <item>thunderclap;удар грому</item>
+        <item>thunderstorm;гроза</item>
+        <item>thundery;грозовий</item>
+        <item>unpleasant;неприємний</item>
+        <item>warm;теплий</item>
+        <item>warm wind;теплий вітер</item>
+        <item>wet;дощова погода</item>
+        <item>wet snow;мокрий сніг</item>
+        <item>whirlwind;смерч</item>
+        <item>windless;безвітрянний</item>
+        <item>windy;вітряно</item>
+        <item>blizzard;хуртовина</item>
+        <item>calm;спокійний</item>
+        <item>cloud;хмара</item>
+        <item>cloudy;хмарно</item>
+        <item>humid;вологий</item>
+        <item>hurricane;ураган</item>
+        <item>lightning;блискавка</item>
+        <item>smog;смог</item>
+        <item>stormy;штормовий</item>
+        <item>wind;вітер</item>
+    </string-array>
+	
+    <string-array name="cat_study_array">
+        <item>retake;перездавати экзамен</item>
+        <item>pupil;учень</item>
+        <item>revise;повторятb (перед єкзаменом)</item>
+        <item>geography;географія</item>
+        <item>chemistry;хімія</item>
+        <item>paper clip;скрепка для паперу</item>
+        <item>pass;сдать єкзамен</item>
+        <item>pen;ручка</item>
+        <item>pencil;олівець</item>
+        <item>lecturer;лектор</item>
+        <item>minor subjects;не профільні предмети</item>
+        <item>notebook;ноутбук</item>
+        <item>notepad;блокнот</item>
+        <item>major subjects;профільні предмети</item>
+        <item>make copies;зробити копії</item>
+        <item>institute;інститут</item>
+        <item>literature;література</item>
+        <item>mathematics;математика</item>
+        <item>pencil sharpener;точилка для олівців</item>
+        <item>course;курс</item>
+        <item>physical education;фізкультура</item>
+        <item>physics;фізика</item>
+        <item>degree;степінь</item>
+        <item>eraser;резинка</item>
+        <item>education;навчання</item>
+        <item>algebra;алгебра</item>
+        <item>biology;біологія</item>
+        <item>botany;ботаніка</item>
+        <item>ballpoint pen;кулькова ручка</item>
+        <item>computer science;інформатика</item>
+        <item>geology;геологія</item>
+        <item>geometry;геометрія</item>
+        <item>pay;плата</item>
+        <item>student;студент</item>
+        <item>history;історія</item>
+        <item>homework;домашня работа</item>
+        <item>sociology;соціологія</item>
+        <item>science;наука</item>
+        <item>scientist;учений</item>
+        <item>scotch tape;скотч</item>
+        <item>stapler;степлер</item>
+        <item>sticker;стікер</item>
+        <item>student loan;студентська позика</item>
+        <item>study for;учитись на</item>
+        <item>college;колледж</item>
+        <item>graduate;випускник</item>
+        <item>university;університет</item>
+        <item>take an exam;здавати єкзамен</item>
+        <item>tuition fees;плата за навчання</item>
+        <item>test;тест</item>
+        <item>teacher;учитель</item>
+        <item>graduate school;аспірантура</item>
+        <item>folder;папка</item>
+        <item>fountain pen;авторучка</item>
+        <item>examiner;єкзаменатор</item>
+        <item>fail;провалитися (на єкзамені)</item>
+        <item>examination;єкзамен</item>
+    </string-array>
 </resources>
