@@ -964,7 +964,7 @@
     <string-array name="cat_study_array">
         <item>retake;перездавати экзамен</item>
         <item>pupil;учень</item>
-        <item>revise;повторятb (перед єкзаменом)</item>
+        <item>revise;повторяти (перед єкзаменом)</item>
         <item>geography;географія</item>
         <item>chemistry;хімія</item>
         <item>paper clip;скрепка для паперу</item>

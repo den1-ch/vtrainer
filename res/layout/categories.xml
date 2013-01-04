@@ -39,6 +39,6 @@
         android:id="@array/cat_study_array"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cat_traits_title"
+        android:text="@string/cat_study_title"
         android:onClick="onClick" />
 </LinearLayout>
