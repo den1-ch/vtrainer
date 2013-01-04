@@ -44,7 +44,7 @@ public class CategoryActivity extends Activity {
 
         categoryId = getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_ID);
 
-        setTitle(getResources().getString(getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_NAME)));
+        setTitle(getIntent().getExtras().getCharSequence(VocabularyMetaData.CATEGOTY_NAME));
         updateData();
 
         gv.setOnItemClickListener(new OnItemClickListener() {

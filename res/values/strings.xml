@@ -87,9 +87,12 @@
     <string name="c_mi_add_all_to_study">Add all to study</string>
     <string name="c_toast_words_added">Words were added to the vocabulary</string>
     
-    <string name="cat1_title">Clothes</string>
-    <string name="cat2_title">Traits</string>
-    <string name="cat3_title">Sport</string>
+    <string name="cat_clothes_title">Clothes</string>
+    <string name="cat_traits_title">Traits</string>
+    <string name="cat_sport_title">Sport</string>
+    <string name="cat_weather_title">Weather</string>
+    <string name="cat_work_title">Work</string>
+    <string name="cat_study_title">Study</string>
     
     <string-array name="cat_clothes_array">
         <item>belt;ремінь</item>
