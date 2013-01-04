@@ -80,6 +80,11 @@
     
     <string name="no_word_for_training">No words for study</string>
     
+    <!-- Training statistic -->
+ 
+    <string name="dlg_tr_stats_correct_answer_count_caption">Correct answers: </string>
+    <string name="dlg_tr_stats_wrong_answer_count_caption">Wrong answers: </string>
+    
     <!-- Categories -->
     
     <string name="categories_title">Categories</string>

@@ -3,15 +3,14 @@ package com.vtrainer.activity;
 import java.util.Random;
 
 import com.vtrainer.R;
+import com.vtrainer.data.CurrentTrainingStats;
+import com.vtrainer.dialog.TrainingStatsDialog;
 import com.vtrainer.provider.TrainingMetaData;
 import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,6 +41,8 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     private int trainedWordProgress;
 
     private boolean isHintMode;
+    
+    private CurrentTrainingStats trainingStats;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,8 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         translateWords[2] = (RadioButton) findViewById(R.id.wt_word_translate_3);
         translateWords[3] = (RadioButton) findViewById(R.id.wt_word_translate_4);
 
+        trainingStats = new CurrentTrainingStats();
+        
         if (!initData()) {
             setContentView(R.layout.empty);
             showNoWordForStudyDialog();
@@ -160,13 +163,18 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     private boolean validateAnswer() {
         boolean result = true;
         if (!translateWords[corectWordAnswerPosition].isChecked()) {
-            translateWords[corectWordAnswerPosition].setChecked(true);
-            translateWords[corectWordAnswerPosition].setTextColor(Constans.RIGHT_ANSWER_COLOR);
+            initHintMode();
 
+        	translateWords[corectWordAnswerPosition].setTextColor(Constans.RIGHT_ANSWER_COLOR);
             btnSelectedWord.setTextColor(Constans.ERROR_COLOR);
+
             setTrainedWordProgress(-2);
+                        
+            trainingStats.incrementWrongAnswerCount();
 
             result = false;
+        } else {
+            trainingStats.incrementCorrectAnswerCount();
         }
 
         return result;
@@ -181,25 +189,15 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     }
 
     private void showNoWordForStudyDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.no_word_for_training);
-
-        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(getBaseContext(), TrainingsActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        TrainingStatsDialog trainingStatsDialog = new TrainingStatsDialog(this, trainingStats);
+        trainingStatsDialog.show();
     }
 
     public void onNextButtonClick(View view) {
         if (!isHintMode && ((btnSelectedWord == null) || !validateAnswer())) {
             return;
         }
+
         prepareNewWordToStudy();
     }
 
@@ -218,14 +216,18 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         }, 1);
     }
 
+    private void initHintMode() {
+        isHintMode = true;
+        translateWords[corectWordAnswerPosition].setChecked(true);
+
+        radioGroup.setClickable(false);
+    }
+    
     public void onHintButtonClick(View view) {
         reinitialize();
 
-        isHintMode = true;
-        translateWords[corectWordAnswerPosition].setChecked(true);
+        initHintMode();
         setTrainedWordProgress(-1);
-
-        radioGroup.setClickable(false);
     }
 
     public void onKnowButtonClick(View view) {

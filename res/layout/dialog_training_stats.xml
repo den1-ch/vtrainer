@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/dlg_tr_stats_correct_answer_count_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dlg_tr_stats_correct_answer_count_caption"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dlg_tr_stats_correct_answer_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/dlg_tr_stats_correct_answer_count_caption"
+        android:paddingLeft="5dp" />
+    
+    <TextView
+        android:id="@+id/dlg_tr_stats_wrong_answer_count_caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dlg_tr_stats_correct_answer_count_caption"
+        android:text="@string/dlg_tr_stats_wrong_answer_count_caption"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dlg_tr_stats_wrong_answer_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dlg_tr_stats_correct_answer_count_caption"
+        android:layout_toRightOf="@+id/dlg_tr_stats_wrong_answer_count_caption"
+        android:paddingLeft="10dp" />
+
+    <Button
+        android:id="@+id/dlg_tr_stats_btn_ok"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dlg_tr_stats_wrong_answer_count_caption"
+        android:layout_below="@+id/dlg_tr_stats_wrong_answer_count"
+        android:layout_margin="10dp"
+        android:onClick="onOkButtonClick"
+        android:text="@android:string/ok" />
+
+</RelativeLayout>

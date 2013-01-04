@@ -4,7 +4,7 @@ import com.vtrainer.R;
 import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;
 
-import android.app.Dialog;
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
 
-public class AddNewWordDialog extends Dialog {
+public class AddNewWordDialog extends AlertDialog {
   private EditText etForeingWord;
   private EditText etTranslationWord;
   private Button btnSave;

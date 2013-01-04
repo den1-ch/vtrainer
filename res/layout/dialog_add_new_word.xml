@@ -22,22 +22,15 @@
         android:singleLine="true"
         android:hint="@string/an_hint_translation_word"/>
     
-    <TableLayout
-        android:id="@+id/tableLayout1"
+    <Button
+        android:id="@+id/add_new_word_save"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:text="@string/caption_save" />
 
-        <Button
-            android:id="@+id/add_new_word_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/caption_save" />
-
-        <Button
-            android:id="@+id/add_new_word_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@android:string/cancel" />
-    </TableLayout>
-
+    <Button
+        android:id="@+id/add_new_word_cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@android:string/cancel" />
 </LinearLayout>
