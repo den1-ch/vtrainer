@@ -6,19 +6,15 @@ import com.vtrainer.dialog.AddNewWordDialog.OnDataSaveListener;
 import com.vtrainer.logging.Logger;
 import com.vtrainer.provider.VocabularyMetaData;
 
-import android.app.Activity;
 import android.app.Dialog;
+import android.app.ListActivity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
 import android.widget.SimpleCursorAdapter;
 
-public class VocabularyActivity extends Activity {    
+public class VocabularyActivity extends ListActivity {    
     private final int MENU_GROUP_ID = 1;
     
     private final int MENU_ITEM_ADD_NEW_WORD = 1;    
@@ -28,24 +24,12 @@ public class VocabularyActivity extends Activity {
     private final String[] PROJECTION = new String[] { VocabularyMetaData.TABLE_NAME + "." + VocabularyMetaData._ID + " as _id", VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
 
     private AddNewWordDialog dlgAddNewWord;
-    private GridView gv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.vocabulary);
-
-        gv = (GridView) findViewById(R.id.gv_vocabulary);
-
         updateData();
-
-        gv.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            }
-        });
-
     }
 
     private void updateData() {
@@ -53,7 +37,7 @@ public class VocabularyActivity extends Activity {
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cur, COUNM_NAMES, VIEW_IDS);
 
-        gv.setAdapter(adapter);
+        setListAdapter(adapter);
     }
   
     @Override
@@ -85,7 +69,7 @@ public class VocabularyActivity extends Activity {
             OnDataSaveListener dataSaveListener = new OnDataSaveListener() {
                 @Override
                 public void saved() {
-                    updateData();
+                    updateData(); //TODO performance lost
                 }
             };
 
