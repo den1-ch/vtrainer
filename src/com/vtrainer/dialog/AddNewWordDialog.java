@@ -4,7 +4,7 @@ import com.vtrainer.R;
 import com.vtrainer.provider.VocabularyMetaData;
 import com.vtrainer.utils.Constans;
 
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
 
-public class AddNewWordDialog extends AlertDialog {
+public class AddNewWordDialog extends Dialog {
   private EditText etForeingWord;
   private EditText etTranslationWord;
   private Button btnSave;
@@ -51,6 +51,7 @@ public class AddNewWordDialog extends AlertDialog {
         ContentValues cv = new ContentValues();
         cv.put(VocabularyMetaData.FOREIGN_WORD, etForeingWord.getText().toString());
         cv.put(VocabularyMetaData.TRANSLATION_WORD, etTranslationWord.getText().toString());
+        cv.put(VocabularyMetaData.CATEGOTY_ID, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
         
         if (getContext().getContentResolver().insert(VocabularyMetaData.WORDS_URI, cv) != null) {
           dataSaveListener.saved();
