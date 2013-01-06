@@ -8,5 +8,5 @@ public class VTrainerProviderMetaData {
   public static final Uri BASE_URI = Uri.parse("content://" + VTrainerProviderMetaData.AUTHORITY);
   
   public static final String DATABASE_NAME    = "vtrainer.db";
-  public static final int    DATABASE_VERSION = 16;
+  public static final int    DATABASE_VERSION = 17;
 }

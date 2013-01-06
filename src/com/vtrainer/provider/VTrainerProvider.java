@@ -64,10 +64,12 @@ public class VTrainerProvider extends ContentProvider {
             try {
                 db.setLockingEnabled(false); //tune performance
                 
-                Logger.debug(TAG, "Create table:" + VocabularyMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getVocabularyTableSQL());
-                db.execSQL(SQLBuilder.getVocabularyTableSQL());
+                Logger.debug(TAG, "Create table:" + VocabularyMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getVocabularyTable());
+                db.execSQL(SQLBuilder.getVocabularyTable());
                 Logger.debug(TAG, "Create table:" + TrainingMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getTrainingTable());
                 db.execSQL(SQLBuilder.getTrainingTable());
+                Logger.debug(TAG, "Create table:" + StatisticMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getStatisticTable());
+                db.execSQL(SQLBuilder.getStatisticTable());
 
                 fillVocabularyStaticData(db);
                 fillCategoriesData(db);
@@ -132,6 +134,7 @@ public class VTrainerProvider extends ContentProvider {
 
             db.execSQL("DROP TABLE IF EXISTS " + VocabularyMetaData.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + TrainingMetaData.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + StatisticMetaData.TABLE_NAME);
             onCreate(db);
         }
 

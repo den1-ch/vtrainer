@@ -1,7 +1,7 @@
 package com.vtrainer.provider;
 
 public class SQLBuilder {
-    public static String getVocabularyTableSQL() {
+    public static String getVocabularyTable() {
         StringBuilder sb = new StringBuilder();
         sb.append("CREATE TABLE ");
         sb.append(VocabularyMetaData.TABLE_NAME);
@@ -37,6 +37,27 @@ public class SQLBuilder {
         sb.append(" INTEGER NOT NULL DEFAULT 0, \n");
         sb.append(TrainingMetaData.DATE_LAST_STUDY);
         sb.append(" INTEGER NOT NULL DEFAULT 0);");
+
+        return sb.toString();
+    }
+    
+    public static String getStatisticTable() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("CREATE TABLE ");
+        sb.append(StatisticMetaData.TABLE_NAME);
+        sb.append(" ( \n");
+        sb.append(StatisticMetaData._ID);
+        sb.append(" INTEGER PRIMARY KEY, \n");
+        sb.append(StatisticMetaData.TRAINING_TYPE);
+        sb.append(" INTEGER NOT NULL, \n");
+        sb.append(StatisticMetaData.DAY);
+        sb.append(" INTEGER NOT NULL DEFAULT current_date, \n");
+        sb.append(StatisticMetaData.STADIED_COUNT);
+        sb.append(" INTEGER NOT NULL, \n");
+        sb.append(StatisticMetaData.CORRECT_COUNT);
+        sb.append(" INTEGER NOT NULL, \n");
+        sb.append(StatisticMetaData.WRONG_COUNT);
+        sb.append(" INTEGER NOT NULL);");
 
         return sb.toString();
     }
