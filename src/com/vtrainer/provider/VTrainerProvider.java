@@ -2,6 +2,7 @@ package com.vtrainer.provider;
 
 import com.vtrainer.R;
 import com.vtrainer.logging.Logger;
+import com.vtrainer.provider.TrainingMetaData.Type;
 import com.vtrainer.utils.Constans;
 
 import android.content.ContentProvider;
@@ -121,10 +122,9 @@ public class VTrainerProvider extends ContentProvider {
         }
     
         private void fillTrainingData(SQLiteDatabase db, int categoryId) {
-            db.execSQL(SQLBuilder.getAddCategoryToTrainSQL(), new Object[] { TrainingMetaData.Type.ForeignWordTranslation.getId(), categoryId });
-            db.execSQL(SQLBuilder.getAddCategoryToTrainSQL(), new Object[] { TrainingMetaData.Type.NativeWordTranslation.getId(), categoryId });
-
-            // TODO add new trainings types
+            for (Type type: TrainingMetaData.Type.values()) {
+                db.execSQL(SQLBuilder.getAddCategoryToTrainSQL(), new Object[] { type.getId(), categoryId });
+            }
         }
     
         @Override
@@ -264,10 +264,9 @@ private Uri addNewWord(Uri uri, ContentValues values) {
   }
 
     private void addWordToTrainings(long wordId) {
-        addWordToTraining(wordId, TrainingMetaData.Type.ForeignWordTranslation.getId());
-        addWordToTraining(wordId, TrainingMetaData.Type.NativeWordTranslation.getId());
-
-        // TODO add new trainings types
+        for (Type type: TrainingMetaData.Type.values()) {
+            addWordToTraining(wordId, type.getId());
+        }
     }
 
     private void addWordToTraining(long wordId, int trainingId) {
