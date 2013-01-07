@@ -106,7 +106,7 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     private void initProposalsData() {
         Cursor proposalsCursor = null;
         try {
-            Uri uri = Uri.withAppendedPath(VocabularyMetaData.WORDS_URI, Integer.toString(PROPOSAL_WORD_COUNT - 1));
+            Uri uri = Uri.withAppendedPath(VocabularyMetaData.PROPOSAL_WORDS_URI, Integer.toString(PROPOSAL_WORD_COUNT - 1));
 
             String orderBy = "RANDOM()";
             String where = getWordAnswerFieldName() + "!= \"" + translateWords[corectWordAnswerPosition].getText().toString() + "\"";

@@ -7,15 +7,16 @@ public class VocabularyMetaData implements BaseColumns {
   public static final String TABLE_NAME = "vocabulary";
   
   public static final String WORDS_PATH = TABLE_NAME;
-  public static final String MAIN_VOCABULARY_PATH = "mainVocabularya";
+  public static final String MAIN_VOCABULARY_PATH = "mainVocabulary";
+  public static final String PROPOSAL_WORDS_PATH = "proposalWords";
   public static final String ADD_CATEGORY_TO_TRAINING_PATH = "addCatToTrainings";
   
-  public static final Uri MAIN_VOCABULARY_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, MAIN_VOCABULARY_PATH);
+  public static final Uri MAIN_VOCABULARY_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, MAIN_VOCABULARY_PATH);
 
-  public static final Uri WORDS_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, WORDS_PATH);
-  public static final Uri WORD_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, TABLE_NAME + "/#");
+  public static final Uri WORDS_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, WORDS_PATH);
+  public static final Uri PROPOSAL_WORDS_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, PROPOSAL_WORDS_PATH);
   
-  public static final Uri ADD_CATEGORY_TO_TRAINING_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, ADD_CATEGORY_TO_TRAINING_PATH);
+  public static final Uri ADD_CATEGORY_TO_TRAINING_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, ADD_CATEGORY_TO_TRAINING_PATH);
 
   //columns
   public static final String CATEGOTY_ID      = "category_id"; // int

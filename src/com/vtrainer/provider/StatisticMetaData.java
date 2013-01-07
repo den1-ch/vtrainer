@@ -8,7 +8,7 @@ public class StatisticMetaData implements BaseColumns {
   
   public static final String STATISTIC_PATH = TABLE_NAME;
   
-  public static final Uri STATISTIC_URI  = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, STATISTIC_PATH);
+  public static final Uri STATISTIC_URI  = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, STATISTIC_PATH);
   
   // columns
   public static final String TRAINING_TYPE = "training_type"; // int - enum

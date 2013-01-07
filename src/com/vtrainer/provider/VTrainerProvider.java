@@ -1,21 +1,11 @@
 package com.vtrainer.provider;
 
-import com.vtrainer.R;
 import com.vtrainer.logging.Logger;
-import com.vtrainer.provider.TrainingMetaData.Type;
-import com.vtrainer.utils.Constans;
 
 import android.content.ContentProvider;
-import android.content.ContentUris;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.UriMatcher;
-import android.database.DatabaseUtils.InsertHelper;
 import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
 public class VTrainerProvider extends ContentProvider {
@@ -25,281 +15,109 @@ public class VTrainerProvider extends ContentProvider {
     private static final UriMatcher uriMatcher;
 
     private static final int WORDS_URI_INDICATOR = 1;
-    private static final int COUNT_WORD_URI_INDICATOR = 2;
+    private static final int PROPOSAL_WORDS_URI_INDICATOR = 2;
     private static final int TRAINING_WORD_URI_INDICATOR = 3;
-    private static final int TRAINING_COUNT_URI_INDICATOR = 4;
+//    private static final int TRAINING_COUNT_URI_INDICATOR = 4;
     private static final int ADD_CAT_TO_TRAINING_URI_INDICATOR = 5;
     private static final int MAIN_VOCABULARY_URI_INDICATOR = 6;
   
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.WORDS_PATH, WORDS_URI_INDICATOR);
-        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.TABLE_NAME + "/#", COUNT_WORD_URI_INDICATOR);
+        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, VocabularyMetaData.WORDS_PATH, WORDS_URI_INDICATOR);
+        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, VocabularyMetaData.PROPOSAL_WORDS_PATH + "/#", PROPOSAL_WORDS_URI_INDICATOR);
 
-        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TRAINING_WORD_PATH, TRAINING_WORD_URI_INDICATOR);
-        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, TrainingMetaData.TABLE_NAME + "/count", TRAINING_COUNT_URI_INDICATOR);
+        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, TrainingMetaData.TRAINING_WORD_PATH, TRAINING_WORD_URI_INDICATOR);
+//        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, TrainingMetaData.TABLE_NAME + "/count", TRAINING_COUNT_URI_INDICATOR);
 
-        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_PATH, ADD_CAT_TO_TRAINING_URI_INDICATOR);
-        uriMatcher.addURI(VTrainerProviderMetaData.AUTHORITY, VocabularyMetaData.MAIN_VOCABULARY_PATH, MAIN_VOCABULARY_URI_INDICATOR);
+        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_PATH, ADD_CAT_TO_TRAINING_URI_INDICATOR);
+        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, VocabularyMetaData.MAIN_VOCABULARY_PATH, MAIN_VOCABULARY_URI_INDICATOR);
     }
 
-    private DatabaseHelper dbHelper;
+    private VTrainerDatabase vtrainerDatabase;
   
-    /**
-     * Setup/Create Database This class helps open, create, and upgrade the db
-     */
-    private static class DatabaseHelper extends SQLiteOpenHelper {
-        private static final String WORD_DELIMITER = ";"; // TODO move
+    @Override
+    public boolean onCreate() {
+        vtrainerDatabase = new VTrainerDatabase(getContext());
 
-        private Context context;
-
-        public DatabaseHelper(Context context) {
-            super(context, VTrainerProviderMetaData.DATABASE_NAME, null,
-                    Constans.IS_TEST_MODE ? VTrainerProviderMetaData.DATABASE_VERSION * 10 : VTrainerProviderMetaData.DATABASE_VERSION);
-
-            this.context = context;
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            try {
-                db.setLockingEnabled(false); //tune performance
-                
-                Logger.debug(TAG, "Create table:" + VocabularyMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getVocabularyTable());
-                db.execSQL(SQLBuilder.getVocabularyTable());
-                Logger.debug(TAG, "Create table:" + TrainingMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getTrainingTable());
-                db.execSQL(SQLBuilder.getTrainingTable());
-                Logger.debug(TAG, "Create table:" + StatisticMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getStatisticTable());
-                db.execSQL(SQLBuilder.getStatisticTable());
-
-                fillVocabularyStaticData(db);
-                fillCategoriesData(db);
-            } finally {
-                db.setLockingEnabled(true);
-            }
-        }
-
-    private void fillVocabularyStaticData(SQLiteDatabase db) { //TODO update #3
-      Logger.debug(TAG, "Fill vocabulary static data.");
-      String[] vocabulary = context.getResources().getStringArray(Constans.IS_TEST_MODE ? R.array.test_vocabulary_array: R.array.vocabulary_array);
-      fillVocabularyData(db, vocabulary, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID, true);
-    }
-    
-    private void fillCategoriesData(SQLiteDatabase db) {
-        Logger.debug(TAG, "Fill categories static data.");
-
-        fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_clothes_array), R.array.cat_clothes_array, false);
-        fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_traits_array), R.array.cat_traits_array, false);
-        fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_sport_array), R.array.cat_sport_array, false);
-        fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_weather_array), R.array.cat_weather_array, false);
-        fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_work_array), R.array.cat_work_array, false);
-        fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_study_array), R.array.cat_study_array, false);
-    }
-
-        private void fillVocabularyData(SQLiteDatabase db, String[] data, int categoryId, boolean isAddToTraining) {
-            InsertHelper insertHelper = new InsertHelper(db, VocabularyMetaData.TABLE_NAME);
-
-            int categoryIdIndex = insertHelper.getColumnIndex(VocabularyMetaData.CATEGOTY_ID);
-            int translationWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.TRANSLATION_WORD);
-            int foreignWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.FOREIGN_WORD);
-            for (int i = 0; i < data.length; i++) {
-                String word = data[i];
-
-                int index = word.indexOf(WORD_DELIMITER);
-
-                insertHelper.prepareForInsert();
-
-                insertHelper.bind(categoryIdIndex, categoryId);
-                insertHelper.bind(translationWordIndex, word.substring(0, index));
-                insertHelper.bind(foreignWordIndex, word.substring(index + 1));
-
-                // Insert the row into the database.
-                insertHelper.execute();
-            }
-            if (isAddToTraining) {
-                fillTrainingData(db, categoryId);
-            }
-        }
-    
-        private void fillTrainingData(SQLiteDatabase db, int categoryId) {
-            for (Type type: TrainingMetaData.Type.values()) {
-                db.execSQL(SQLBuilder.getAddCategoryToTrainSQL(), new Object[] { type.getId(), categoryId });
-            }
-        }
-    
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            Logger.debug(TAG, "Upgrading db from version" + oldVersion + " to " + newVersion); 
-            // TODO save user data #1
-
-            db.execSQL("DROP TABLE IF EXISTS " + VocabularyMetaData.TABLE_NAME);
-            db.execSQL("DROP TABLE IF EXISTS " + TrainingMetaData.TABLE_NAME);
-            db.execSQL("DROP TABLE IF EXISTS " + StatisticMetaData.TABLE_NAME);
-            onCreate(db);
-        }
-
+        return true;
     }
   
-  @Override
-  public boolean onCreate() {
-    dbHelper = new DatabaseHelper(getContext());
+/*
+    public Cursor getCountWordAvalaibleToTraining(String type) {
+        return dbHelper.getReadableDatabase().rawQuery(
+            "SELECT COUNT(*) FROM " + TrainingMetaData.TABLE_NAME + " WHERE " + TrainingMetaData.TYPE + " = " + type, null); //TODO add where by time
+        //TODO move SQL to SQLBuilder
+    }
+*/  
+    @Override
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        Cursor cursor = null;
+        switch (uriMatcher.match(uri)) {
+        case WORDS_URI_INDICATOR:
+            cursor = vtrainerDatabase.getWords(projection, selection, selectionArgs, sortOrder, null);
+            break;
+        case PROPOSAL_WORDS_URI_INDICATOR:
+            cursor = vtrainerDatabase.getWords(projection, selection, selectionArgs, sortOrder, uri.getPathSegments().get(1));
+            break;
+        case TRAINING_WORD_URI_INDICATOR:
+            cursor = vtrainerDatabase.getTrainingWord(uri.getPathSegments().get(1), projection, selection, selectionArgs, sortOrder);
+            break;
+//        case TRAINING_COUNT_URI_INDICATOR:
+//            return getCountWordAvalaibleToTraining(uri.getPathSegments().get(1));
+        case MAIN_VOCABULARY_URI_INDICATOR:
+            cursor = vtrainerDatabase.getMainWocabularyWords(projection, selection, selectionArgs, sortOrder);
+            break;
+        default:
+            String msg = "Unknown URI" + uri;
+            Logger.error(TAG, msg, getContext());
+            return null;
+        }
     
-    return true;
-  }
-  
-  public Cursor getCountWordAvalaibleToTraining(String type) {
-    return dbHelper.getReadableDatabase().rawQuery(
-      "SELECT COUNT(*) FROM " + TrainingMetaData.TABLE_NAME + " WHERE " + TrainingMetaData.TYPE + " = " + type, null); //TODO add where by time
-      //TODO move SQL to SQLBuilder
-  }
-  
-  @Override
-  public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-    SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        // tell the cursor what uri to watch so it knows when its source data changes
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+
+        return cursor;
+    }
     
-    String limit = null;
-    switch (uriMatcher.match(uri)) {
-      case WORDS_URI_INDICATOR:
-        qb.setTables(VocabularyMetaData.TABLE_NAME);
-        break;
-      case COUNT_WORD_URI_INDICATOR:
-        qb.setTables(VocabularyMetaData.TABLE_NAME);
-        limit = uri.getPathSegments().get(1);
-        break;
-      case TRAINING_WORD_URI_INDICATOR:
-        limit = "1";
-        prepareSelectWordsForTrainingQuery(uri, qb);
-        break;
-      case TRAINING_COUNT_URI_INDICATOR:  
-        return getCountWordAvalaibleToTraining(uri.getPathSegments().get(1));
-      case MAIN_VOCABULARY_URI_INDICATOR:  
-          joinVocabulryToTraining(qb);
-          qb.setDistinct(true);
-          break;
-      default:
-        String msg = "Unknown URI" + uri;
-        Logger.error(TAG, msg, getContext());
+    @Override
+    public int delete(Uri arg0, String arg1, String[] arg2) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public String getType(Uri uri) {
+        // TODO Auto-generated method stub
         return null;
     }
-    
-    Logger.debug(TAG, qb.buildQuery(projection, selection, selectionArgs, null, null, sortOrder, limit));
-
-    //get db and run the query
-    SQLiteDatabase db = dbHelper.getReadableDatabase();
-    Cursor cursor = qb.query(db, projection, selection, selectionArgs, null, null, sortOrder, limit);
-    
-    //tell the cursor what uri to watch so it knows when its source data changes
-    cursor.setNotificationUri(getContext().getContentResolver(), uri);
-    
-    return cursor;
-  }
-    
-    private void joinVocabulryToTraining(SQLiteQueryBuilder qb) {
-        qb.setTables(VocabularyMetaData.TABLE_NAME + " INNER JOIN " + TrainingMetaData.TABLE_NAME + " ON ( "
-                + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.WORD_ID + " = " + VocabularyMetaData.TABLE_NAME
-                + "." + VocabularyMetaData._ID + " )");
-    }
-
-    private void prepareSelectWordsForTrainingQuery(Uri uri, SQLiteQueryBuilder qb) {
-        joinVocabulryToTraining(qb);
-
-        qb.appendWhere(TrainingMetaData.TYPE + "=" + uri.getPathSegments().get(1) + " AND "
-                + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.PROGRESS + " < " + TrainingMetaData.MAX_PROGRESS + " AND "
-                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - (Constans.IS_TEST_MODE ? 100: TrainingMetaData.TIME_PERIOD_TO_MEMORIZE_WORD)));
-    }
-  
-  @Override
-  public int delete(Uri arg0, String arg1, String[] arg2) {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
-  @Override
-  public String getType(Uri uri) {
-    // TODO Auto-generated method stub
-    return null;
-  }
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         switch (uriMatcher.match(uri)) {
         case WORDS_URI_INDICATOR:
-            return addNewWord(uri, values);
+            return vtrainerDatabase.addNewWord(uri, values);
         case ADD_CAT_TO_TRAINING_URI_INDICATOR:
-            return addCategoryToTrain(uri, values);
+            return vtrainerDatabase.addCategoryToTrain(uri, values);
         default:
             Logger.error(TAG, "Unknown URI " + uri, getContext());
             return null;
         }
     }
   
-    private Uri addCategoryToTrain(Uri uri, ContentValues values) {
-        dbHelper.fillTrainingData(dbHelper.getWritableDatabase(), values.getAsInteger(VocabularyMetaData.CATEGOTY_ID));
-        return null;
-    }
-
-private Uri addNewWord(Uri uri, ContentValues values) {
-    if (!values.containsKey(VocabularyMetaData.TRANSLATION_WORD)) {
-      throw new SQLException(VocabularyMetaData.TRANSLATION_WORD + " is null");
-    }
-    
-    if (!values.containsKey(VocabularyMetaData.FOREIGN_WORD)) {
-      throw new SQLException(VocabularyMetaData.FOREIGN_WORD + " is null");
-    }
- 
-    SQLiteDatabase db = dbHelper.getWritableDatabase();
-    long rowId = db.insert(VocabularyMetaData.TABLE_NAME, null, values);
-    
-    if (rowId > 0) {
-        addWordToTrainings(rowId);
-    	
-    	Uri insertedUri = ContentUris.withAppendedId(VocabularyMetaData.WORDS_URI, rowId);
-      
-        getContext().getContentResolver().notifyChange(uri, null);
-      
-        return insertedUri;
-    }
-    
-    return null;
-  }
-
-    private void addWordToTrainings(long wordId) {
-        for (Type type: TrainingMetaData.Type.values()) {
-            addWordToTraining(wordId, type.getId());
-        }
-    }
-
-    private void addWordToTraining(long wordId, int trainingId) {
-        Logger.debug(TAG, "Add word to training. Word id: " + wordId + " training id:" + trainingId);
-
-        ContentValues cv = new ContentValues();
-
-        cv.put(TrainingMetaData.TYPE, trainingId);
-        cv.put(TrainingMetaData.WORD_ID, wordId);
-
-        dbHelper.getWritableDatabase().insert(TrainingMetaData.TABLE_NAME, null, cv);
-    }
-
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        int count;
         switch (uriMatcher.match(uri)) {
         case TRAINING_WORD_URI_INDICATOR:
-            if ((values.size() != 1) || !values.containsKey(TrainingMetaData.PROGRESS)) {
-                throw new SQLException("Update do not suported. Values: " + values.toString());
-            }
-            values.put(TrainingMetaData.DATE_LAST_STUDY, System.currentTimeMillis());
-            
+            count = vtrainerDatabase.updateTrainingData(values, selection, selectionArgs);
             break;
         default:
             Logger.error(TAG, "Unknown URI " + uri, getContext());
             return 0;
         }
-      
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        int count = db.update(TrainingMetaData.TABLE_NAME, values, selection, selectionArgs);
         if (count > 0) {
             getContext().getContentResolver().notifyChange(uri, null);
         }
         return count;
-    }
+   }
 }

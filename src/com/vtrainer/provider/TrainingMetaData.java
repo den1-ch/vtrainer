@@ -8,8 +8,8 @@ public class TrainingMetaData implements BaseColumns {
   
   public static final String TRAINING_WORD_PATH = TABLE_NAME + "/#";
 
-  public static final Uri TRAINING_WORD_URI  = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, TABLE_NAME);
-  public static final Uri TRAINING_COUNT_URI = Uri.withAppendedPath(VTrainerProviderMetaData.BASE_URI, "/training/count");
+  public static final Uri TRAINING_WORD_URI  = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, TABLE_NAME);
+  public static final Uri TRAINING_COUNT_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, "/training/count");
   
   // columns
   public static final String TYPE            = "type"; // int - enum
