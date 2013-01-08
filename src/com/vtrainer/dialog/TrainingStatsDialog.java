@@ -36,7 +36,7 @@ public class TrainingStatsDialog extends Dialog {
         tvWrongAnswerCount = (TextView) findViewById(R.id.dlg_tr_stats_wrong_answer_count);
         tvWrongAnswerCount.setText(Integer.toString(trainingStats.getWrongAnswerCount()));
         
-        Button btnOk = (Button) findViewById(R.id.dlg_tr_stats_btn_ok);
+        Button btnOk = (Button) findViewById(R.id.btn_ok);
         btnOk.setOnClickListener(new android.view.View.OnClickListener() {
             
             @Override

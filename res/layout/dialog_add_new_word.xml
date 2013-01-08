@@ -23,13 +23,13 @@
         android:hint="@string/an_hint_translation_word"/>
     
     <Button
-        android:id="@+id/add_new_word_save"
+        android:id="@+id/btn_save"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/caption_save" />
 
     <Button
-        android:id="@+id/add_new_word_cancel"
+        android:id="@+id/btn_cancel"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@android:string/cancel" />

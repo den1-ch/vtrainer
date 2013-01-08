@@ -39,7 +39,7 @@ public class AddNewWordDialog extends Dialog {
     etForeingWord = (EditText) findViewById(R.id.et_foreing_word);
     etTranslationWord = (EditText) findViewById(R.id.et_translation_word);
     
-    btnSave = (Button) findViewById(R.id.add_new_word_save);
+    btnSave = (Button) findViewById(R.id.btn_save);
     btnSave.setOnClickListener(new android.view.View.OnClickListener() {
       
       @Override
@@ -62,7 +62,7 @@ public class AddNewWordDialog extends Dialog {
       }
     });
 
-    btnCancel = (Button) findViewById(R.id.add_new_word_cancel);
+    btnCancel = (Button) findViewById(R.id.btn_cancel);
     btnCancel.setOnClickListener(new android.view.View.OnClickListener() {
       
       @Override
