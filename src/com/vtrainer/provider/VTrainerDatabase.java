@@ -149,24 +149,33 @@ public class VTrainerDatabase {
         return null;
     }
 
+    public int addWordsToTrain(Uri uri, ContentValues[] values) {
+        int result = 0;
+        for (ContentValues contentValues : values) {
+            result += addWordToTrainings(contentValues.getAsLong(TrainingMetaData.WORD_ID));
+        }
+        return result;
+    }
+    
     public Uri addCategoryToTrain(Uri uri, ContentValues values) {
         dbHelper.fillTrainingData(dbHelper.getWritableDatabase(), values.getAsInteger(VocabularyMetaData.CATEGOTY_ID));
         return null;
     }
 
-    private void addWordToTrainings(long wordId) {
+    private int addWordToTrainings(long wordId) {
         String where = TrainingMetaData.WORD_ID + " =? AND " + TrainingMetaData.TYPE + " =?";
 
         Cursor cursor = dbHelper.getReadableDatabase().query(
                 TrainingMetaData.TABLE_NAME, new String[] { TrainingMetaData._ID }, where,
                 new String[] { Long.toString(wordId), Integer.toString(TrainingMetaData.Type.ForeignWordTranslation.getId())}, null, null, null);
         if (cursor.moveToFirst()) {
-            return;
+            return 0;
         }
         
         for (Type type: TrainingMetaData.Type.values()) {
             addWordToTraining(wordId, type.getId());
         }
+        return 1;
     }
 
     private void addWordToTraining(long wordId, int trainingId) {

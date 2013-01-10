@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Vocabulary Trainer</string>
     
-    <string name="confirmation_dialog">Are you sure?</string>
+    <string name="confirmation_dialog">Are you sure you want to add words?</string>
     <string name="caption_save">Save</string>
     
     <!-- Main activity -->
@@ -90,6 +90,7 @@
     <string name="categories_title">Categories</string>
     
     <string name="c_mi_add_all_to_study">Add all to study</string>
+    <string name="c_mi_select_words_to_study">Select words to study</string>
     <string name="c_toast_words_added">Words were added to the vocabulary</string>
     
     <string name="cat_clothes_title">Clothes</string>
@@ -924,7 +925,7 @@
         <item>scorching;палючий</item>
         <item>sleet;дощ зі снігом</item>
         <item>smoggy;задимлений</item>
-        <item>snow;снег</item>
+        <item>snow;сніг</item>
         <item>snowdrift;сніговий завал</item>
         <item>snowfall;снігопад</item>
         <item>snowflake;сніжинка</item>

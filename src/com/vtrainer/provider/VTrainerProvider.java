@@ -103,6 +103,16 @@ public class VTrainerProvider extends ContentProvider {
             return null;
         }
     }
+    
+    public int bulkInsert(Uri uri, ContentValues[] values) {
+        switch (uriMatcher.match(uri)) {
+        case TRAINING_WORD_URI_INDICATOR:
+            return vtrainerDatabase.addWordsToTrain(uri, values);
+        default:
+            Logger.error(TAG, "Unknown URI " + uri, getContext());
+            return 0;
+        }
+    }
   
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
