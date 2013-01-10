@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:gravity="center_vertical"
         android:padding="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <TextView
         android:id="@+id/wt_progress"
@@ -35,25 +35,28 @@
             android:id="@+id/wt_word_translate_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:onClick="onRadioButtonClick"/>
         
         <RadioButton
             android:id="@+id/wt_word_translate_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClick"/>
+            android:onClick="onRadioButtonClick"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
         
         <RadioButton
             android:id="@+id/wt_word_translate_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:onClick="onRadioButtonClick"/>
             
-
         <RadioButton
             android:id="@+id/wt_word_translate_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:onClick="onRadioButtonClick"/>
     </RadioGroup>
 
