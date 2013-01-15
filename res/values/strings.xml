@@ -1021,4 +1021,92 @@
         <item>fail;провалитися (на єкзамені)</item>
         <item>examination;єкзамен</item>
     </string-array>
+	
+    <string-array name="cat_time_array">
+        <item>after;після</item>
+        <item>midnight;північ</item>
+        <item>april;квітень</item>
+        <item>at 5 o'clock;о 5 годині</item>
+        <item>at dawn;на світанку</item>
+        <item>at midnight;опівночі</item>
+        <item>at night;вночі</item>
+        <item>at noon;опівдні</item>
+        <item>at the moment;в даний момент</item>
+        <item>at weekends;на вихідних</item>
+        <item>august;серпень</item>
+        <item>autumn;осінь</item>
+        <item>by the time;до того часу</item>
+        <item>december;грудень</item>
+        <item>during;під час</item>
+        <item>equinox;рівнодення</item>
+        <item>every day;кожний день</item>
+        <item>month;місяць</item>
+        <item>every other day;через день</item>
+        <item>week;тиждень</item>
+        <item>year;рік</item>
+        <item>fall;осінь</item>
+        <item>february;лютий</item>
+        <item>frequently;часто</item>
+        <item>friday;пятниця</item>
+        <item>in;через</item>
+        <item>in autumn;восени</item>
+        <item>january;січень</item>
+        <item>may;травень</item>
+        <item>in spring;весной</item>
+        <item>in summer;літом</item>
+        <item>in the afternoon;вдень</item>
+        <item>in the evening;вечером</item>
+        <item>in the morning;ранком</item>
+        <item>in winter;зимой</item>
+        <item>january;січень</item>
+        <item>july;червень</item>
+        <item>june;липень</item>
+        <item>last;минулий</item>
+        <item>last month;минулого місяця</item>
+        <item>last week;на минулому тижні</item>
+        <item>last year;минулого року</item>
+        <item>march;березень</item>
+        <item>may;травень</item>
+        <item>monday;понеділок</item>
+        <item>never;інколи</item>
+        <item>november;листопад</item>
+        <item>now;тепер</item>
+        <item>october;жовтень</item>
+        <item>often;часто</item>
+        <item>on friday;в пятницю</item>
+        <item>on monday;в понеділок</item>
+        <item>on mondays;по понеделках</item>
+        <item>on saturday;в суботу</item>
+        <item>on sunday;в неділю</item>
+        <item>on weekdays;в будні дні</item>
+        <item>on weekends;по вихідних</item>
+        <item>once in a while;зрідка</item>
+        <item>rarely;рідко</item>
+        <item>regularly;регулярно</item>
+        <item>saturday;субота</item>
+        <item>september;вересень</item>
+        <item>sometimes;іноколи</item>
+        <item>soon;скоро</item>
+        <item>spring;весна</item>
+        <item>summer;літо</item>
+        <item>sunday;неділя</item>
+        <item>the day after tomorrow;післязавтра</item>
+        <item>the day before yesterday;післявчора</item>
+        <item>the other day;на днях</item>
+        <item>thursday;четвер</item>
+        <item>today;сьогодні</item>
+        <item>tomorrow;завтра</item>
+        <item>tonight;сьогодні вечером</item>
+        <item>tuesday;вівторок</item>
+        <item>twice;двічі</item>
+        <item>usually;зазвичай</item>
+        <item>wednesday;середа</item>
+        <item>weekend;вихідні</item>
+        <item>when;коли</item>
+        <item>winter;зима</item>
+        <item>2 years ago;2 роки назад</item>
+        <item>2 years later;через 2 роки</item>
+        <item>yesterday;вчора</item>
+        <item>seldom;рідко</item>
+    </string-array>
 </resources>
