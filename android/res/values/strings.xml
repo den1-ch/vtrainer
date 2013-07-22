@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vocabulary Trainer</string>
+    
+    <string name="confirmation_dialog">Are you sure you want to add words?</string>
+    <string name="caption_save">Save</string>
+    
+    <!-- Main activity -->
+    
+    <string name="m_vocabulary">Vocabulary</string>
+    <string name="m_categories">Categories</string>
+    <string name="m_trainings">Trainings</string>
+    <string name="m_library">Library</string>
+    <string name="m_settings">Settings</string>
+
+    <!-- Preference -->
+    
+    <string name="p_target_language">Languages</string>
+    <string name="p_select_target_language">Select target language</string>
+    
+    <!-- Vocabulary activity -->
+
+    <string name="vocabulary_title">Vocabulary</string>
+    
+    <string name="v_mi_add_new_word">Add new..</string>
+    
+    <string-array name="test_vocabulary_array">
+        <item>Oksana;Оксана</item>
+        <item>soon;незабаром</item>
+        <item>Hew year;новий рік</item>
+        <item>good morning;добрий ранок</item>
+        <item>good;добрий</item>
+        <item>morning;ранок</item>
+        <item>new;новий</item>
+        <item>year;рік</item>
+    </string-array>
+    
+    <string-array name="vocabulary_array">
+        <item>seatbelt;ремінь безпеки</item>
+        <item>ticket;квиток</item>
+        <item>gate;вихід (на посадку)</item>
+        <item>security;контроль безпеки</item>
+        <item>passport;паспорт</item>
+        <item>turbulence;турбулентність</item>
+        <item>connecting flight;політ із пересадками</item>
+        <item>to land;приземляти</item>
+        <item>helicopter;вертоліт</item>
+        <item>check-in desk;стіл реєстрації</item>
+        <item>hand luggage;ручна поклажа</item>
+        <item>baggage;багаж</item>
+        <item>boarding card;посадковий талон</item>
+        <item>arrivals;прибуття</item>
+        <item>departures;відправлення</item>
+        <item>runway;злітно-посадочна смуга</item>
+        <item>flight attendant;бортпровідник</item>
+        <item>pilot;пілот</item>
+        <item>aisle seat;місце біля проходу</item>
+        <item>window seat;місце біля вікна</item>
+        <item>take-off;зліт</item>
+    </string-array>
+    
+    <!-- "Add new  -->
+    
+    <string name="an_title">New word</string>
+    <string name="an_hint_foreign_word">foreign word</string>
+    <string name="an_hint_translation_word">translation word</string>
+    
+    <!-- Warning messages -->
+    
+    <string name="requered_field_is_empty">Some data is empty</string>
+    
+    <!-- Trainings activity -->
+
+    <string name="trainings_title">Trainings</string>
+
+    <string name="t_word_translate_1">Ukr to En</string>
+    <string name="t_word_translate_2">En to Ukr</string>
+    
+    <!-- Training word translate activity -->
+
+    <string name="wt_hint_button">Hint</string>
+    <string name="wt_next_button">Next</string>
+    <string name="wt_know_button">Know</string>
+    
+    <string name="wt_translateWord">Translate Word</string>
+    
+    <string name="no_word_for_training">No words for study</string>
+    
+    <!-- Training statistic -->
+ 
+    <string name="dlg_tr_stats_correct_answer_count_caption">Correct answers: </string>
+    <string name="dlg_tr_stats_wrong_answer_count_caption">Wrong answers: </string>
+    
+    <!-- Categories -->
+    
+    <string name="categories_title">Categories</string>
+    
+    <string name="c_mi_add_all_to_study">Add all to study</string>
+    <string name="c_mi_select_words_to_study">Select words to study</string>
+    <string name="c_toast_words_added">Words were added to the vocabulary</string>
+    
+    <string name="cat_clothes_title">Clothes</string>
+    <string name="cat_traits_title">Traits</string>
+    <string name="cat_sport_title">Sport</string>
+    <string name="cat_weather_title">Weather</string>
+    <string name="cat_work_title">Work</string>
+    <string name="cat_study_title">Study</string>
+    
+    <string-array name="cat_clothes_array">
+        <item>belt;ремінь</item>
+        <item>blouse;блуза</item>
+        <item>cardigan;кардиган</item>
+        <item>dress;cукня</item>
+        <item>gloves;рукавички</item>
+        <item>jacket;куртка</item>
+        <item>jeans;джинси</item>
+        <item>jumper;перемичка</item>
+        <item>overcoat;пальто</item>
+        <item>pullover;пуловер</item>
+        <item>raincoat;плащ</item>
+        <item>scarf;шарф</item>
+        <item>shirt;сорочка</item>
+        <item>t-shirt;футболка</item>
+        <item>tie;краватка </item>
+        <item>skirt;спідниця</item>
+        <item>mini-skirt;міні-спідниця</item>
+        <item>shorts;шорти</item>
+        <item>socks;шкарпетки</item>
+        <item>suit;костюм</item>
+        <item>sweater;светр</item>
+        <item>trousers;брюки</item>
+        <item>jogging suit;спортивний костюм</item>
+        <item>tracksuit;спортивний костюм</item>
+        <item>bikini;бікіні</item>
+        <item>swimming trunks;плавки</item>
+        <item>boots;черевики</item>
+        <item>sandals;сандалі</item>
+        <item>slippers;тапки</item>
+        <item>shoes;взуття</item>
+        <item>sneakers;кросівки</item>
+        <item>bra;бюстгальтер</item>
+        <item>knickers;дамські панталони</item>
+        <item>panties;трусики</item>
+        <item>pants;брюки</item>
+        <item>tights;колготки</item>
+        <item>vest;жилет</item>
+        <item>hat;капелюх</item>
+        <item>helmet;шолом</item>
+        <item>cotton;бавовна</item>
+        <item>denim;джинси</item>
+        <item>leather;шкіра</item>
+        <item>linen;білизна</item>
+        <item>rubber;гумовий</item>
+        <item>silk;шовк</item>
+        <item>suede;замша</item>
+        <item>wool;вовна</item>
+        <item>woolen;шерстяній</item>
+        <item>plastic;пластик</item>
+        <item>nylon;нейлон</item>
+        <item>polyester;поліестер</item>
+        <item>fashion;мода</item>
+        <item>fashionable;модний</item>
+        <item>trend;тенденція</item>
+        <item>trendy;модний</item>
+        <item>unfashionable;немодний</item>
+        <item>flowery;квітчастий</item>
+        <item>patterned;візерунковий</item>
+        <item>spot;пляма</item>
+        <item>spotted;плямистий</item>
+        <item>stripe;смуга</item>
+        <item>striped;смугастий</item>
+        <item>contact lenses;контактні лінзи</item>
+        <item>earrings;сережки</item>
+        <item>glasses;окуляри</item>
+        <item>jewelry;ювелірні вироби</item>
+        <item>ring;кільце</item>
+    </string-array>
+    
+    <string-array name="cat_traits_array">
+        <item>absent-minded;розсіяний</item>
+        <item>active;активний</item>
+        <item>adventurous;авантюрний</item>
+        <item>affable;привітний</item>
+        <item>affectionate;ніжний</item>
+        <item>afraid;боязливий</item>
+        <item>aggressive;агресивний</item>
+        <item>ambitious;честолюбний</item>
+        <item>amiable;люб`язний</item>
+        <item>angry;сердитий</item>
+        <item>animated;анімаційний</item>
+        <item>annoyed;набридливий</item>
+        <item>anxious;тривожний</item>
+        <item>appreciative;вдячний</item>
+        <item>arrogant;зарозумілий</item>
+        <item>attentive;уважний</item>
+        <item>austere;строгий</item>
+        <item>awkward;незграбний</item>
+        <item>babyish;дитячий</item>
+        <item>bad;поганий</item>
+        <item>bashful;сором`язливий</item>
+        <item>bewildered;спантеличений</item>
+        <item>blase;пересичений</item>
+        <item>blowhard;хвалько</item>
+        <item>boastful;хвалькуватий</item>
+        <item>bold;сміливий</item>
+        <item>boorish;невихований</item>
+        <item>bored;нудьгуючий</item>
+        <item>bossy;шишкуватий</item>
+        <item>brainy;розумний</item>
+        <item>brave;сміливий</item>
+        <item>bright;яскравий</item>
+        <item>brilliant;блискучий</item>
+        <item>brutish;жорстокий</item>
+        <item>busy;зайнятий</item>
+        <item>calm;спокійний</item>
+        <item>candid;щирий</item>
+        <item>capable;здатний</item>
+        <item>carefree;безтурботний</item>
+        <item>careful;обережний</item>
+        <item>careless;недбалий</item>
+        <item>cautious;обережний</item>
+        <item>changeable;змінний</item>
+        <item>charismatic;харизматичний</item>
+        <item>charming;чарівний</item>
+        <item>cheerful;веселий</item>
+        <item>civilised;цивілізований</item>
+        <item>clever;розумний</item>
+        <item>clumsy;незграбний</item>
+        <item>coarse;грубий</item>
+        <item>cold-hearted;безсердечний</item>
+        <item>communicative;комунікативний</item>
+        <item>compassionate;жалісливий</item>
+        <item>competent;компетентний</item>
+        <item>complacent;самовдоволений</item>
+        <item>conceited;марнославний</item>
+        <item>concerned;стурбований</item>
+        <item>confident;впевнений</item>
+        <item>confused;збентежений</item>
+        <item>conscientious;добросовісний</item>
+        <item>considerate;тактичний</item>
+        <item>consistent;послідовний</item>
+        <item>contented;задоволений</item>
+        <item>cooperative;кооперативний</item>
+        <item>courageous;сміливий</item>
+        <item>cowardly;боягузливий</item>
+        <item>crafty;хитрий</item>
+        <item>creative;творчий</item>
+        <item>critical;критичний</item>
+        <item>cross;перетинатися</item>
+        <item>cruel;жорстокий</item>
+        <item>cultured;культурний</item>
+        <item>curious;цікавий</item>
+        <item>dangerous;небезпечний</item>
+        <item>daring;сміливий</item>
+        <item>dauntless;безстрашний</item>
+        <item>decisive;вирішальний</item>
+        <item>deferential;шанобливий</item>
+        <item>demanding;вимогливий</item>
+        <item>dependable;надійний</item>
+        <item>depressed;подавлений</item>
+        <item>desiccated;висушений</item>
+        <item>despondent;подавлений</item>
+        <item>devoted;присвячений</item>
+        <item>diligent;старанний</item>
+        <item>disaffected;незадоволений</item>
+        <item>disagreeable;неприємний</item>
+        <item>discerning;проникливий</item>
+        <item>discontented;незадоволений</item>
+        <item>discouraged;збентежений</item>
+        <item>discreet;стриманий</item>
+        <item>dishonest;нечесний</item>
+        <item>disillusioned;розчарувавшись</item>
+        <item>disloyal;нелояльний</item>
+        <item>dismayed;стривожений</item>
+        <item>disorganized;дезорганізований</item>
+        <item>disparaging;зневажливий</item>
+        <item>dissatisfied;незадоволений</item>
+        <item>distressed;проблемний</item>
+        <item>domineering;владний</item>
+        <item>doubtful;сумнівний</item>
+        <item>dreamer;мрійник</item>
+        <item>dreamy;мрійливий</item>
+        <item>dull;тупий</item>
+        <item>dutiful;покірний</item>
+        <item>eager;нетерплячий</item>
+        <item>easygoing;спокійний</item>
+        <item>efficient;ефективний</item>
+        <item>eloquent;красномовний</item>
+        <item>embarrassed;збентежений</item>
+        <item>encouraging;заохочення</item>
+        <item>energetic;енергійний</item>
+        <item>enthusiastic;захоплений</item>
+        <item>ethical;етичний</item>
+        <item>evil;злий</item>
+        <item>exacting;вимогливий</item>
+        <item>excessive;надмірний</item>
+        <item>excitable;збудливий</item>
+        <item>excited;збуджений</item>
+        <item>expert;експерт</item>
+        <item>exuberant;буйний</item>
+        <item>facetious;жартівливий</item>
+        <item>fair;справедливий</item>
+        <item>faithful;вірний</item>
+        <item>faithless;віроломний</item>
+        <item>fanciful;химерний</item>
+        <item>fearful;страшний</item>
+        <item>fearless;безстрашний</item>
+        <item>ferocious;лютий</item>
+        <item>fidgety;верткий</item>
+        <item>fierce;жорстокий</item>
+        <item>finicky;манірний</item>
+        <item>flexible;гнучкий</item>
+        <item>foolish;дурний</item>
+        <item>forgetful;забудькуватий</item>
+        <item>forgiving;усепрощаючий</item>
+        <item>formal;формальний</item>
+        <item>fortunate;удачливий</item>
+        <item>friendly;дружній</item>
+        <item>frightened;переляканий</item>
+        <item>frustrated;розчарований</item>
+        <item>fun loving;веселий</item>
+        <item>funny;смішний</item>
+        <item>furious;розлючений</item>
+        <item>fussy;метушливий</item>
+        <item>garrulous;балакучий</item>
+        <item>generous;щедрий</item>
+        <item>gentle;ніжний</item>
+        <item>giddy;легковажний</item>
+        <item>glamorous;чарівний</item>
+        <item>gloomy;похмурий</item>
+        <item>glum;похмурий</item>
+        <item>good;добрий</item>
+        <item>graceful;граціозний</item>
+        <item>greedy;жадібний</item>
+        <item>grouchy;буркотливий</item>
+        <item>grumpy;сварливий</item>
+        <item>guilty;винний</item>
+        <item>gullible;легковірний</item>
+        <item>handsome;красивий</item>
+        <item>happy;щасливий</item>
+        <item>hard-working;працьовитий</item>
+        <item>hardy;витривалий</item>
+        <item>harsh;суворий</item>
+        <item>hateful;ненависний</item>
+        <item>haughty;гордовитий</item>
+        <item>healthy;здоровий</item>
+        <item>helpful;корисний</item>
+        <item>hesitant;нерішучий</item>
+        <item>honest;чесний</item>
+        <item>hopeful;надіється</item>
+        <item>hopeless;безнадійний</item>
+        <item>hospitable;гостинний</item>
+        <item>hot-tempered;запальний</item>
+        <item>humble;скромний</item>
+        <item>humorous;гумористичний</item>
+        <item>ignorant;неосвічений</item>
+        <item>ill-bred;невихований</item>
+        <item>immaculate;бездоганний</item>
+        <item>immature;незрілий</item>
+        <item>impartial;неупереджений</item>
+        <item>impatient;нетерплячий</item>
+        <item>impolite;нечемний</item>
+        <item>impudent;зухвалий</item>
+        <item>impulsive;імпульсивний</item>
+        <item>inactive;неактивний</item>
+        <item>inconsiderate;необдуманий</item>
+        <item>inconsistent;несумісний</item>
+        <item>indecisive;нерішучий</item>
+        <item>independent;незалежний</item>
+        <item>indiscriminate;безладний</item>
+        <item>indolent;лінивий</item>
+        <item>industrious;працьовитий</item>
+        <item>inefficient;неефективний</item>
+        <item>inimitable;неповторний</item>
+        <item>innocent;невинний</item>
+        <item>insecure;небезпечний</item>
+        <item>insincere;нещирий</item>
+        <item>insistent;наполегливий</item>
+        <item>insolent;нахабний</item>
+        <item>intelligent;розумний</item>
+        <item>intolerant;нетерпимий</item>
+        <item>intrepid;безстрашний</item>
+        <item>inventive;винахідливий</item>
+        <item>jealous;ревнивий</item>
+        <item>jolly;веселий</item>
+        <item>jovial;веселий</item>
+        <item>joyful;радісний</item>
+        <item>keen;гострий</item>
+        <item>kind;добрий</item>
+        <item>lackadaisical;млявий</item>
+        <item>languid;томний</item>
+        <item>lazy;лінивий</item>
+        <item>leader;лідер</item>
+        <item>liar;брехун</item>
+        <item>licentious;розпущений</item>
+        <item>light-hearted;безтурботний</item>
+        <item>limited;обмежений</item>
+        <item>lively;живий</item>
+        <item>logical;логічний</item>
+        <item>lonely;самотній</item>
+        <item>loquacious;говіркий</item>
+        <item>lovable;привабливий</item>
+        <item>loves challenge;любить виклики</item>
+        <item>loving;люблячий</item>
+        <item>loyal;лояльний</item>
+        <item>lucky;удачливий</item>
+        <item>malicious;зловмисний</item>
+        <item>mannerly;ввічливий</item>
+        <item>mature;зрілий</item>
+        <item>meek;лагідний</item>
+        <item>merciful;милосердний</item>
+        <item>messy;безладний</item>
+        <item>meticulous;прискіпливий</item>
+        <item>mischievous;пустотливий</item>
+        <item>miserable;нещасний</item>
+        <item>moody;похмурий</item>
+        <item>mysterious;таємничий</item>
+        <item>naive;наївний</item>
+        <item>naughty;неслухняний</item>
+        <item>neat;охайний</item>
+        <item>negligent;недбалий</item>
+        <item>nervous;нервовий</item>
+        <item>no purpose;немає мети</item>
+        <item>noisy;галасливий</item>
+        <item>not trustworthy;не заслуговує довіри</item>
+        <item>obedient;слухняний</item>
+        <item>obese;огрядний</item>
+        <item>obliging;послужливий</item>
+        <item>open;відкритий</item>
+        <item>optimistic;оптимістичний</item>
+        <item>outspoken;відвертий</item>
+        <item>patient;спокійний</item>
+        <item>patriotic;патріотичний</item>
+        <item>peaceful;мирний</item>
+        <item>persistent;стійкий</item>
+        <item>persuasive;переконливий</item>
+        <item>perverse;збочений</item>
+        <item>pessimistic;песимістичний</item>
+        <item>picky;прискіпливий</item>
+        <item>pitiful;жалюгідний</item>
+        <item>playful;грайливий</item>
+        <item>pleasant;приємний</item>
+        <item>pleasing;приємний</item>
+        <item>polite;ввічливий</item>
+        <item>poor;бідний</item>
+        <item>popular;популярний</item>
+        <item>positive;позитивний</item>
+        <item>precise;точний</item>
+        <item>prim;манірний</item>
+        <item>primitive;примітивний</item>
+        <item>proper;належний</item>
+        <item>proud;гордий</item>
+        <item>prudent;розсудливий</item>
+        <item>punctual;пунктуальний</item>
+        <item>purposeful;цілеспрямований</item>
+        <item>quarrelsome;сварливий</item>
+        <item>quick-tempered;запальний</item>
+        <item>quiet;тихий</item>
+        <item>rational;раціональний</item>
+        <item>reasonable;розумний</item>
+        <item>reckless;безрозсудний</item>
+        <item>relaxed;невимушений</item>
+        <item>reliable;надійний</item>
+        <item>religious;релігійний</item>
+        <item>repugnant;огидний</item>
+        <item>repulsive;відштовхуючий</item>
+        <item>resourceful;винахідливий</item>
+        <item>respectful;шанобливий</item>
+        <item>responsible;відповідальний</item>
+        <item>restless;неспокійний</item>
+        <item>rich;багатий</item>
+        <item>rigid;жорсткий</item>
+        <item>rough;грубий</item>
+        <item>rowdy;дебошир</item>
+        <item>rude;грубий</item>
+        <item>ruthless;нещадний</item>
+        <item>sad;сумний</item>
+        <item>safe;безпечний</item>
+        <item>satisfied;задоволений</item>
+        <item>scared;переляканий</item>
+        <item>scatty;малахольний</item>
+        <item>scheming;підступний</item>
+        <item>scruffy;неохайний</item>
+        <item>secretive;потайливий</item>
+        <item>secure;безпечний</item>
+        <item>self-centered;егоцентричний</item>
+        <item>self-confident;самовпевнений</item>
+        <item>selfish;егоїстичний</item>
+        <item>sensitive;чутливий</item>
+        <item>sentimental;сентиментальний</item>
+        <item>serious;серйозний</item>
+        <item>sharp-witted;дотепний</item>
+        <item>shiftless;безпорадний</item>
+        <item>shrewd;проникливий</item>
+        <item>shy;сором`язливий</item>
+        <item>silly;дурний</item>
+        <item>simple;простий</item>
+        <item>simple-minded;простодушний</item>
+        <item>sincere;щирий</item>
+        <item>skillful;майстерний</item>
+        <item>sly;хитрий</item>
+        <item>smart;розумний</item>
+        <item>sneaky;підлий</item>
+        <item>soft-hearted;м`якосердий</item>
+        <item>solitary;відокремлений</item>
+        <item>spendthrift;мот</item>
+        <item>spoiled;зіпсований</item>
+        <item>stingy;скупий</item>
+        <item>strange;дивний</item>
+        <item>strict;строгий</item>
+        <item>strong;сильний</item>
+        <item>stubborn;упертий</item>
+        <item>studious;старанний</item>
+        <item>submissive;покірний</item>
+        <item>successful;успішний</item>
+        <item>supportive;підтримуюча</item>
+        <item>suspicious;підозрілий</item>
+        <item>sweet;солодке</item>
+        <item>tactful;тактичний</item>
+        <item>tactless;безтактний</item>
+        <item>talented;талановитий</item>
+        <item>talkative;балакучий</item>
+        <item>tall;високий</item>
+        <item>tardy;запізнілий</item>
+        <item>temperate;помірний</item>
+        <item>thankful;вдячний</item>
+        <item>thorough;ретельний</item>
+        <item>thoughtful;замислений</item>
+        <item>thoughtless;необдуманий</item>
+        <item>thrifty;ощадливий</item>
+        <item>thrilled;схвильований</item>
+        <item>timid;боязкий</item>
+        <item>tired;втомлений</item>
+        <item>tireless;невпинний</item>
+        <item>tolerant;терпимий</item>
+        <item>touchy;обідчівий</item>
+        <item>tough;жорсткий</item>
+        <item>trusting;довірливий</item>
+        <item>trustworthy;заслуговуючий довіри</item>
+        <item>truthful;правдивий</item>
+        <item>ugly;потворний</item>
+        <item>unconcerned;байдужий</item>
+        <item>uncoordinated;неузгоджений</item>
+        <item>undependable;ненадійний</item>
+        <item>understanding;розуміючий</item>
+        <item>unfriendly;недружній</item>
+        <item>ungrateful;невдячний</item>
+        <item>unhappy;нещасний</item>
+        <item>unkind;недобрий</item>
+        <item>unmerciful;немилосердний</item>
+        <item>unselfish;безкорисливий</item>
+        <item>unsuitable;невідповідний</item>
+        <item>upset;розстроєний</item>
+        <item>useful;корисний</item>
+        <item>violent;насильницький</item>
+        <item>virtuous;доброчесний</item>
+        <item>weak;слабкий</item>
+        <item>wicked;злий</item>
+        <item>wild;дикий</item>
+        <item>wise;мудрий</item>
+        <item>wishy-washy;невиразний</item>
+        <item>withdrawn;вилучений</item>
+        <item>witty;дотепний</item>
+        <item>worried;схвильований</item>
+        <item>young;молодий</item>
+    </string-array>
+
+    <string-array name="cat_sport_array">
+        <item>aerobics;аеробіка</item>
+        <item>archer;лучник</item>
+        <item>archery;стрільба з лука</item>
+        <item>arena;арена</item>
+        <item>arrow;стріла</item>
+        <item>athlete;спортсмен</item>
+        <item>athletics;атлетика</item>
+        <item>badminton;бадмінтон</item>
+        <item>ball;м`яч</item>
+        <item>baseball;бейсбол</item>
+        <item>basketball;баскетбол</item>
+        <item>bat;біта</item>
+        <item>baton;кийок</item>
+        <item>biathlon;біатлон</item>
+        <item>bicycle;велосипед</item>
+        <item>bicycling;їзда на велосипеді</item>
+        <item>bike;велосипед</item>
+        <item>biking;велосипедах</item>
+        <item>billiards;більярд</item>
+        <item>bobsleigh;бобслей</item>
+        <item>boomerang;бумеранг</item>
+        <item>bowling;боулінг</item>
+        <item>boxer;боксер</item>
+        <item>boxing;бокс</item>
+        <item>bronze medal;бронзова медаль</item>
+        <item>canoe;каное</item>
+        <item>canoeing;веслування</item>
+        <item>catch;зловити</item>
+        <item>champion;чемпіон</item>
+        <item>championship;чемпіонат</item>
+        <item>club;клуб</item>
+        <item>coach;тренер</item>
+        <item>compete;конкурувати</item>
+        <item>competition;конкуренція</item>
+        <item>crew;команда</item>
+        <item>cricket;крикет</item>
+        <item>croquet;крокет</item>
+        <item>cue;кий</item>
+        <item>curling;керлінг</item>
+        <item>cyclist;велосипедист</item>
+        <item>dart;дартс</item>
+        <item>dartboard;мішень для дротиків</item>
+        <item>decathlon;десятиборство</item>
+        <item>defense;захист</item>
+        <item>dive;занурення</item>
+        <item>diver;водолаз</item>
+        <item>diving;дайвінг</item>
+        <item>epee;шпага</item>
+        <item>equipment;обладнання</item>
+        <item>field;поле</item>
+        <item>figure skating;фігурне катання</item>
+        <item>fitness;фітнес</item>
+        <item>football;футбол</item>
+        <item>free throw;штрафний кидок</item>
+        <item>frisbee;фрісбі</item>
+        <item>game;гра</item>
+        <item>gear;передача</item>
+        <item>goal;гол</item>
+        <item>goalie;воротар</item>
+        <item>gold medal;золота медаль</item>
+        <item>golf;гольф</item>
+        <item>golfer;гравець у гольф</item>
+        <item>gym;гімнастичний зал</item>
+        <item>gymnast;гімнаст</item>
+        <item>hammer throw;метання молота</item>
+        <item>handball;гандбол</item>
+        <item>hang gliding;дельтапланеризм</item>
+        <item>hardball;бейсбол</item>
+        <item>helmet;шолом</item>
+        <item>high jump;стрибок у висоту</item>
+        <item>hockey;хокей</item>
+        <item>home team;команда господарів поля</item>
+        <item>hoop;обруч</item>
+        <item>ice rink;каток</item>
+        <item>ice skates;ковзани</item>
+        <item>inning;подача</item>
+        <item>javelin;дротик</item>
+        <item>jog;бігати підтюпцем</item>
+        <item>judo;дзюдо</item>
+        <item>jump;стрибати</item>
+        <item>jump rope;скакалка</item>
+        <item>karate;карате</item>
+        <item>kayak;каяк</item>
+        <item>kneepads;наколінники</item>
+        <item>league;ліга</item>
+        <item>long jump;стрибки в довжину</item>
+        <item>loose;програти</item>
+        <item>loser;той хто програв</item>
+        <item>major league;вища ліга</item>
+        <item>martial arts;бойові мистецтва</item>
+        <item>mat;мат</item>
+        <item>medal;медаль</item>
+        <item>minor league;нижча ліга</item>
+        <item>orienteering;спортивне орієнтування</item>
+        <item>paddle;весло</item>
+        <item>paintball;пейнтбол</item>
+        <item>ping pong;пінг-понг</item>
+        <item>pitch;крок</item>
+        <item>play;грати</item>
+        <item>player;гравець</item>
+        <item>playoffs;плей-офф</item>
+        <item>pole vault;стрибок з жердиною</item>
+        <item>polo;поло</item>
+        <item>pool;басейн</item>
+        <item>puck;шайба</item>
+        <item>race;гонки</item>
+        <item>racer;гонщик</item>
+        <item>racket;ракетка</item>
+        <item>racquetball;бадмінтон</item>
+        <item>rafting;рафтинг</item>
+        <item>referee;суддя</item>
+        <item>riding;верхова їзда</item>
+        <item>rink;каток</item>
+        <item>rock climbing;скелелазіння</item>
+        <item>roller skates;роликові ковзани</item>
+        <item>roller skating;катання на роликах</item>
+        <item>rower;весляр</item>
+        <item>rowing;веслування</item>
+        <item>rugby;регбі</item>
+        <item>run;бігти</item>
+        <item>runner;бігун</item>
+        <item>sailing;вітрильний спорт</item>
+        <item>score;рахунок</item>
+        <item>scoreboard;табло</item>
+        <item>shot put;штовхання ядра</item>
+        <item>silver medal;срібна медаль</item>
+        <item>skate;кататися на ковзанах</item>
+        <item>skating rink;ковзанка</item>
+        <item>ski;лижі</item>
+        <item>skier;лижник</item>
+        <item>skiing;катання на лижах</item>
+        <item>slalom;слалом</item>
+        <item>sled;санки</item>
+        <item>sledding;катання на санях</item>
+        <item>snowboard;сноуборд</item>
+        <item>snowshoeing;снігоступи</item>
+        <item>soccer;футбол</item>
+        <item>sport;спорт</item>
+        <item>sportsmanship;спортивну майстерність</item>
+        <item>squash;сквош</item>
+        <item>stadium;стадіон</item>
+        <item>strike;удар</item>
+        <item>stroke;хід</item>
+        <item>surfer;серфер</item>
+        <item>surfing;серфінг</item>
+        <item>swim;плавати</item>
+        <item>swimmer;плавець</item>
+        <item>swimming;плавання</item>
+        <item>synchronized swimming;синхронне плавання</item>
+        <item>table tennis;настільний теніс</item>
+        <item>team;команда</item>
+        <item>teammate;товариш по команді</item>
+        <item>tennis;теніс</item>
+        <item>throw;кидати</item>
+        <item>toboggan;сани</item>
+        <item>track and field;легка атлетика</item>
+        <item>trampoline;батут</item>
+        <item>tug of war;перетягування каната</item>
+        <item>umpire;суддя</item>
+        <item>unicycle;одноколісному велосипеді</item>
+        <item>unicyclist;unicyclist</item>
+        <item>visiting team;команда гостей</item>
+        <item>volley ball;волейбол</item>
+        <item>walk;ходити</item>
+        <item>walking;ходьба</item>
+        <item>water polo;водне поло</item>
+        <item>waterskiing;водні лижі</item>
+        <item>weightlifter;штангіст</item>
+        <item>weightlifting;важка атлетика</item>
+        <item>wetsuit;гідрокостюм</item>
+        <item>win;перемогти</item>
+        <item>winner;переможець</item>
+        <item>winning;перемога</item>
+        <item>wrestler;борець</item>
+        <item>wrestling;боротьба</item>
+    </string-array>
+	
+     <string-array name="cat_work_array">
+        <item>accountant;бухгалтер</item>
+        <item>actor;актор</item>
+        <item>actress;акторка</item>
+        <item>architect;архітектор</item>
+        <item>art;мистецтво</item>
+        <item>artist;художник</item>
+        <item>assistant;помічник</item>
+        <item>astronaut;астронавт</item>
+        <item>baker;пекар</item>
+        <item>barman;бармен</item>
+        <item>bonus;премія</item>
+        <item>builder;будівельник</item>
+        <item>businessman;бізнесмен</item>
+        <item>businesswoman;бізнесвумен</item>
+        <item>butcher;мясник</item>
+        <item>cameraman;кінооператор/фотооператор</item>
+        <item>career;карєра</item>
+        <item>carpenter;столяр</item>
+        <item>chef;повар</item>
+        <item>civil servant;державний службовець</item>
+        <item>commute to work;їздити на работу в місто</item>
+        <item>computer operator;оператор ПК</item>
+        <item>contract;контракт</item>
+        <item>copy paper;копіювальний папір</item>
+        <item>curriculum vitae;резюме</item>
+        <item>dancer;танцор</item>
+        <item>dentist;дантист</item>
+        <item>designer;дизайнер</item>
+        <item>director;директор</item>
+        <item>doctor;лікар</item>
+        <item>drama;драма</item>
+        <item>driver;водій</item>
+        <item>dustman;сміттяр</item>
+        <item>economics;экономіка</item>
+        <item>economist;экономіст</item>
+        <item>editor;редактор</item>
+        <item>educator;педагог</item>
+        <item>electrician;электрик</item>
+        <item>employ;намати</item>
+        <item>employer;работодавець</item>
+        <item>engineer;інженер</item>
+        <item>executive;керівник</item>
+        <item>farm;ферма</item>
+        <item>farmer;фермер</item>
+        <item>film director;режисер</item>
+        <item>financial aid;фінансова допомога</item>
+        <item>fire;звільняти</item>
+        <item>fisherman;рибак</item>
+        <item>fishmonger;торговець рибою</item>
+        <item>flight attendant;стюардеса</item>
+        <item>garbage collector;сміттяр</item>
+        <item>get a promotion;отримати підвищення по службі</item>
+        <item>get fired;бути звільненим</item>
+        <item>give a presentation;показати презентацію</item>
+        <item>go home;піти додому</item>
+        <item>go on a business trip;поїхати в ділову поїздку</item>
+        <item>go on vacation;піти в відпустку</item>
+        <item>go out to lunch;піти на обід</item>
+        <item>go to a meeting;піти на зустріч</item>
+        <item>go to work;ходити на работу</item>
+        <item>grant;грант</item>
+        <item>hairdresser;перукар</item>
+        <item>head teacher;директор</item>
+        <item>hire;наймати</item>
+        <item>income;дохід</item>
+        <item>interview;співбесіда</item>
+        <item>jeweller;ювелір</item>
+        <item>journalist;журналіст</item>
+        <item>discipline;дисципліна</item>
+        <item>lawyer;адвокат</item>
+        <item>leader;лідер</item>
+        <item>look for a job;шукати работу</item>
+        <item>manager;менеджер</item>
+        <item>maternity leave;відпустка по вагітності</item>
+        <item>medical insurance;медичне страхування</item>
+        <item>meet with a client;зустрітись с клієнтом</item>
+        <item>miner;шахтар</item>
+        <item>music;музика</item>
+        <item>musician;музикант</item>
+        <item>nurse;медсестра</item>
+        <item>overtime pay;понаднормова оплата</item>
+        <item>painter;художник</item>
+        <item>personal assistant;особистий секретар</item>
+        <item>personnel;персонал</item>
+        <item>photographer;фотограф</item>
+        <item>pilot;пілот</item>
+        <item>plumber;водопровідник</item>
+        <item>police officer;поліцейський</item>
+        <item>politician;політик</item>
+        <item>presenter;ведучий (програми)</item>
+        <item>promotion;підвищення в карєрі</item>
+        <item>psychology;психологія</item>
+        <item>qualification;квалификация</item>
+        <item>qualified;кваліфікований</item>
+        <item>quit;звільнитись</item>
+        <item>receptionist;секретар (в закладі)</item>
+        <item>retire;йти в відставку</item>
+        <item>sailor;моряк</item>
+        <item>salary;заробітня плата</item>
+        <item>salesman;продавець</item>
+        <item>secretary;секретар</item>
+        <item>send a fax;відправити факс</item>
+        <item>shop assistant;продавець</item>
+        <item>sick leave;лікарняний</item>
+        <item>soldier;солдат</item>
+        <item>staff;штат</item>
+        <item>steward;стюард</item>
+        <item>tailor;кравець</item>
+        <item>take a day off;взяти відгул</item>
+        <item>taxes;податки</item>
+        <item>telephone operator;телефонний оператор</item>
+        <item>travel agent;турагент</item>
+        <item>unemployed;безробітний</item>
+        <item>vet;ветеринар</item>
+        <item>wages;заработня плата</item>
+        <item>work agreement;трудовий договір</item>
+        <item>work at a bank;працювати в банку</item>
+        <item>work at a factory;працювати на фабриці</item>
+        <item>work at a hospital;працювати в лікарні</item>
+        <item>work full time;працювати на повну ставку</item>
+        <item>work in an office;працювати в офісі</item>
+        <item>work part time;працювати неповний робочий день</item>
+        <item>write a report;написати звіт</item>
+        <item>writer;письменник</item>
+        <item>judge;судя</item>
+        <item>surgeon;хірург</item>
+        <item>waiter;офіціант</item>
+        <item>analyze;досліджувати</item>
+        <item>ascertain;встановлювати</item>
+        <item>attend;виконувати накази</item>
+        <item>audit;ревізія</item>
+        <item>contribute;співробітничати</item>
+        <item>determine;обчислювати</item>
+        <item>resolve;приймати рішення</item>
+        <item>develop;розвивати</item>
+        <item>define;визначати</item>
+        <item>evolve;розгортати (плани)</item>
+        <item>establish;встановлювати</item>
+        <item>estimate;оцінювати</item>
+        <item>manufacture;виробництво</item>
+        <item>produce;виробляти</item>
+    </string-array>
+	
+    <string-array name="cat_weather_array">
+        <item>air pressure;атмосферний тиск</item>
+        <item>bad;поганий</item>
+        <item>breezy;свіжий</item>
+        <item>climate;клімат</item>
+        <item>cold wind;холодний вітер</item>
+        <item>cool;прохолодний</item>
+        <item>damp;вологість</item>
+        <item>deep snow;глубокий сніг</item>
+        <item>deluge;повінь</item>
+        <item>dew;роса</item>
+        <item>downpour;ливень</item>
+        <item>drizzle;моросіти</item>
+        <item>drizzly;моросящий</item>
+        <item>dry;сухий</item>
+        <item>dust storm;піщана буря</item>
+        <item>fog;туман</item>
+        <item>foggy;туманний</item>
+        <item>frost;мороз</item>
+        <item>frosty;морозний</item>
+        <item>hail;град</item>
+        <item>hailstone;градина</item>
+        <item>heavy rain;проливний дощ</item>
+        <item>heavy snow;сильний снігопад</item>
+        <item>hot;жарко</item>
+        <item>humidity;вологість</item>
+        <item>icy;льодяний</item>
+        <item>indian summer;бабине літо</item>
+        <item>lovely;прекрасний</item>
+        <item>mist;легкий туман</item>
+        <item>overcast;хмарність</item>
+        <item>pleasant;приємний</item>
+        <item>pouring rain;проливний дощ</item>
+        <item>precipitation;осадки</item>
+        <item>rain;дощ</item>
+        <item>rainbow;веселка</item>
+        <item>raindrop;капля дощу</item>
+        <item>rainfall;злива</item>
+        <item>rainstorm;злива з ураганом</item>
+        <item>rainy;дощовий</item>
+        <item>sandstorm;пісчана буря</item>
+        <item>scorching;палючий</item>
+        <item>sleet;дощ зі снігом</item>
+        <item>smoggy;задимлений</item>
+        <item>snow;сніг</item>
+        <item>snowdrift;сніговий завал</item>
+        <item>snowfall;снігопад</item>
+        <item>snowflake;сніжинка</item>
+        <item>snowstorm;хурделиця</item>
+        <item>snowy;сніговий</item>
+        <item>storm;шторм</item>
+        <item>sun;солнце</item>
+        <item>sunlight;сонячне світло</item>
+        <item>sunny;сонячно</item>
+        <item>temperature;температура</item>
+        <item>thick fog;густий туман</item>
+        <item>thunder;грім</item>
+        <item>thunderbolt;удар блискавка</item>
+        <item>thunderclap;удар грому</item>
+        <item>thunderstorm;гроза</item>
+        <item>thundery;грозовий</item>
+        <item>unpleasant;неприємний</item>
+        <item>warm;теплий</item>
+        <item>warm wind;теплий вітер</item>
+        <item>wet;дощова погода</item>
+        <item>wet snow;мокрий сніг</item>
+        <item>whirlwind;смерч</item>
+        <item>windless;безвітрянний</item>
+        <item>windy;вітряно</item>
+        <item>blizzard;хуртовина</item>
+        <item>calm;спокійний</item>
+        <item>cloud;хмара</item>
+        <item>cloudy;хмарно</item>
+        <item>humid;вологий</item>
+        <item>hurricane;ураган</item>
+        <item>lightning;блискавка</item>
+        <item>smog;смог</item>
+        <item>stormy;штормовий</item>
+        <item>wind;вітер</item>
+    </string-array>
+	
+    <string-array name="cat_study_array">
+        <item>retake;перездавати экзамен</item>
+        <item>pupil;учень</item>
+        <item>revise;повторяти (перед єкзаменом)</item>
+        <item>geography;географія</item>
+        <item>chemistry;хімія</item>
+        <item>paper clip;скрепка для паперу</item>
+        <item>pass;сдать єкзамен</item>
+        <item>pen;ручка</item>
+        <item>pencil;олівець</item>
+        <item>lecturer;лектор</item>
+        <item>minor subjects;не профільні предмети</item>
+        <item>notebook;ноутбук</item>
+        <item>notepad;блокнот</item>
+        <item>major subjects;профільні предмети</item>
+        <item>make copies;зробити копії</item>
+        <item>institute;інститут</item>
+        <item>literature;література</item>
+        <item>mathematics;математика</item>
+        <item>pencil sharpener;точилка для олівців</item>
+        <item>course;курс</item>
+        <item>physical education;фізкультура</item>
+        <item>physics;фізика</item>
+        <item>degree;степінь</item>
+        <item>eraser;резинка</item>
+        <item>education;навчання</item>
+        <item>algebra;алгебра</item>
+        <item>biology;біологія</item>
+        <item>botany;ботаніка</item>
+        <item>ballpoint pen;кулькова ручка</item>
+        <item>computer science;інформатика</item>
+        <item>geology;геологія</item>
+        <item>geometry;геометрія</item>
+        <item>pay;плата</item>
+        <item>student;студент</item>
+        <item>history;історія</item>
+        <item>homework;домашня работа</item>
+        <item>sociology;соціологія</item>
+        <item>science;наука</item>
+        <item>scientist;учений</item>
+        <item>scotch tape;скотч</item>
+        <item>stapler;степлер</item>
+        <item>sticker;стікер</item>
+        <item>student loan;студентська позика</item>
+        <item>study for;учитись на</item>
+        <item>college;колледж</item>
+        <item>graduate;випускник</item>
+        <item>university;університет</item>
+        <item>take an exam;здавати єкзамен</item>
+        <item>tuition fees;плата за навчання</item>
+        <item>test;тест</item>
+        <item>teacher;учитель</item>
+        <item>graduate school;аспірантура</item>
+        <item>folder;папка</item>
+        <item>fountain pen;авторучка</item>
+        <item>examiner;єкзаменатор</item>
+        <item>fail;провалитися (на єкзамені)</item>
+        <item>examination;єкзамен</item>
+    </string-array>
+	
+    <string-array name="cat_time_array">
+        <item>after;після</item>
+        <item>midnight;північ</item>
+        <item>april;квітень</item>
+        <item>at dawn;на світанку</item>
+        <item>at midnight;опівночі</item>
+        <item>at night;вночі</item>
+        <item>at noon;опівдні</item>
+        <item>at the moment;в даний момент</item>
+        <item>at weekends;на вихідних</item>
+        <item>august;серпень</item>
+        <item>autumn;осінь</item>
+        <item>by the time;до того часу</item>
+        <item>december;грудень</item>
+        <item>during;під час</item>
+        <item>equinox;рівнодення</item>
+        <item>every day;кожний день</item>
+        <item>month;місяць</item>
+        <item>every other day;через день</item>
+        <item>week;тиждень</item>
+        <item>year;рік</item>
+        <item>fall;осінь</item>
+        <item>february;лютий</item>
+        <item>frequently;часто</item>
+        <item>friday;пятниця</item>
+        <item>in;через</item>
+        <item>in autumn;восени</item>
+        <item>january;січень</item>
+        <item>may;травень</item>
+        <item>in spring;весной</item>
+        <item>in summer;літом</item>
+        <item>in the afternoon;вдень</item>
+        <item>in the evening;вечером</item>
+        <item>in the morning;ранком</item>
+        <item>in winter;зимой</item>
+        <item>january;січень</item>
+        <item>july;червень</item>
+        <item>june;липень</item>
+        <item>last;минулий</item>
+        <item>last month;минулого місяця</item>
+        <item>last week;на минулому тижні</item>
+        <item>last year;минулого року</item>
+        <item>march;березень</item>
+        <item>may;травень</item>
+        <item>monday;понеділок</item>
+        <item>never;інколи</item>
+        <item>november;листопад</item>
+        <item>now;тепер</item>
+        <item>october;жовтень</item>
+        <item>often;часто</item>
+        <item>on friday;в пятницю</item>
+        <item>on monday;в понеділок</item>
+        <item>on mondays;по понеделках</item>
+        <item>on saturday;в суботу</item>
+        <item>on sunday;в неділю</item>
+        <item>on weekdays;в будні дні</item>
+        <item>on weekends;по вихідних</item>
+        <item>once in a while;зрідка</item>
+        <item>rarely;рідко</item>
+        <item>regularly;регулярно</item>
+        <item>saturday;субота</item>
+        <item>september;вересень</item>
+        <item>sometimes;іноколи</item>
+        <item>soon;скоро</item>
+        <item>spring;весна</item>
+        <item>summer;літо</item>
+        <item>sunday;неділя</item>
+        <item>the day after tomorrow;післязавтра</item>
+        <item>the day before yesterday;післявчора</item>
+        <item>the other day;на днях</item>
+        <item>thursday;четвер</item>
+        <item>today;сьогодні</item>
+        <item>tomorrow;завтра</item>
+        <item>tonight;сьогодні вечером</item>
+        <item>tuesday;вівторок</item>
+        <item>twice;двічі</item>
+        <item>usually;зазвичай</item>
+        <item>wednesday;середа</item>
+        <item>weekend;вихідні</item>
+        <item>when;коли</item>
+        <item>winter;зима</item>
+        <item>2 years ago;2 роки назад</item>
+        <item>2 years later;через 2 роки</item>
+        <item>yesterday;вчора</item>
+        <item>seldom;рідко</item>
+    </string-array>
+</resources>

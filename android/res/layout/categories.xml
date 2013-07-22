@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@array/cat_clothes_array"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/cat_clothes_title" 
+        android:onClick="onClick" />
+    <Button
+        android:id="@array/cat_traits_array"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cat_traits_title"
+        android:onClick="onClick" />
+    <Button
+        android:id="@array/cat_sport_array"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cat_sport_title"
+        android:onClick="onClick" />
+    <Button
+        android:id="@array/cat_weather_array"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cat_weather_title"
+        android:onClick="onClick" />
+    <Button
+        android:id="@array/cat_work_array"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cat_work_title"
+        android:onClick="onClick" />
+    <Button
+        android:id="@array/cat_study_array"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cat_study_title"
+        android:onClick="onClick" />
+</LinearLayout>
