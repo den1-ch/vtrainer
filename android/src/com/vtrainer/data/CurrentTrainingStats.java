@@ -12,16 +12,12 @@ public class CurrentTrainingStats {
     private int avaliableToStudyWordCount;
     
     public CurrentTrainingStats() {
-        init();
-    }
-
-    private void init() {
         dateStart = Calendar.getInstance().getTime();
         
         correctAnswerCount = 0;
         wrongAnswerCount = 0;
     }
-    
+
     public int getCorrectAnswerCount() {
         return correctAnswerCount;
     }
