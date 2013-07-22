@@ -1,4 +1,4 @@
-package com.vtrainer.activity;
+package com.vtrainer.activity.training;
 
 import java.util.Random;
 

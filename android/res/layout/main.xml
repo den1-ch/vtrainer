@@ -11,7 +11,6 @@
         android:layout_marginTop="5dp"
         android:text="@string/m_vocabulary"
         android:onClick="onClick" />
-
     <Button
         android:id="@+id/categories"
         android:layout_width="fill_parent"
@@ -29,4 +28,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/m_library" />
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/m_settings" 
+        android:onClick="onClick" />
 </LinearLayout>

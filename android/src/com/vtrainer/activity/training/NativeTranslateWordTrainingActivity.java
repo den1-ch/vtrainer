@@ -1,4 +1,4 @@
-package com.vtrainer.activity;
+package com.vtrainer.activity.training;
 
 import com.vtrainer.provider.TrainingMetaData;
 import com.vtrainer.provider.VocabularyMetaData;

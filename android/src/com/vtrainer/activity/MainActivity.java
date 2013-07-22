@@ -43,6 +43,9 @@ public class MainActivity extends Activity implements OnClickListener {
         case R.id.categories:
             intent = new Intent(this, CategoriesActivity.class);
             break;
+        case R.id.settings:
+            intent = new Intent(this, SettingsActivity.class);
+            break;
         default:
             return;
         }

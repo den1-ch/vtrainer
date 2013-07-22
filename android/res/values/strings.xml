@@ -11,7 +11,13 @@
     <string name="m_categories">Categories</string>
     <string name="m_trainings">Trainings</string>
     <string name="m_library">Library</string>
+    <string name="m_settings">Settings</string>
 
+    <!-- Preference -->
+    
+    <string name="p_target_language">Languages</string>
+    <string name="p_select_target_language">Select target language</string>
+    
     <!-- Vocabulary activity -->
 
     <string name="vocabulary_title">Vocabulary</string>

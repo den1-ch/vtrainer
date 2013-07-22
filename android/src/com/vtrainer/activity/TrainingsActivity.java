@@ -1,6 +1,8 @@
 package com.vtrainer.activity;
 
 import com.vtrainer.R;
+import com.vtrainer.activity.training.ForeignTranslateWordTrainingActivity;
+import com.vtrainer.activity.training.NativeTranslateWordTrainingActivity;
 
 import android.app.Activity;
 import android.content.Intent;

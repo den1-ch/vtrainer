@@ -34,13 +34,13 @@
         </activity>
         
         <activity
-            android:name=".activity.ForeignTranslateWordTrainingActivity"
+            android:name=".activity.training.ForeignTranslateWordTrainingActivity"
             android:label="@string/wt_translateWord" 
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".activity.NativeTranslateWordTrainingActivity"
+            android:name=".activity.training.NativeTranslateWordTrainingActivity"
             android:label="@string/wt_translateWord" 
             android:screenOrientation="portrait">
         </activity>        
@@ -53,6 +53,11 @@
         
         <activity
             android:name=".activity.CategoryActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name=".activity.SettingsActivity"
             android:screenOrientation="portrait">
         </activity>
         
