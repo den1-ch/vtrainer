@@ -7,6 +7,6 @@
         android:entryValues="@array/p_targetLangugesValues"
         android:key="targetLanguage"
         android:summary="@string/p_select_target_language"
-        android:title="@string/p_target_language" />
+        android:title="@string/p_target_language"/>
 
 </PreferenceScreen>
