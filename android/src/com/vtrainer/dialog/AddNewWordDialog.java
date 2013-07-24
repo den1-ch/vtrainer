@@ -2,7 +2,7 @@ package com.vtrainer.dialog;
 
 import com.vtrainer.R;
 import com.vtrainer.provider.VocabularyMetaData;
-import com.vtrainer.utils.Constans;
+import com.vtrainer.utils.Constants;
 
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -74,7 +74,7 @@ public class AddNewWordDialog extends Dialog {
   
   private boolean checkFieldData(EditText field) {
     if (field.getText().toString().equals("")) {
-      field.setHintTextColor(Constans.REQUERED_FIELD_HINT_COLOR);
+      field.setHintTextColor(Constants.REQUERED_FIELD_HINT_COLOR);
       return false;
     }
     return true;
@@ -82,9 +82,9 @@ public class AddNewWordDialog extends Dialog {
   
   private void init() {
     etForeingWord.getText().clear();
-    etForeingWord.setHintTextColor(Constans.FIELD_HINT_COLOR);
+    etForeingWord.setHintTextColor(Constants.FIELD_HINT_COLOR);
     etTranslationWord.getText().clear();
-    etTranslationWord.setHintTextColor(Constans.FIELD_HINT_COLOR);
+    etTranslationWord.setHintTextColor(Constants.FIELD_HINT_COLOR);
     
     etForeingWord.requestFocus();
   }
