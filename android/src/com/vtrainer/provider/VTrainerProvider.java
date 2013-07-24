@@ -1,6 +1,7 @@
 package com.vtrainer.provider;
 
 import com.vtrainer.logging.Logger;
+import com.vtrainer.utils.Constants;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -20,6 +21,7 @@ public class VTrainerProvider extends ContentProvider {
 //    private static final int TRAINING_COUNT_URI_INDICATOR = 4;
     private static final int ADD_CAT_TO_TRAINING_URI_INDICATOR = 5;
     private static final int MAIN_VOCABULARY_URI_INDICATOR = 6;
+    private static final int TARGET_LANGUAGE_CHANGED_URI_INDICATOR = 7;
   
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -31,6 +33,8 @@ public class VTrainerProvider extends ContentProvider {
 
         uriMatcher.addURI(VTrainerDatabase.AUTHORITY, VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_PATH, ADD_CAT_TO_TRAINING_URI_INDICATOR);
         uriMatcher.addURI(VTrainerDatabase.AUTHORITY, VocabularyMetaData.MAIN_VOCABULARY_PATH, MAIN_VOCABULARY_URI_INDICATOR);
+
+        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, Constants.TARGET_LANGUAGE_CHANGED_PATH, TARGET_LANGUAGE_CHANGED_URI_INDICATOR);
     }
 
     private VTrainerDatabase vtrainerDatabase;
@@ -121,6 +125,9 @@ public class VTrainerProvider extends ContentProvider {
         case TRAINING_WORD_URI_INDICATOR:
             count = vtrainerDatabase.updateTrainingData(values, selection, selectionArgs);
             break;
+        case TARGET_LANGUAGE_CHANGED_URI_INDICATOR:
+            vtrainerDatabase.updateStaticContent();
+            return 0;
         default:
             Logger.error(TAG, "Unknown URI " + uri, getContext());
             return 0;

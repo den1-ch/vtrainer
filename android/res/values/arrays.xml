@@ -8,4 +8,25 @@
         <item>eng</item>
         <item>it</item>
     </string-array>
+    
+    <string-array name="test_vocabulary_array_it">
+        <item>possedere [(-iedo, -eggo) vt];володіти, мати</item>
+        <item>dati;дані, свідчення</item>
+        <item>fornire [(-isco) vt];доставляти, завершувати</item>
+        <item>stesso;однаковий, сам, такий само</item>
+        <item>affermare [(-ermo) vt];стверджувати, підтверджувати, закріпляти</item>
+        <item>selva [f];ліс, (перен.) велика кількість, замітки (цитати)</item>
+        <item>oscuro;темний</item>
+        <item>sommo [agg];вищий, (перен.) верховний</item>
+        <item>sommo [m];вершина, найвищий ступінь</item>
+        <item>arco [(pl -chi) m];дуга, вигин, арка, лук, (перен.) скрипаль, (перен.) період часу</item>
+        <item>consentire [(-ento); vi (a)];погоджуватися, допускати, визнавати</item>
+        <item>consentire [ (-ento); vt];погоджуватися, допускати, визнавати</item>
+        <item>risalire [vt];підніматися знову</item>
+        <item>risalire [vi (a, e)];підніматися, підвищуватися, згадувати, (розм.) вибитися в люди</item>
+        <item>convivio [m];бенкет</item>
+        <item>naturare;творити</item>
+        <item>meta [f];половина, середина</item>
+        <item>cioe [avv];тобто</item>
+    </string-array>
 </resources>
