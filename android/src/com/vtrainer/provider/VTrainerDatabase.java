@@ -1,21 +1,20 @@
 package com.vtrainer.provider;
 
-import com.vtrainer.R;
+import com.vtrainer.helper.ImportContentHelper;
 import com.vtrainer.logging.Logger;
 import com.vtrainer.provider.TrainingMetaData.Type;
-import com.vtrainer.utils.Constans;
+import com.vtrainer.utils.Constants;
+import com.vtrainer.utils.Settings;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.DatabaseUtils.InsertHelper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.text.TextUtils;
 
 public class VTrainerDatabase {
     private static final String TAG = "VTrainerDB";
@@ -28,23 +27,22 @@ public class VTrainerDatabase {
     public static final int DATABASE_VERSION = 17;
 
     private DatabaseHelper dbHelper;
+    private ImportContentHelper importContentHelper;
 
-    private Context context;
- 
     public VTrainerDatabase(Context context) {
-        this.context = context;
         dbHelper = new DatabaseHelper(context);
+        importContentHelper = new ImportContentHelper(context);
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
-        private static final String WORD_DELIMITER = ";"; // TODO move
-
         private Context context;
-
+        private Settings settings;
+        
         public DatabaseHelper(Context context) {
-            super(context, DATABASE_NAME, null, Constans.IS_TEST_MODE ? DATABASE_VERSION * 10 : DATABASE_VERSION);
+            super(context, DATABASE_NAME, null, Constants.IS_TEST_MODE ? DATABASE_VERSION * 10 : DATABASE_VERSION);
 
             this.context = context;
+            settings = new Settings(context);
         }
 
         @Override
@@ -58,9 +56,6 @@ public class VTrainerDatabase {
                 db.execSQL(SQLBuilder.getTrainingTable());
                 Logger.debug(TAG, "Create table:" + StatisticMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getStatisticTable());
                 db.execSQL(SQLBuilder.getStatisticTable());
-
-                fillVocabularyStaticData(db);
-                fillCategoriesData(db); //TODO run it in separate thread
             } finally {
                 db.setLockingEnabled(true);
             }
@@ -76,52 +71,6 @@ public class VTrainerDatabase {
             db.execSQL("DROP TABLE IF EXISTS " + StatisticMetaData.TABLE_NAME);
             onCreate(db);
         }
-
-        private void fillVocabularyStaticData(SQLiteDatabase db) { //TODO update #3
-            Logger.debug(TAG, "Fill vocabulary static data.");
-            String[] vocabulary = context.getResources().getStringArray(Constans.IS_TEST_MODE ? R.array.test_vocabulary_array: R.array.vocabulary_array);
-            fillVocabularyData(db, vocabulary, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID, true);
-        }
-    
-        private void fillCategoriesData(SQLiteDatabase db) {
-            Logger.debug(TAG, "Fill categories static data.");
-
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_clothes_array), R.array.cat_clothes_array, false);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_traits_array), R.array.cat_traits_array, false);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_sport_array), R.array.cat_sport_array, false);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_weather_array), R.array.cat_weather_array, false);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_work_array), R.array.cat_work_array, false);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_study_array), R.array.cat_study_array, false);
-        }
-
-        private void fillVocabularyData(SQLiteDatabase db, String[] data, int categoryId, boolean isAddToTraining) {
-            InsertHelper insertHelper = new InsertHelper(db, VocabularyMetaData.TABLE_NAME);
-
-            int categoryIdIndex = insertHelper.getColumnIndex(VocabularyMetaData.CATEGOTY_ID);
-            int translationWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.TRANSLATION_WORD);
-            int foreignWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.FOREIGN_WORD);
-            for (int i = 0; i < data.length; i++) {
-                String[] words = TextUtils.split(data[i], WORD_DELIMITER);
-                
-                insertHelper.prepareForInsert();
-
-                insertHelper.bind(categoryIdIndex, categoryId);
-                insertHelper.bind(translationWordIndex, words[0]);
-                insertHelper.bind(foreignWordIndex, words[1]);
-
-                // Insert the row into the database.
-                insertHelper.execute();
-            }
-            if (isAddToTraining) {
-                fillTrainingData(db, categoryId);
-            }
-        }
-    
-        private void fillTrainingData(SQLiteDatabase db, int categoryId) {
-            for (Type type: TrainingMetaData.Type.values()) {
-                db.execSQL(SQLBuilder.getAddCategoryToTrainSQL(), new Object[] { type.getId(), categoryId });
-            }
-        }
     }
     
     public Uri addNewWord(Uri uri, ContentValues values) {
@@ -134,6 +83,7 @@ public class VTrainerDatabase {
         }
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        values.put(VocabularyMetaData.LANG_FLAG, dbHelper.settings.getTargetLanguage());
         long rowId = db.insert(VocabularyMetaData.TABLE_NAME, null, values);
 
         if (rowId > 0) {
@@ -142,7 +92,7 @@ public class VTrainerDatabase {
             Uri insertedUri = ContentUris.withAppendedId(
                     VocabularyMetaData.WORDS_URI, rowId);
 
-            context.getContentResolver().notifyChange(uri, null);
+            dbHelper.context.getContentResolver().notifyChange(uri, null);
 
             return insertedUri;
         }
@@ -158,7 +108,8 @@ public class VTrainerDatabase {
     }
     
     public Uri addCategoryToTrain(Uri uri, ContentValues values) {
-        dbHelper.fillTrainingData(dbHelper.getWritableDatabase(), values.getAsInteger(VocabularyMetaData.CATEGOTY_ID));
+        fillTrainingData(dbHelper.getWritableDatabase(), values.getAsInteger(VocabularyMetaData.CATEGOTY_ID));
+        
         return null;
     }
 
@@ -235,8 +186,23 @@ public class VTrainerDatabase {
 
         qb.appendWhere(TrainingMetaData.TYPE + "=" + trainingType + " AND "
                 + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.PROGRESS + " < " + TrainingMetaData.MAX_PROGRESS + " AND "
-                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - (Constans.IS_TEST_MODE ? 100: TrainingMetaData.TIME_PERIOD_TO_MEMORIZE_WORD)));
+                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - (Constants.IS_TEST_MODE ? 100: TrainingMetaData.TIME_PERIOD_TO_MEMORIZE_WORD)));
 
         return runQuery(projection, selection, selectionArgs, sortOrder, "1", qb);
+    }
+
+    public void updateStaticContent() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        
+        importContentHelper.fillVocabularyStaticData(db);
+        fillTrainingData(db, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
+
+        importContentHelper.fillCategoriesData(db); //TODO run it in separate thread
+    }
+    
+    private void fillTrainingData(SQLiteDatabase db, int categoryId) {
+        for (Type type: TrainingMetaData.Type.values()) {
+            db.execSQL(SQLBuilder.getAddCategoryToTrainSQL(), new Object[] { type.getId(), categoryId });
+        }
     }
 }
