@@ -8,14 +8,18 @@ public class SQLBuilder {
         sb.append(" ( \n");
         sb.append(VocabularyMetaData._ID);
         sb.append(" INTEGER PRIMARY KEY, \n");
+        sb.append(VocabularyMetaData.VOCABULARY_ID);
+        sb.append(" INTEGER NULL, \n");
         sb.append(VocabularyMetaData.CATEGOTY_ID);
         sb.append(" INTEGER NOT NULL, \n");
         sb.append(VocabularyMetaData.TRANSLATION_WORD);
-        sb.append(" VARCHAR(40) NOT NULL, \n");
+        sb.append(" VARCHAR(30) NOT NULL, \n");
         sb.append(VocabularyMetaData.FOREIGN_WORD);
-        sb.append(" VARCHAR(40) NOT NULL, \n");
+        sb.append(" VARCHAR(30) NOT NULL, \n");
         sb.append(VocabularyMetaData.DATE_CREATED);
         sb.append(" INTEGER NOT NULL DEFAULT current_timestamp, \n");
+        sb.append(VocabularyMetaData.LANG_FLAG);
+        sb.append(" VARCHAR(8) NOT NULL, \n");
         sb.append(VocabularyMetaData.PROGRESS);
         sb.append(" INTEGER NOT NULL DEFAULT 0);");
 

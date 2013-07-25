@@ -7,7 +7,7 @@ import com.vtrainer.data.MultipleChoiceAdapter;
 import com.vtrainer.logging.Logger;
 import com.vtrainer.provider.TrainingMetaData;
 import com.vtrainer.provider.VocabularyMetaData;
-import com.vtrainer.utils.Constans;
+import com.vtrainer.utils.Constants;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -44,7 +44,7 @@ public class CategoryActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         categoryId = getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_ID);
-        isMultiselectMode = getIntent().getExtras().getBoolean(Constans.SELECT_MODE);
+        isMultiselectMode = getIntent().getExtras().getBoolean(Constants.SELECT_MODE);
 
         setContentView(R.layout.vocabulary);
         setTitle(getIntent().getExtras().getCharSequence(VocabularyMetaData.CATEGOTY_NAME));
@@ -102,7 +102,7 @@ public class CategoryActivity extends Activity {
         Intent intent = new Intent(getBaseContext(), CategoryActivity.class);
         intent.putExtra(VocabularyMetaData.CATEGOTY_ID, categoryId);
         intent.putExtra(VocabularyMetaData.CATEGOTY_NAME, getTitle());
-        intent.putExtra(Constans.SELECT_MODE, true);
+        intent.putExtra(Constants.SELECT_MODE, true);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 
