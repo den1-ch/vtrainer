@@ -20,7 +20,7 @@ public class VTrainerProvider extends ContentProvider {
     private static final int TRAINING_WORD_URI_INDICATOR = 3;
 //    private static final int TRAINING_COUNT_URI_INDICATOR = 4;
     private static final int ADD_CAT_TO_TRAINING_URI_INDICATOR = 5;
-    private static final int MAIN_VOCABULARY_URI_INDICATOR = 6;
+    private static final int VOCABULARY_URI_INDICATOR = 6;
     private static final int TARGET_LANGUAGE_CHANGED_URI_INDICATOR = 7;
   
     static {
@@ -32,8 +32,9 @@ public class VTrainerProvider extends ContentProvider {
 //        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, TrainingMetaData.TABLE_NAME + "/count", TRAINING_COUNT_URI_INDICATOR);
 
         uriMatcher.addURI(VTrainerDatabase.AUTHORITY, VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_PATH, ADD_CAT_TO_TRAINING_URI_INDICATOR);
-        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, VocabularyMetaData.MAIN_VOCABULARY_PATH, MAIN_VOCABULARY_URI_INDICATOR);
 
+        uriMatcher.addURI(VTrainerDatabase.AUTHORITY, VocabularyMetaData.VOCABULARY_PATH + "/#", VOCABULARY_URI_INDICATOR);
+        
         uriMatcher.addURI(VTrainerDatabase.AUTHORITY, Constants.TARGET_LANGUAGE_CHANGED_PATH, TARGET_LANGUAGE_CHANGED_URI_INDICATOR);
     }
 
@@ -56,6 +57,7 @@ public class VTrainerProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         Cursor cursor = null;
+        Logger.debug(TAG, uri.toString());
         switch (uriMatcher.match(uri)) {
         case WORDS_URI_INDICATOR:
             cursor = vtrainerDatabase.getWords(projection, selection, selectionArgs, sortOrder, null);
@@ -66,11 +68,11 @@ public class VTrainerProvider extends ContentProvider {
         case TRAINING_WORD_URI_INDICATOR:
             cursor = vtrainerDatabase.getTrainingWord(uri.getPathSegments().get(1), projection, selection, selectionArgs, sortOrder);
             break;
+        case VOCABULARY_URI_INDICATOR:
+            cursor = vtrainerDatabase.getWords(uri.getPathSegments().get(1), projection);
+            break;
 //        case TRAINING_COUNT_URI_INDICATOR:
 //            return getCountWordAvalaibleToTraining(uri.getPathSegments().get(1));
-        case MAIN_VOCABULARY_URI_INDICATOR:
-            cursor = vtrainerDatabase.getMainWocabularyWords(projection, selection, selectionArgs, sortOrder);
-            break;
         default:
             String msg = "Unknown URI" + uri;
             Logger.error(TAG, msg, getContext());

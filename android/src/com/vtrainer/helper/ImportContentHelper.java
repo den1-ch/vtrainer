@@ -21,51 +21,63 @@ public class ImportContentHelper {
     private Context context;
     private Settings settings;
     private SharedPreferences sharedPreferences;
+    private SQLiteDatabase db;
     
-    public ImportContentHelper(Context context) {
+    public ImportContentHelper(Context context, SQLiteDatabase db) {
         this.context = context;
         this.settings = new Settings(context);
         
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        this.db = db;
     }
 
-    public void fillVocabularyStaticData(SQLiteDatabase db) { //TODO update #3
-        Logger.debug(TAG, "Fill vocabulary static data.");
-        if (settings.getTargetLanguage().equals(Settings.ENG_TARGET_LANGUAGE)) {
-            String[] vocabulary = context.getResources().getStringArray(Constants.IS_TEST_MODE ? R.array.test_vocabulary_array: R.array.vocabulary_array);
-            fillVocabularyData(db, vocabulary, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
-        } else if (settings.getTargetLanguage().equals(Settings.IT_TARGET_LANGUAGE)) {
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.test_vocabulary_array_it), VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
-        } else {
-            Logger.debug(TAG, "Static data for target language:" + settings.getTargetLanguage() + " not avaliable");
-        }           
+    public void fillVocabularyStaticData() { //TODO update #3
+        InsertHelper insertHelper = new InsertHelper(db, VocabularyMetaData.TABLE_NAME);
+        try {
+            Logger.debug(TAG, "Fill vocabulary static data.");
+            if (settings.getTargetLanguage().equals(Settings.ENG_TARGET_LANGUAGE)) {
+                String[] vocabulary = context.getResources().getStringArray(
+                    Constants.IS_TEST_MODE ? R.array.test_vocabulary_array : R.array.vocabulary_array);
+                fillVocabularyData(insertHelper, vocabulary, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
+            } else if (settings.getTargetLanguage().equals(Settings.IT_TARGET_LANGUAGE)) {
+                fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.test_vocabulary_array_it),
+                    VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
+            } else {
+                Logger.debug(TAG, "Static data for target language:" + settings.getTargetLanguage() + " not avaliable");
+            }
+        } finally {
+            insertHelper.close();
+        }
     }
     
-    public void fillCategoriesData(SQLiteDatabase db) {
+    public void fillCategoriesData() {
         Logger.debug(TAG, "Fill categories static data.");
         if (!isDataAvaliable()) {
             return;
         }
         
-        if (settings.getTargetLanguage().equals(Settings.ENG_TARGET_LANGUAGE)) {
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_clothes_array), R.array.cat_clothes_array);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_traits_array), R.array.cat_traits_array);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_sport_array), R.array.cat_sport_array);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_weather_array), R.array.cat_weather_array);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_work_array), R.array.cat_work_array);
-            fillVocabularyData(db, context.getResources().getStringArray(R.array.cat_study_array), R.array.cat_study_array);
-        } else {
-            Logger.debug(TAG, "Data for target language:" + settings.getTargetLanguage() + " not avaliable");
+        InsertHelper insertHelper = new InsertHelper(db, VocabularyMetaData.TABLE_NAME);
+        try {
+            if (settings.getTargetLanguage().equals(Settings.ENG_TARGET_LANGUAGE)) {
+                fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_clothes_array), R.array.cat_clothes_array);
+                fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_traits_array), R.array.cat_traits_array);
+                fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_sport_array), R.array.cat_sport_array);
+                fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_weather_array), R.array.cat_weather_array);
+                fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_work_array), R.array.cat_work_array);
+                fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_study_array), R.array.cat_study_array);
+            } else {
+                Logger.debug(TAG, "Data for target language:" + settings.getTargetLanguage() + " not avaliable");
+            }
+        } finally {
+            Editor editor = sharedPreferences.edit();
+            editor.putBoolean(settings.getTargetLanguage(), false);
+            editor.commit();
+            insertHelper.close();
         }
-        
-        Editor editor = sharedPreferences.edit();
-        editor.putBoolean(settings.getTargetLanguage(), false);
-        editor.commit();
     }
 
-    private void fillVocabularyData(SQLiteDatabase db, String[] data, int categoryId) {
-        InsertHelper insertHelper = new InsertHelper(db, VocabularyMetaData.TABLE_NAME);
-
+    private void fillVocabularyData(InsertHelper insertHelper, String[] data, int categoryId) {
+        int vocabularyIdIndex = insertHelper.getColumnIndex(VocabularyMetaData.VOCABULARY_ID);
         int categoryIdIndex = insertHelper.getColumnIndex(VocabularyMetaData.CATEGOTY_ID);
         int translationWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.TRANSLATION_WORD);
         int foreignWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.FOREIGN_WORD);
@@ -80,6 +92,9 @@ public class ImportContentHelper {
             insertHelper.bind(translationWordIndex, words[0]);
             insertHelper.bind(foreignWordIndex, words[1]);
             insertHelper.bind(langFlagIndex, settings.getTargetLanguage());
+            if (categoryId == VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID) { //static main vocabulary
+                insertHelper.bind(vocabularyIdIndex, VocabularyMetaData.MAIN_VOCABULARY_ID);
+            }
 
             // Insert the row into the database.
             insertHelper.execute();
