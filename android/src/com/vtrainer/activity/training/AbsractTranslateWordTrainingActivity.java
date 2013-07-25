@@ -7,7 +7,7 @@ import com.vtrainer.data.CurrentTrainingStats;
 import com.vtrainer.dialog.TrainingStatsDialog;
 import com.vtrainer.provider.TrainingMetaData;
 import com.vtrainer.provider.VocabularyMetaData;
-import com.vtrainer.utils.Constans;
+import com.vtrainer.utils.Constants;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -147,7 +147,7 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
 
     private void reinitialize() {
         if (btnSelectedWord != null) {
-            btnSelectedWord.setTextColor(Constans.DEFAULT_COLOR);
+            btnSelectedWord.setTextColor(Constants.DEFAULT_COLOR);
             btnSelectedWord = null;
         }
 
@@ -155,7 +155,7 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         radioGroup.setClickable(true);
 
         for (RadioButton button : translateWords) {
-            button.setTextColor(Constans.DEFAULT_COLOR);
+            button.setTextColor(Constants.DEFAULT_COLOR);
         }
         isHintMode = false;
     }
@@ -165,8 +165,8 @@ public abstract class AbsractTranslateWordTrainingActivity extends Activity {
         if (!translateWords[corectWordAnswerPosition].isChecked()) {
             initHintMode();
 
-        	translateWords[corectWordAnswerPosition].setTextColor(Constans.RIGHT_ANSWER_COLOR);
-            btnSelectedWord.setTextColor(Constans.ERROR_COLOR);
+        	translateWords[corectWordAnswerPosition].setTextColor(Constants.RIGHT_ANSWER_COLOR);
+            btnSelectedWord.setTextColor(Constants.ERROR_COLOR);
 
             setTrainedWordProgress(-2);
                         
