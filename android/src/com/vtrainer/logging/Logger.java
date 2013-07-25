@@ -15,7 +15,6 @@ public class Logger {
   public static void error(String tag, String msg, Context ctx) {
     if (isDebugMode) {
       Log.e(tag, msg);
-      Alert.showAlert(msg, ctx);
     }
   }
 }

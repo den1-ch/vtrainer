@@ -12,6 +12,7 @@ import android.preference.PreferenceActivity;
 
 public class SettingsActivity extends PreferenceActivity {
     private static final String TARGET_LANGUAGE_PREFARENCE_KEY = "targetLanguage";
+    private static final Uri TARGET_LANGUAGE_CHANGED_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, Constants.TARGET_LANGUAGE_CHANGED_PATH);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,7 @@ public class SettingsActivity extends PreferenceActivity {
         ListPreference listPreference = (ListPreference) findPreference(TARGET_LANGUAGE_PREFARENCE_KEY);
         listPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Uri uri = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, Constants.TARGET_LANGUAGE_CHANGED_PATH);
-                getContentResolver().update(uri, null, null, null);
+                getContentResolver().update(TARGET_LANGUAGE_CHANGED_URI, null, null, new String[] {(String)newValue} );
                 
                 return true;
             }
