@@ -8,6 +8,8 @@ public class SQLBuilder {
         sb.append(" ( \n");
         sb.append(VocabularyMetaData._ID);
         sb.append(" INTEGER PRIMARY KEY, \n");
+        sb.append(VocabularyMetaData.VOCABULARY_ID);
+        sb.append(" INTEGER NULL, \n");
         sb.append(VocabularyMetaData.CATEGOTY_ID);
         sb.append(" INTEGER NOT NULL, \n");
         sb.append(VocabularyMetaData.TRANSLATION_WORD);

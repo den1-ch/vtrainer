@@ -9,6 +9,7 @@ import com.vtrainer.provider.VocabularyMetaData;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,10 +19,16 @@ public class VocabularyActivity extends ListActivity {
     private final int MENU_GROUP_ID = 1;
     
     private final int MENU_ITEM_ADD_NEW_WORD = 1;    
+    
+    private final Uri VOCABULARY_URI = Uri.withAppendedPath(VocabularyMetaData.VOCABULARY_URI, 
+        Integer.toString(VocabularyMetaData.MAIN_VOCABULARY_ID));
 
-    private final String[] COUNM_NAMES = new String[] { VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+    private final String[] COUNM_NAMES = new String[] { 
+        VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+    
     private final int[] VIEW_IDS = new int[] { R.id.foreign_word, R.id.translated_word };
-    private final String[] PROJECTION = new String[] { VocabularyMetaData.TABLE_NAME + "." + VocabularyMetaData._ID + " as _id", VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+    private final String[] PROJECTION = new String[] { 
+        VocabularyMetaData._ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
 
     private AddNewWordDialog dlgAddNewWord;
 
@@ -33,11 +40,16 @@ public class VocabularyActivity extends ListActivity {
     }
 
     private void updateData() {
-        Cursor cur = getContentResolver().query(VocabularyMetaData.MAIN_VOCABULARY_URI, PROJECTION, null, null, null);
+        Cursor cursor = getContentResolver().query(VOCABULARY_URI, PROJECTION, null, null, null);
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cur, COUNM_NAMES, VIEW_IDS);
-
-        setListAdapter(adapter);
+        SimpleCursorAdapter adapter = (SimpleCursorAdapter) getListAdapter();
+        if (adapter == null) {
+          adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cursor, COUNM_NAMES, VIEW_IDS);
+          setListAdapter(adapter);
+        } else {
+            adapter.getCursor().close();
+            adapter.changeCursor(cursor);
+        }
     }
   
     @Override
@@ -77,5 +89,4 @@ public class VocabularyActivity extends ListActivity {
         }
         dlgAddNewWord.show();
     }
-  
 }

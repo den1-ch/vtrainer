@@ -7,11 +7,11 @@ public class VocabularyMetaData implements BaseColumns {
   public static final String TABLE_NAME = "vocabulary";
   
   public static final String WORDS_PATH = TABLE_NAME;
-  public static final String MAIN_VOCABULARY_PATH = "mainVocabulary";
+  public static final String VOCABULARY_PATH = "mainVocabulary";
   public static final String PROPOSAL_WORDS_PATH = "proposalWords";
   public static final String ADD_CATEGORY_TO_TRAINING_PATH = "addCatToTrainings";
   
-  public static final Uri MAIN_VOCABULARY_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, MAIN_VOCABULARY_PATH);
+  public static final Uri VOCABULARY_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, VOCABULARY_PATH);
 
   public static final Uri WORDS_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, WORDS_PATH);
   public static final Uri PROPOSAL_WORDS_URI = Uri.withAppendedPath(VTrainerDatabase.BASE_URI, PROPOSAL_WORDS_PATH);
@@ -30,6 +30,8 @@ public class VocabularyMetaData implements BaseColumns {
   public static final String CATEGOTY_NAME    = "category_name"; // non db column
   
   public static final int INITIAL_PROGRESS = 0;
+  
+  public static final int MAIN_VOCABULARY_ID = 1;
   
   public static final int MAIN_VOCABULARY_CATEGORY_ID = 1;
   
