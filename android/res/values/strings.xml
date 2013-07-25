@@ -105,6 +105,8 @@
     <string name="cat_weather_title">Weather</string>
     <string name="cat_work_title">Work</string>
     <string name="cat_study_title">Study</string>
+    <string name="cat_body_title">Body</string>
+    <string name="cat_color_title">Color</string>
     
     <string-array name="cat_clothes_array">
         <item>belt;ремінь</item>

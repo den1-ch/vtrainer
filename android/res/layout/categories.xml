@@ -41,4 +41,16 @@
         android:layout_height="wrap_content"
         android:text="@string/cat_study_title"
         android:onClick="onClick" />
+    <Button
+        android:id="@array/cat_color_en"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cat_color_title"
+        android:onClick="onClick" />
+    <Button
+        android:id="@array/cat_body_en"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cat_body_title"
+        android:onClick="onClick" />
 </LinearLayout>
