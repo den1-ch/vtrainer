@@ -128,7 +128,7 @@ public class VTrainerProvider extends ContentProvider {
             count = vtrainerDatabase.updateTrainingData(values, selection, selectionArgs);
             break;
         case TARGET_LANGUAGE_CHANGED_URI_INDICATOR:
-            vtrainerDatabase.updateStaticContent();
+            vtrainerDatabase.updateStaticContent(selectionArgs[0]);
             return 0;
         default:
             Logger.error(TAG, "Unknown URI " + uri, getContext());

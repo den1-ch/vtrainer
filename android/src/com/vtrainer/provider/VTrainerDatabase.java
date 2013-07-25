@@ -24,7 +24,7 @@ public class VTrainerDatabase {
     public static final Uri BASE_URI = Uri.parse("content://" + AUTHORITY);
 
     public static final String DATABASE_NAME = "vtrainer.db";
-    public static final int DATABASE_VERSION = 18;
+    public static final int DATABASE_VERSION = 19;
 
     private DatabaseHelper dbHelper;
 
@@ -42,7 +42,7 @@ public class VTrainerDatabase {
 
             this.context = context;
             settings = new Settings(context);
-            importContentHelper = new ImportContentHelper(context, getWritableDatabase());
+            importContentHelper = new ImportContentHelper(context);
         }
 
         @Override
@@ -57,7 +57,7 @@ public class VTrainerDatabase {
                 Logger.debug(TAG, "Create table:" + StatisticMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getStatisticTable());
                 db.execSQL(SQLBuilder.getStatisticTable());
                 
-               // updateStaticContent();
+                updateStaticContent(db, settings.getTargetLanguage());
             } finally {
                 db.setLockingEnabled(true);
             }
@@ -74,15 +74,12 @@ public class VTrainerDatabase {
             onCreate(db);
         }
         
-        public void updateStaticContent() {
-            importContentHelper.fillVocabularyStaticData();
-            fillTrainingData(VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
-
-            importContentHelper.fillCategoriesData(); //TODO run it in separate thread
+        public void updateStaticContent(SQLiteDatabase db, String language) {
+            importContentHelper.fillVocabularyStaticData(db, language); //TODO run it in separate thread
+            fillTrainingData(db, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
         }
         
-        private void fillTrainingData(int categoryId) {
-            SQLiteDatabase db = getWritableDatabase();
+        private void fillTrainingData(SQLiteDatabase db, int categoryId) {
             for (Type type: TrainingMetaData.Type.values()) {
                 db.execSQL(SQLBuilder.getAddCategoryToTrainSQL(), new Object[] { type.getId(), categoryId });
             }
@@ -125,7 +122,7 @@ public class VTrainerDatabase {
     }
     
     public Uri addCategoryToTrain(Uri uri, ContentValues values) {
-        dbHelper.fillTrainingData(values.getAsInteger(VocabularyMetaData.CATEGOTY_ID));
+        dbHelper.fillTrainingData(dbHelper.getWritableDatabase(), values.getAsInteger(VocabularyMetaData.CATEGOTY_ID));
         
         return null;
     }
@@ -195,8 +192,8 @@ public class VTrainerDatabase {
     
     private void joinVocabulryToTraining(SQLiteQueryBuilder qb) {
         qb.setTables(VocabularyMetaData.TABLE_NAME + " INNER JOIN " + TrainingMetaData.TABLE_NAME + " ON ( "
-                + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.WORD_ID + " = " + VocabularyMetaData.TABLE_NAME
-                + "." + VocabularyMetaData._ID + " )");
+            + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.WORD_ID + " = " + VocabularyMetaData.TABLE_NAME
+            + "." + VocabularyMetaData._ID + " )");
     }
 
     public Cursor getTrainingWord(String trainingType, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
@@ -204,13 +201,15 @@ public class VTrainerDatabase {
         joinVocabulryToTraining(qb);
 
         qb.appendWhere(TrainingMetaData.TYPE + "=" + trainingType + " AND "
-                + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.PROGRESS + " < " + TrainingMetaData.MAX_PROGRESS + " AND "
-                + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - (Constants.IS_TEST_MODE ? 100: TrainingMetaData.TIME_PERIOD_TO_MEMORIZE_WORD)));
+            + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.PROGRESS + " < " + TrainingMetaData.MAX_PROGRESS + " AND "
+            + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - (Constants.IS_TEST_MODE ? 100: TrainingMetaData.TIME_PERIOD_TO_MEMORIZE_WORD)));
 
         return runQuery(projection, selection, selectionArgs, sortOrder, "1", qb);
     }
 
-    public void updateStaticContent() {
-        dbHelper.updateStaticContent();  
+    public void updateStaticContent(String language) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        dbHelper.updateStaticContent(db, language);  
+        db.close();
     }
 }
