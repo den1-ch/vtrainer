@@ -1,0 +1,15 @@
+syntax: glob
+*.class
+bin/classes.dex
+bin/resources.ap_
+bin/*
+.settings
+gen/com/vtrainer/BuildConfig.java
+gen/com/vtrainer/R.java
+vtrainerServer/project/target
+vtrainerServer/target
+vtrainerServer/logs
+vtrainerServer/project/project
+vtrainerServer/tmp
+vtrainerServer/dist
+vtrainerServer/.cache

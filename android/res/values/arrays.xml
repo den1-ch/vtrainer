@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="p_targetLanguges">
+        <item>English</item>
+        <item>Italian</item>
+    </string-array>
+    <string-array name="p_targetLangugesValues">
+        <item>eng</item>
+        <item>it</item>
+    </string-array>
+    
+    <!-- Categories -->
+    <string-array name="cat_color_en">
+        <item>amber;бурштиновий</item>
+        <item>aqua;морска хвиля</item>
+        <item>aquamarine;аквамарин</item>
+        <item>azure;лазурний</item>
+        <item>beige;бежевий</item>
+        <item>black;чёрный</item>
+        <item>blue;голубий</item>
+        <item>bronze;бронзовий</item>
+        <item>brown;коричневий</item>
+        <item>chocolate;шоколадний</item>
+        <item>copper;мідний</item>
+        <item>crimson;малиновий</item>
+        <item>emerald;смарагдовий</item>
+        <item>gold, golden;золотий</item>
+        <item>green;зелений</item>
+        <item>grey, gray;серий</item>
+        <item>indigo;індиго</item>
+        <item>khaki;хакі</item>
+        <item>lemon;лимонний</item>
+        <item>light green;салатовий</item>
+        <item>lilac;сиреневий</item>
+        <item>mazarine;темно-синій</item>
+        <item>olive;оливковий</item>
+        <item>orange;оранжевий</item>
+        <item>peach;персиковий</item>
+        <item>pink;розовий</item>
+        <item>purple, magenta;пурпурний</item>
+        <item>red;червоний</item>
+        <item>scarlet;алий</item>
+        <item>sienna;охра</item>
+        <item>silver, silvery;срібний</item>
+        <item>snow-white/ niveous;білосніжний</item>
+        <item>turquoise;бирюзовий</item>
+        <item>violet, purple;фиолетовий</item>
+        <item>white;білий</item>
+        <item>yellow;жовтий</item>
+    </string-array>
+    
+    <string-array name="cat_body_en">
+        <item> abdomen;черевна порожнина</item>
+        <item> ankle;кісточка</item>
+        <item> armpit;пахва</item>
+        <item> arteries;артерії</item>
+        <item> back;спина</item>
+        <item> backbone;хребет</item>
+        <item> belly, tummy;stomach;живіт</item>
+        <item> big toe;великий палець (на нозі)</item>
+        <item> bile / gall;жовч</item>
+        <item> bladder;сечовий міхур</item>
+        <item> blood;кров</item>
+        <item> bone;кістка</item>
+        <item> bone marrow;кістковий мозок</item>
+        <item> brain;мозок</item>
+        <item> buttocks;сідниці</item>
+        <item> calf;ікра (ноги)</item>
+        <item> cartilage;хрящ</item>
+        <item> cheek;щока</item>
+        <item> cheek bone;вилиця</item>
+        <item> chest, breast;bosom, bust;груди</item>
+        <item> chin;підборіддя</item>
+        <item> clap hands;плескати</item>
+        <item> collarbone;ключиця</item>
+        <item> ear;вухо</item>
+        <item> earlobe;мочка вуха</item>
+        <item> elbow;лікоть</item>
+        <item> embryo / germ / nucleus;зародок</item>
+        <item> esophagus;стравохід</item>
+        <item> eye;очей</item>
+        <item> eyebrow;брову</item>
+        <item> eyelash;вія</item>
+        <item> eyelid;повіку</item>
+        <item> face;особа</item>
+        <item> finger;палець (на руці)</item>
+        <item> finger nail;ніготь (на пальці руки)</item>
+        <item> fist;кулак</item>
+        <item> foot (feet);ступня (ступні)</item>
+        <item> forearm;передпліччя</item>
+        <item> forehead, brow;лоб</item>
+        <item> gallbladder;жовчний міхур</item>
+        <item> gland;гланди</item>
+        <item> groin;пах</item>
+        <item> hair;волосся</item>
+        <item> hand / left and right;рука (ліва, права)</item>
+        <item> head;голова</item>
+        <item> heart;серце</item>
+        <item> heel;пятка</item>
+        <item> hip-bone/pelvis;таз</item>
+        <item> hips, thigh;стегно</item>
+        <item> index finger;вказівний палець</item>
+        <item> iris;райдужна оболонка ока</item>
+        <item> jaw;щелепу</item>
+        <item> joint;суглоб</item>
+        <item> kidneys;нирки</item>
+        <item> knee;коліно</item>
+        <item> kneecap;колінна чашечка</item>
+        <item> knuckle;суглоб пальця</item>
+        <item> large intestine;товста кишка</item>
+        <item> larynx;гортань</item>
+        <item> leg;нога (від стегна до ступні)</item>
+        <item> lile duct;жовчний протік</item>
+        <item> lip;губа</item>
+        <item> little finger;мізинець (на руці)</item>
+        <item> little toe;мізинець (на нозі)</item>
+        <item> liver;печінка</item>
+        <item> lungs;легкі</item>
+        <item> lymph-gland;лімфовузол</item>
+        <item> lymphatic vessels;лімфатичні судини</item>
+        <item> middle finger;середній палець</item>
+        <item> moustache;вуса</item>
+        <item> mouth;рот</item>
+        <item> mucouse membrane;слизова оболонка</item>
+        <item> muscle;мускул</item>
+        <item> muscle;мускул, мяз</item>
+        <item> neck;шия</item>
+        <item> nod;кивати</item>
+        <item> nose;ніс</item>
+        <item> nostril;ніздря</item>
+        <item> palm;долоню</item>
+        <item> pancreas;підшлункова залоза</item>
+        <item> point;вказувати (пальцем)</item>
+        <item> punch;удар кулаком</item>
+        <item> pupil;зіницю</item>
+        <item> ring finger;безіменний палець</item>
+        <item> scar;шрам</item>
+        <item> shin;гомілку</item>
+        <item> shoulder;плече</item>
+        <item> sinew / tendon;жила, сухожилля</item>
+        <item> skin;шкіра</item>
+        <item> skull;череп</item>
+        <item> small intestine;тонка кишка</item>
+        <item> sperm / jims / scum / spunk;сперма</item>
+        <item> spinal cord;спинний мозок</item>
+        <item> stomach;шлунок</item>
+        <item> temple;скроню</item>
+        <item> throat;горло</item>
+        <item> thumb;великий палець (на руці)</item>
+        <item> toe;палець (на нозі)</item>
+        <item> toenail;ніготь (на пальці ноги)</item>
+        <item> tongue;мова</item>
+        <item> tooth (teeth);зуб (зуби)</item>
+        <item> veins;вени</item>
+        <item> vessel;посудину</item>
+        <item> waist;талія</item>
+        <item> windpipe;трахея</item>
+        <item> wrist;запястя</item>
+      </string-array>
+</resources>
