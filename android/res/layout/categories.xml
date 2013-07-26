@@ -53,4 +53,10 @@
         android:layout_height="wrap_content"
         android:text="@string/cat_body_title"
         android:onClick="onClick" />
+    <Button
+        android:id="@array/cat_transport_en"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cat_transport_title"
+        android:onClick="onClick" />
 </LinearLayout>

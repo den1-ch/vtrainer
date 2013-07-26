@@ -72,6 +72,7 @@ public class ImportContentHelper {
             fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_study_array), R.array.cat_study_array, language);
             fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_body_en), R.array.cat_body_en, language);
             fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_color_en), R.array.cat_color_en, language);
+            fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_transport_en), R.array.cat_transport_en, language);
         } else {
             Logger.debug(TAG, "Data for target language:" + language + " not avaliable");
         }
