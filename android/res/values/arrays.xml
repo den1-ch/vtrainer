@@ -273,4 +273,171 @@
         <item>water craft;судно, човен</item>
         <item>yacht;яхта</item>
     </string-array>
+
+    <string-array name="cat_animals_en">
+        <item>adder;гадюка</item>
+        <item>alligator;алігатор</item>
+        <item>american buffalo;бізон</item>
+        <item>anaconda;анаконда</item>
+        <item>antelope;антилопа</item>
+        <item>arctic fox;песець</item>
+        <item>ass;осел</item>
+        <item>aurochs;зубр</item>
+        <item>baboon;бабуїн</item>
+        <item>badger;борсук</item>
+        <item>bear;ведмідь</item>
+        <item>beaver;бобер</item>
+        <item>billy goat;козел</item>
+        <item>bison;бізон</item>
+        <item>boa;удав</item>
+        <item>boxer;боксер</item>
+        <item>buffalo;буйвол</item>
+        <item>bull;бик</item>
+        <item>bulldog;бульдог</item>
+        <item>calf;теля</item>
+        <item>camel;верблюд</item>
+        <item>cat;кішка</item>
+        <item>cavy;морська свинка</item>
+        <item>chameleon;хамелеон</item>
+        <item>cheetah;гепард</item>
+        <item>chicken;курча</item>
+        <item>chimpanzee;шимпанзе</item>
+        <item>chinchilla;шиншила</item>
+        <item>chipmunk;бурундук</item>
+        <item>cobra;кобра</item>
+        <item>cock;півень</item>
+        <item>collie;колла</item>
+        <item>cougar;пума</item>
+        <item>cow;корова</item>
+        <item>coyote;койот</item>
+        <item>crawfish;рак</item>
+        <item>crayfish;рак</item>
+        <item>crocodile;крокодил</item>
+        <item>dachshund;такса</item>
+        <item>deer;олень</item>
+        <item>desman;хохуля</item>
+        <item>dingo;дінго</item>
+        <item>Dobermann pinscher;доберман</item>
+        <item>dog;собака</item>
+        <item>domestic animal;домашня тварина</item>
+        <item>donkey;осел</item>
+        <item>down;пух</item>
+        <item>duck;качка</item>
+        <item>echidna;єхидна</item>
+        <item>elephant;слон</item>
+        <item>elk;лось</item>
+        <item>fang;ікло</item>
+        <item>feather;перо</item>
+        <item>foal;лоша</item>
+        <item>fox;лисиця</item>
+        <item>frog;жаба</item>
+        <item>gazelle;газель</item>
+        <item>gecko;гекон</item>
+        <item>gibbon;гібон</item>
+        <item>giraffe;жираф</item>
+        <item>gnu;антилопа гну</item>
+        <item>goat;коза</item>
+        <item>goose;гусак</item>
+        <item>gorilla;горила</item>
+        <item>grizzly;грізлі</item>
+        <item>hamadryad;гамадріл</item>
+        <item>hamster;хомяк</item>
+        <item>hare;заєць</item>
+        <item>he-goat;козел</item>
+        <item>hedgehog;їжак</item>
+        <item>heifer;телиця</item>
+        <item>hen;курка</item>
+        <item>herd;стадо</item>
+        <item>hippopotamus;гіпопотам</item>
+        <item>horse;кінь</item>
+        <item>hyena;гієна</item>
+        <item>iguana;ігуана</item>
+        <item>jackal;шакал</item>
+        <item>jaguar;ягуар</item>
+        <item>kangaroo;кенгуру</item>
+        <item>koala;коала</item>
+        <item>lama;лама</item>
+        <item>lemur;лемур</item>
+        <item>leopard;леопард</item>
+        <item>lion;лев</item>
+        <item>lizard;ящірка</item>
+        <item>lobster;омар</item>
+        <item>lynx;рись</item>
+        <item>macaque;макака</item>
+        <item>marmoset;мавпа</item>
+        <item>marmot;бабак</item>
+        <item>marten;куниця</item>
+        <item>milker;молочна корова</item>
+        <item>mole;кріт</item>
+        <item>mollusc;молюск</item>
+        <item>mollusk;молюск</item>
+        <item>mongoose;мангуст</item>
+        <item>mongrel;дворняга</item>
+        <item>monitor lizard;варан</item>
+        <item>monkey;мавпа</item>
+        <item>moose;американський лось</item>
+        <item>mouse;миша</item>
+        <item>nanny goat;коза</item>
+        <item>octopus;восьминіг</item>
+        <item>orang-utan;орангутанг</item>
+        <item>otter;видра</item>
+        <item>ox;бик</item>
+        <item>panda;панда</item>
+        <item>panther;пантера</item>
+        <item>paw;лапа</item>
+        <item>pedigree;родовід</item>
+        <item>penguin;пінгвін</item>
+        <item>polar fox;песець</item>
+        <item>poodle;пудель</item>
+        <item>porcupine;дикобраз</item>
+        <item>predator;хижак</item>
+        <item>primates;примати</item>
+        <item>puma;пума</item>
+        <item>puppy;щеня</item>
+        <item>rabbit;кролик</item>
+        <item>rabies;сказ</item>
+        <item>raccoon;єнот</item>
+        <item>racoon;єнот</item>
+        <item>ram;баран</item>
+        <item>rat;щур</item>
+        <item>reindeer;північний олень</item>
+        <item>rhinoceros;носоріг</item>
+        <item>rock lobster;лангуст</item>
+        <item>rooster;півень</item>
+        <item>Russian muskrat;хохуля</item>
+        <item>sable;соболь</item>
+        <item>seal;тюлень</item>
+        <item>serpent;велика змія</item>
+        <item>shark;акула</item>
+        <item>she-goat;коза</item>
+        <item>sheep;вівця</item>
+        <item>sheep-dog;вівчарка</item>
+        <item>skunk;скунс</item>
+        <item>sloth;лінивець</item>
+        <item>snake;змія</item>
+        <item>snow leopard;ирбис, сніжний барс</item>
+        <item>sow;самка свині</item>
+        <item>spaniel;спанієль</item>
+        <item>spiny lobster;лангуст</item>
+        <item>squirrel;білка</item>
+        <item>st.bernard;сенбернар</item>
+        <item>swine;свиня</item>
+        <item>tiger;тигр</item>
+        <item>toad;жаба</item>
+        <item>tomcat;кіт</item>
+        <item>tortoise;черепаха</item>
+        <item>turkey;індик</item>
+        <item>ungulate animal;копитна тварина</item>
+        <item>viper;гадюка</item>
+        <item>vixen;лисиця</item>
+        <item>walrus;морж</item>
+        <item>whale;кит</item>
+        <item>whisker;вус</item>
+        <item>wild boar;кабан</item>
+        <item>wildebeest;антилопа гну</item>
+        <item>wing;крило</item>
+        <item>wolf;вовк</item>
+        <item>wolf-hound;вовкодав</item>
+        <item>zebra;зебра</item>
+    </string-array>
 </resources>

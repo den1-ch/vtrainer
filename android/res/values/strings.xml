@@ -108,7 +108,8 @@
     <string name="cat_body_title">Body</string>
     <string name="cat_color_title">Color</string>
     <string name="cat_transport_title">Transport</string>
-    
+    <string name="cat_animals_title">Animal</string>
+        
     <string-array name="cat_clothes_array">
         <item>belt;ремінь</item>
         <item>blouse;блуза</item>
