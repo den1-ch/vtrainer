@@ -71,111 +71,206 @@
     </string-array>
     
     <string-array name="cat_body_en">
-        <item> abdomen;черевна порожнина</item>
-        <item> ankle;кісточка</item>
-        <item> armpit;пахва</item>
-        <item> arteries;артерії</item>
-        <item> back;спина</item>
-        <item> backbone;хребет</item>
-        <item> belly, tummy;stomach;живіт</item>
-        <item> big toe;великий палець (на нозі)</item>
-        <item> bile / gall;жовч</item>
-        <item> bladder;сечовий міхур</item>
-        <item> blood;кров</item>
-        <item> bone;кістка</item>
-        <item> bone marrow;кістковий мозок</item>
-        <item> brain;мозок</item>
-        <item> buttocks;сідниці</item>
-        <item> calf;ікра (ноги)</item>
-        <item> cartilage;хрящ</item>
-        <item> cheek;щока</item>
-        <item> cheek bone;вилиця</item>
-        <item> chest, breast;bosom, bust;груди</item>
-        <item> chin;підборіддя</item>
-        <item> clap hands;плескати</item>
-        <item> collarbone;ключиця</item>
-        <item> ear;вухо</item>
-        <item> earlobe;мочка вуха</item>
-        <item> elbow;лікоть</item>
-        <item> embryo / germ / nucleus;зародок</item>
-        <item> esophagus;стравохід</item>
-        <item> eye;очей</item>
-        <item> eyebrow;брову</item>
-        <item> eyelash;вія</item>
-        <item> eyelid;повіку</item>
-        <item> face;особа</item>
-        <item> finger;палець (на руці)</item>
-        <item> finger nail;ніготь (на пальці руки)</item>
-        <item> fist;кулак</item>
-        <item> foot (feet);ступня (ступні)</item>
-        <item> forearm;передпліччя</item>
-        <item> forehead, brow;лоб</item>
-        <item> gallbladder;жовчний міхур</item>
-        <item> gland;гланди</item>
-        <item> groin;пах</item>
-        <item> hair;волосся</item>
-        <item> hand / left and right;рука (ліва, права)</item>
-        <item> head;голова</item>
-        <item> heart;серце</item>
-        <item> heel;пятка</item>
-        <item> hip-bone/pelvis;таз</item>
-        <item> hips, thigh;стегно</item>
-        <item> index finger;вказівний палець</item>
-        <item> iris;райдужна оболонка ока</item>
-        <item> jaw;щелепу</item>
-        <item> joint;суглоб</item>
-        <item> kidneys;нирки</item>
-        <item> knee;коліно</item>
-        <item> kneecap;колінна чашечка</item>
-        <item> knuckle;суглоб пальця</item>
-        <item> large intestine;товста кишка</item>
-        <item> larynx;гортань</item>
-        <item> leg;нога (від стегна до ступні)</item>
-        <item> lile duct;жовчний протік</item>
-        <item> lip;губа</item>
-        <item> little finger;мізинець (на руці)</item>
-        <item> little toe;мізинець (на нозі)</item>
-        <item> liver;печінка</item>
-        <item> lungs;легкі</item>
-        <item> lymph-gland;лімфовузол</item>
-        <item> lymphatic vessels;лімфатичні судини</item>
-        <item> middle finger;середній палець</item>
-        <item> moustache;вуса</item>
-        <item> mouth;рот</item>
-        <item> mucouse membrane;слизова оболонка</item>
-        <item> muscle;мускул</item>
-        <item> muscle;мускул, мяз</item>
-        <item> neck;шия</item>
-        <item> nod;кивати</item>
-        <item> nose;ніс</item>
-        <item> nostril;ніздря</item>
-        <item> palm;долоню</item>
-        <item> pancreas;підшлункова залоза</item>
-        <item> point;вказувати (пальцем)</item>
-        <item> punch;удар кулаком</item>
-        <item> pupil;зіницю</item>
-        <item> ring finger;безіменний палець</item>
-        <item> scar;шрам</item>
-        <item> shin;гомілку</item>
-        <item> shoulder;плече</item>
-        <item> sinew / tendon;жила, сухожилля</item>
-        <item> skin;шкіра</item>
-        <item> skull;череп</item>
-        <item> small intestine;тонка кишка</item>
-        <item> sperm / jims / scum / spunk;сперма</item>
-        <item> spinal cord;спинний мозок</item>
-        <item> stomach;шлунок</item>
-        <item> temple;скроню</item>
-        <item> throat;горло</item>
-        <item> thumb;великий палець (на руці)</item>
-        <item> toe;палець (на нозі)</item>
-        <item> toenail;ніготь (на пальці ноги)</item>
-        <item> tongue;мова</item>
-        <item> tooth (teeth);зуб (зуби)</item>
-        <item> veins;вени</item>
-        <item> vessel;посудину</item>
-        <item> waist;талія</item>
-        <item> windpipe;трахея</item>
-        <item> wrist;запястя</item>
+        <item>abdomen;черевна порожнина</item>
+        <item>ankle;кісточка</item>
+        <item>armpit;пахва</item>
+        <item>arteries;артерії</item>
+        <item>back;спина</item>
+        <item>backbone;хребет</item>
+        <item>belly, tummy;stomach;живіт</item>
+        <item>big toe;великий палець (на нозі)</item>
+        <item>bile / gall;жовч</item>
+        <item>bladder;сечовий міхур</item>
+        <item>blood;кров</item>
+        <item>bone;кістка</item>
+        <item>bone marrow;кістковий мозок</item>
+        <item>brain;мозок</item>
+        <item>buttocks;сідниці</item>
+        <item>calf;ікра (ноги)</item>
+        <item>cartilage;хрящ</item>
+        <item>cheek;щока</item>
+        <item>cheek bone;вилиця</item>
+        <item>chest, breast;bosom, bust;груди</item>
+        <item>chin;підборіддя</item>
+        <item>clap hands;плескати</item>
+        <item>collarbone;ключиця</item>
+        <item>ear;вухо</item>
+        <item>earlobe;мочка вуха</item>
+        <item>elbow;лікоть</item>
+        <item>embryo / germ / nucleus;зародок</item>
+        <item>esophagus;стравохід</item>
+        <item>eye;око</item>
+        <item>eyebrow;брова</item>
+        <item>eyelash;вія</item>
+        <item>eyelid;повіка</item>
+        <item>face;особа</item>
+        <item>finger;палець (на руці)</item>
+        <item>finger nail;ніготь (на пальці руки)</item>
+        <item>fist;кулак</item>
+        <item>foot (feet);ступня (ступні)</item>
+        <item>forearm;передпліччя</item>
+        <item>forehead, brow;лоб</item>
+        <item>gallbladder;жовчний міхур</item>
+        <item>gland;гланди</item>
+        <item>groin;пах</item>
+        <item>hair;волосся</item>
+        <item>hand / left and right;рука (ліва, права)</item>
+        <item>head;голова</item>
+        <item>heart;серце</item>
+        <item>heel;пятка</item>
+        <item>hip-bone/pelvis;таз</item>
+        <item>hips, thigh;стегно</item>
+        <item>index finger;вказівний палець</item>
+        <item>iris;райдужна оболонка ока</item>
+        <item>jaw;щелепу</item>
+        <item>joint;суглоб</item>
+        <item>kidneys;нирки</item>
+        <item>knee;коліно</item>
+        <item>kneecap;колінна чашечка</item>
+        <item>knuckle;суглоб пальця</item>
+        <item>large intestine;товста кишка</item>
+        <item>larynx;гортань</item>
+        <item>leg;нога (від стегна до ступні)</item>
+        <item>lile duct;жовчний протік</item>
+        <item>lip;губа</item>
+        <item>little finger;мізинець (на руці)</item>
+        <item>little toe;мізинець (на нозі)</item>
+        <item>liver;печінка</item>
+        <item>lungs;легкі</item>
+        <item>lymph-gland;лімфовузол</item>
+        <item>lymphatic vessels;лімфатичні судини</item>
+        <item>middle finger;середній палець</item>
+        <item>moustache;вуса</item>
+        <item>mouth;рот</item>
+        <item>mucouse membrane;слизова оболонка</item>
+        <item>muscle;мускул, мяз</item>
+        <item>neck;шия</item>
+        <item>nod;кивати</item>
+        <item>nose;ніс</item>
+        <item>nostril;ніздря</item>
+        <item>palm;долоня</item>
+        <item>pancreas;підшлункова залоза</item>
+        <item>point;вказувати (пальцем)</item>
+        <item>punch;удар кулаком</item>
+        <item>pupil;зіниця</item>
+        <item>ring finger;безіменний палець</item>
+        <item>scar;шрам</item>
+        <item>shin;гомілку</item>
+        <item>shoulder;плече</item>
+        <item>sinew / tendon;жила, сухожилля</item>
+        <item>skin;шкіра</item>
+        <item>skull;череп</item>
+        <item>small intestine;тонка кишка</item>
+        <item>sperm / jims / scum / spunk;сперма</item>
+        <item>spinal cord;спинний мозок</item>
+        <item>stomach;шлунок</item>
+        <item>temple;скроню</item>
+        <item>throat;горло</item>
+        <item>thumb;великий палець (на руці)</item>
+        <item>toe;палець (на нозі)</item>
+        <item>toenail;ніготь (на пальці ноги)</item>
+        <item>tongue;мова</item>
+        <item>tooth (teeth);зуб (зуби)</item>
+        <item>veins;вени</item>
+        <item>vessel;посудину</item>
+        <item>waist;талія</item>
+        <item>windpipe;трахея</item>
+        <item>wrist;запястя</item>
       </string-array>
+      
+      <string-array name="cat_transport_en">
+        <item>airbus;аеробус</item>
+        <item>aircraft;літак</item>
+        <item>airplane;літак</item>
+        <item>anchor;якір</item>
+        <item>automobile;автомобіль</item>
+        <item>aviation;авіація</item>
+        <item>barrier;шлагбаум</item>
+        <item>bay;бухта</item>
+        <item>berth;плацкарт</item>
+        <item>breakdown;аварія</item>
+        <item>buddy seat;коляска мотоцикла</item>
+        <item>bulldozer;бульдозер</item>
+        <item>buoy;буй</item>
+        <item>bus;автобус</item>
+        <item>cable;якірний ланцюг</item>
+        <item>cabstand;стоянка таксі</item>
+        <item>captain;капітан</item>
+        <item>car repair shop;автомайстерня</item>
+        <item>compartment;купе</item>
+        <item>crossroad;перехрестя</item>
+        <item>deck;палуба</item>
+        <item>diesel locomotive;тепловоз</item>
+        <item>dust-cart;сміттєвоз</item>
+        <item>electric locomotive;електровоз</item>
+        <item>electric train;електропоїзд</item>
+        <item>express train;експрес</item>
+        <item>ferry;пором</item>
+        <item>garage;автомайстерня</item>
+        <item>hand car;дрезина</item>
+        <item>hang-glider;дельтаплан</item>
+        <item>harbor;гавань</item>
+        <item>helicopter;вертоліт</item>
+        <item>highway;шосе</item>
+        <item>hold;трюм</item>
+        <item>icebreaker;криголам</item>
+        <item>jeep;джип</item>
+        <item>jetty;пристань</item>
+        <item>landrover;всюдихід</item>
+        <item>loader;навантажувач</item>
+        <item>local train;приміський поїзд</item>
+        <item>locomotive;локомотив</item>
+        <item>lorry;вантажівка</item>
+        <item>main;магістраль</item>
+        <item>marine;флот</item>
+        <item>mast;щогла</item>
+        <item>master;капітан</item>
+        <item>metro;метро</item>
+        <item>moorage;причал</item>
+        <item>motor ship;теплохід</item>
+        <item>motorbike;мопед</item>
+        <item>motorcycle;мотоцикл</item>
+        <item>navigation;судноплавство</item>
+        <item>overland;наземний транспорт</item>
+        <item>park;парковка</item>
+        <item>parking place;стоянка</item>
+        <item>passenger compartment;салон авто</item>
+        <item>petrol tanker;бензовоз</item>
+        <item>plane;літак</item>
+        <item>platform;платформа</item>
+        <item>push-cycle;самокат</item>
+        <item>raft;пліт</item>
+        <item>railway;залізниця</item>
+        <item>refuelling;автозаправка</item>
+        <item>reserved seat ticket;плацкарт</item>
+        <item>ring road;кільцева дорога</item>
+        <item>sail;вітрило</item>
+        <item>sailer;вітрильник</item>
+        <item>scull;весло</item>
+        <item>seafaring;мореплавання</item>
+        <item>semaphore;семафор</item>
+        <item>service station;автомайстерня</item>
+        <item>shipping;судноплавство</item>
+        <item>sluice;шлюз</item>
+        <item>station;станція</item>
+        <item>steam locomotive;паровоз</item>
+        <item>steamship;пароплав</item>
+        <item>stern;корми</item>
+        <item>stowaway;пасажир без квитка</item>
+        <item>suburban train;електричка</item>
+        <item>tanker;танкер</item>
+        <item>taxi;таксі</item>
+        <item>tow;буксир</item>
+        <item>traffic lights;світлофор</item>
+        <item>train;поїзд</item>
+        <item>tram;трамвай</item>
+        <item>transit;транзит</item>
+        <item>transport;транспорт</item>
+        <item>trolley bus;тролейбус</item>
+        <item>truck;вантажівка</item>
+        <item>undercarriage;шасі</item>
+        <item>underground;метрополітен</item>
+        <item>water craft;судно, човен</item>
+        <item>yacht;яхта</item>
+    </string-array>
 </resources>
