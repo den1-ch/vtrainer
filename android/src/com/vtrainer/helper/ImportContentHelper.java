@@ -17,17 +17,17 @@ import com.vtrainer.utils.Settings;
 public class ImportContentHelper {
     private static final String TAG = ImportContentHelper.class.getSimpleName();
     private static final String WORD_DELIMITER = ";"; // TODO move
-    
-    private Context context;
-    private SharedPreferences sharedPreferences;
-    
-    public ImportContentHelper(Context context) {
+
+    private final Context context;
+    private final SharedPreferences sharedPreferences;
+
+    public ImportContentHelper(final Context context) {
         this.context = context;
-        
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public void fillVocabularyStaticData(SQLiteDatabase db, String language) {
+    public void fillVocabularyStaticData(final SQLiteDatabase db, final String language) {
         if (!isDataInitialized(language)) {
             return;
         }
@@ -44,8 +44,8 @@ public class ImportContentHelper {
             editor.commit();
         }
     }
-    
-    private void fillBaseCategoryStaticData(InsertHelper insertHelper, SQLiteDatabase db, String language) { //TODO update #3
+
+    private void fillBaseCategoryStaticData(final InsertHelper insertHelper, final SQLiteDatabase db, final String language) { //TODO update #3
         Logger.debug(TAG, "Fill vocabulary static data.");
         if (language.equals(Settings.ENG_TARGET_LANGUAGE)) {
             Logger.debug(TAG, "Fill vocabulary static data eng.");
@@ -60,8 +60,8 @@ public class ImportContentHelper {
             Logger.debug(TAG, "Static data for target language:" + language + " not avaliable");
         }
     }
-    
-    private void fillCategoriesData(InsertHelper insertHelper, SQLiteDatabase db, String language) {
+
+    private void fillCategoriesData(final InsertHelper insertHelper, final SQLiteDatabase db, final String language) {
         if (language.equals(Settings.ENG_TARGET_LANGUAGE)) {
             Logger.debug(TAG, "Fill categories static data eng.");
             fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_clothes_array), R.array.cat_clothes_array, language);
@@ -70,12 +70,14 @@ public class ImportContentHelper {
             fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_weather_array), R.array.cat_weather_array, language);
             fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_work_array), R.array.cat_work_array, language);
             fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_study_array), R.array.cat_study_array, language);
+            fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_body_en), R.array.cat_body_en, language);
+            fillVocabularyData(insertHelper, context.getResources().getStringArray(R.array.cat_color_en), R.array.cat_color_en, language);
         } else {
             Logger.debug(TAG, "Data for target language:" + language + " not avaliable");
         }
     }
 
-    private void fillVocabularyData(InsertHelper insertHelper, String[] data, int categoryId, String language) {
+    private void fillVocabularyData(final InsertHelper insertHelper, final String[] data, final int categoryId, final String language) {
         int vocabularyIdIndex = insertHelper.getColumnIndex(VocabularyMetaData.VOCABULARY_ID);
         int categoryIdIndex = insertHelper.getColumnIndex(VocabularyMetaData.CATEGOTY_ID);
         int translationWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.TRANSLATION_WORD);
@@ -99,8 +101,8 @@ public class ImportContentHelper {
             insertHelper.execute();
         }
     }
-    
-    private boolean isDataInitialized(String language) {
+
+    private boolean isDataInitialized(final String language) {
         return sharedPreferences.getBoolean(language, true);
-    }    
+    }
 }
