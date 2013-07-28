@@ -97,7 +97,7 @@ public class VTrainerDatabase {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         values.put(VocabularyMetaData.LANG_FLAG, dbHelper.settings.getTargetLanguage());
-        values.put(VocabularyMetaData.LANG_FLAG, VocabularyMetaData.MAIN_VOCABULARY_ID);
+        values.put(VocabularyMetaData.VOCABULARY_ID, VocabularyMetaData.MAIN_VOCABULARY_ID);
 
         long rowId = db.insert(VocabularyMetaData.TABLE_NAME, null, values);
 
