@@ -75,8 +75,13 @@ public class VTrainerDatabase {
         }
 
         public void updateStaticContent(final SQLiteDatabase db, final String language) {
-            importContentHelper.fillVocabularyStaticData(db, language); //TODO run it in separate thread
-            fillTrainingData(db, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
+            new Thread(new Runnable() {  //TODO think about more clever solution
+                @Override
+                public void run() {
+                    importContentHelper.fillVocabularyStaticData(db, language);
+                    fillTrainingData(db, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
+                }
+            }).start();
         }
 
         private void fillTrainingData(final SQLiteDatabase db, final int categoryId) {
