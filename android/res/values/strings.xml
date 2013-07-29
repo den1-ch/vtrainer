@@ -971,13 +971,13 @@
     </string-array>
 	
     <string-array name="cat_study_array">
-        <item>retake;перездавати экзамен</item>
+        <item>retake;перездавати екзамен</item>
         <item>pupil;учень</item>
-        <item>revise;повторяти (перед єкзаменом)</item>
+        <item>revise;повторяти (перед екзаменом)</item>
         <item>geography;географія</item>
         <item>chemistry;хімія</item>
         <item>paper clip;скрепка для паперу</item>
-        <item>pass;сдать єкзамен</item>
+        <item>pass;здати екзамен</item>
         <item>pen;ручка</item>
         <item>pencil;олівець</item>
         <item>lecturer;лектор</item>
@@ -1018,16 +1018,16 @@
         <item>college;колледж</item>
         <item>graduate;випускник</item>
         <item>university;університет</item>
-        <item>take an exam;здавати єкзамен</item>
+        <item>take an exam;здавати екзамен</item>
         <item>tuition fees;плата за навчання</item>
         <item>test;тест</item>
         <item>teacher;учитель</item>
         <item>graduate school;аспірантура</item>
         <item>folder;папка</item>
         <item>fountain pen;авторучка</item>
-        <item>examiner;єкзаменатор</item>
-        <item>fail;провалитися (на єкзамені)</item>
-        <item>examination;єкзамен</item>
+        <item>examiner;екзаменатор</item>
+        <item>fail;провалитися (на екзамені)</item>
+        <item>examination;екзамен</item>
     </string-array>
 	
     <string-array name="cat_time_array">
