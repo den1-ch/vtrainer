@@ -80,8 +80,9 @@ public class VTrainerDatabase {
         }
 
         private void fillTrainingData(final SQLiteDatabase db, final int categoryId) {
+            Logger.debug("", SQLBuilder.getAddCategoryToTrainSQL());
             for (Type type: TrainingMetaData.Type.values()) {
-                db.execSQL(SQLBuilder.getAddCategoryToTrainSQL(), new Object[] { type.getId(), categoryId });
+                db.execSQL(SQLBuilder.getAddCategoryToTrainSQL(), new Object[] { type.getId(), categoryId, type.getId() });
             }
         }
     }

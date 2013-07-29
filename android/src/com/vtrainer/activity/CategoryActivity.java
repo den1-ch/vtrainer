@@ -80,7 +80,8 @@ public class CategoryActivity extends Activity {
                         values[i] = new ContentValues();
                         values[i].put(TrainingMetaData.WORD_ID, wordIds.get(i));
                     }
-                    if (getContentResolver().bulkInsert(Uri.withAppendedPath(TrainingMetaData.TRAINING_WORD_URI, "0"), values) > 0) {
+
+                    if (getContentResolver().bulkInsert(Uri.withAppendedPath(TrainingMetaData.TRAINING_WORD_URI, "0"), values) > 0) { //TODO show count of added words
                         showSuccessToast();
                     }
                 }
