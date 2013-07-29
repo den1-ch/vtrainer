@@ -158,7 +158,7 @@
         <item>silk;шовк</item>
         <item>suede;замша</item>
         <item>wool;вовна</item>
-        <item>woolen;шерстяній</item>
+        <item>woolen;шерстяний</item>
         <item>plastic;пластик</item>
         <item>nylon;нейлон</item>
         <item>polyester;поліестер</item>
@@ -250,7 +250,6 @@
         <item>crafty;хитрий</item>
         <item>creative;творчий</item>
         <item>critical;критичний</item>
-        <item>cross;перетинатися</item>
         <item>cruel;жорстокий</item>
         <item>cultured;культурний</item>
         <item>curious;цікавий</item>
@@ -444,7 +443,6 @@
         <item>pitiful;жалюгідний</item>
         <item>playful;грайливий</item>
         <item>pleasant;приємний</item>
-        <item>pleasing;приємний</item>
         <item>polite;ввічливий</item>
         <item>poor;бідний</item>
         <item>popular;популярний</item>
