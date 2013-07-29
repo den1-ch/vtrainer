@@ -92,8 +92,8 @@ public class VTrainerDatabase {
             throw new SQLException(VocabularyMetaData.TRANSLATION_WORD + " is null");
         }
 
-        if (!values.containsKey(VocabularyMetaData.FOREIGN_WORD)) {
-            throw new SQLException(VocabularyMetaData.FOREIGN_WORD + " is null");
+        if (!values.containsKey(VocabularyMetaData.NATIVE_WORD)) {
+            throw new SQLException(VocabularyMetaData.NATIVE_WORD + " is null");
         }
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();

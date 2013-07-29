@@ -21,7 +21,7 @@ public class VocabularyMetaData implements BaseColumns {
   //columns
   public static final String VOCABULARY_ID    = "vocabulary_id"; // int
   public static final String CATEGOTY_ID      = "category_id"; // int
-  public static final String FOREIGN_WORD     = "foreign_word"; // string
+  public static final String NATIVE_WORD      = "foreign_word"; // string
   public static final String TRANSLATION_WORD = "translation_word";  // string
   public static final String DATE_CREATED     = "date_created"; // long
   public static final String PROGRESS         = "progress";     // byte, max 100

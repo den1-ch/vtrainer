@@ -24,11 +24,11 @@ public class VocabularyActivity extends ListActivity {
         Integer.toString(VocabularyMetaData.MAIN_VOCABULARY_ID));
 
     private final String[] COUNM_NAMES = new String[] { 
-        VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+        VocabularyMetaData.NATIVE_WORD, VocabularyMetaData.TRANSLATION_WORD };
     
-    private final int[] VIEW_IDS = new int[] { R.id.foreign_word, R.id.translated_word };
+    private final int[] VIEW_IDS = new int[] { R.id.native_word, R.id.translated_word };
     private final String[] PROJECTION = new String[] { 
-        VocabularyMetaData._ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+        VocabularyMetaData._ID, VocabularyMetaData.NATIVE_WORD, VocabularyMetaData.TRANSLATION_WORD };
 
     private AddNewWordDialog dlgAddNewWord;
 

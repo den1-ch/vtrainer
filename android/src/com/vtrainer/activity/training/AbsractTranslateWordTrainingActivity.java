@@ -23,7 +23,7 @@ import android.widget.TextView;
 public abstract class AbsractTranslateWordTrainingActivity extends Activity {
     private static final int PROPOSAL_WORD_COUNT = 4;
 
-    private final String[] PROJECTION = new String[] { TrainingMetaData.WORD_ID, VocabularyMetaData.FOREIGN_WORD,
+    private final String[] PROJECTION = new String[] { TrainingMetaData.WORD_ID, VocabularyMetaData.NATIVE_WORD,
             VocabularyMetaData.TRANSLATION_WORD, TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.PROGRESS };
 
     private final Uri NEW_TRANINED_WORD_URI = Uri.withAppendedPath(TrainingMetaData.TRAINING_WORD_URI, getTrainingId());

@@ -14,7 +14,7 @@ public class SQLBuilder {
         sb.append(" INTEGER NOT NULL, \n");
         sb.append(VocabularyMetaData.TRANSLATION_WORD);
         sb.append(" VARCHAR(30) NOT NULL, \n");
-        sb.append(VocabularyMetaData.FOREIGN_WORD);
+        sb.append(VocabularyMetaData.NATIVE_WORD);
         sb.append(" VARCHAR(30) NOT NULL, \n");
         sb.append(VocabularyMetaData.DATE_CREATED);
         sb.append(" INTEGER NOT NULL DEFAULT current_timestamp, \n");

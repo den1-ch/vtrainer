@@ -32,9 +32,9 @@ public class CategoryActivity extends Activity {
     private final int MENU_ITEM_ADD_ALL_TO_STUDY = 1;
     private final int MENU_ITEM_SELECT_WORDS_TO_STUDY = 2;
 
-    private final String[] COUNM_NAMES = new String[] { VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
-    private final int[] VIEW_IDS = new int[] { R.id.foreign_word, R.id.translated_word };
-    private final String[] PROJECTION = new String[] { VocabularyMetaData._ID, VocabularyMetaData.FOREIGN_WORD, VocabularyMetaData.TRANSLATION_WORD };
+    private final String[] COUNM_NAMES = new String[] { VocabularyMetaData.NATIVE_WORD, VocabularyMetaData.TRANSLATION_WORD };
+    private final int[] VIEW_IDS = new int[] { R.id.native_word, R.id.translated_word };
+    private final String[] PROJECTION = new String[] { VocabularyMetaData._ID, VocabularyMetaData.NATIVE_WORD, VocabularyMetaData.TRANSLATION_WORD };
 
     private int categoryId;
     private boolean isMultiselectMode;
