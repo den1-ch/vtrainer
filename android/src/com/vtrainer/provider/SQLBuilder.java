@@ -78,9 +78,15 @@ public class SQLBuilder {
         sb.append("SELECT ?, _id \n");
         sb.append("FROM ");
         sb.append(VocabularyMetaData.TABLE_NAME);
-        sb.append("\n WHERE ");
+        sb.append(" V \n WHERE ");
         sb.append(VocabularyMetaData.CATEGOTY_ID);
-        sb.append(" = ?");
+        sb.append(" = ? AND NOT EXISTS( \n SELECT * \n FROM ");
+        sb.append(TrainingMetaData.TABLE_NAME);
+        sb.append(" T \n WHERE T.");
+        sb.append(TrainingMetaData.WORD_ID);
+        sb.append(" == V._id AND T.");
+        sb.append(TrainingMetaData.TYPE);
+        sb.append(" == ?)");
         
         return sb.toString();
     }
