@@ -2,13 +2,6 @@ package com.vtrainer.activity;
 
 import java.util.List;
 
-import com.vtrainer.R;
-import com.vtrainer.data.MultipleChoiceAdapter;
-import com.vtrainer.logging.Logger;
-import com.vtrainer.provider.TrainingMetaData;
-import com.vtrainer.provider.VocabularyMetaData;
-import com.vtrainer.utils.Constants;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -17,14 +10,24 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+
+import com.vtrainer.R;
+import com.vtrainer.data.MultipleChoiceAdapter;
+import com.vtrainer.logging.Logger;
+import com.vtrainer.provider.TrainingMetaData;
+import com.vtrainer.provider.VocabularyMetaData;
+import com.vtrainer.utils.Constants;
 
 public class CategoryActivity extends Activity {
     private final int MENU_GROUP_ID = 1;
@@ -38,9 +41,10 @@ public class CategoryActivity extends Activity {
 
     private int categoryId;
     private boolean isMultiselectMode;
+    private GestureDetector gestureDetector;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         categoryId = getIntent().getExtras().getInt(VocabularyMetaData.CATEGOTY_ID);
@@ -60,9 +64,18 @@ public class CategoryActivity extends Activity {
             adapter = new SimpleCursorAdapter(this, R.layout.two_item_in_line, cursor, COUNM_NAMES, VIEW_IDS);
         }
 
+        gestureDetector = new GestureDetector(getBaseContext(), new GestureListener(cursor));
+
         // getListView().addHeaderView(search);
 
         final ListView list = (ListView) findViewById(R.id.word_list);
+        list.setOnTouchListener(new OnTouchListener() {
+
+            @Override
+            public boolean onTouch(final View v, final MotionEvent event) {
+                return gestureDetector.onTouchEvent(event);
+            }
+        });
 
         list.setAdapter(adapter);
     }
@@ -72,7 +85,7 @@ public class CategoryActivity extends Activity {
         buttonOk.setVisibility(Button.VISIBLE);
         buttonOk.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View paramView) {
+            public void onClick(final View paramView) {
                 List<Integer> wordIds = adapter.getSelectedIds();
                 if (wordIds.size() > 0) {
                     ContentValues[] values = new ContentValues[wordIds.size()];
@@ -82,7 +95,7 @@ public class CategoryActivity extends Activity {
                     }
 
                     if (getContentResolver().bulkInsert(Uri.withAppendedPath(TrainingMetaData.TRAINING_WORD_URI, "0"), values) > 0) { //TODO show count of added words
-                        showSuccessToast();
+                        showSuccessToast(2);
                     }
                 }
                 finish();
@@ -93,7 +106,7 @@ public class CategoryActivity extends Activity {
         buttonCancel.setVisibility(Button.VISIBLE);
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View paramView) {
+            public void onClick(final View paramView) {
                 finish();
             }
         });
@@ -111,7 +124,7 @@ public class CategoryActivity extends Activity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         menu.add(MENU_GROUP_ID, MENU_ITEM_ADD_ALL_TO_STUDY, Menu.FIRST, R.string.c_mi_add_all_to_study);
         menu.add(MENU_GROUP_ID, MENU_ITEM_SELECT_WORDS_TO_STUDY, Menu.FIRST, R.string.c_mi_select_words_to_study);
 
@@ -119,7 +132,7 @@ public class CategoryActivity extends Activity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
+    public boolean onOptionsItemSelected(final MenuItem menuItem) {
         switch (menuItem.getItemId()) {
         case MENU_ITEM_ADD_ALL_TO_STUDY:
             showConfirmationDialog();
@@ -133,31 +146,60 @@ public class CategoryActivity extends Activity {
         return true;
     }
 
-    private void showSuccessToast() {
-        Toast toast = Toast.makeText(getApplicationContext(), R.string.c_toast_words_added, Toast.LENGTH_SHORT);
+    private void showSuccessToast(final int count) {
+        String text = getResources().getQuantityString(R.plurals.c_toast_words_added, count);
+        Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
         toast.show();
     }
-    
+
     private void showConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.confirmation_dialog);
 
         builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
+            @Override
+            public void onClick(final DialogInterface dialog, final int id) {
                 ContentValues cv = new ContentValues();
                 cv.put(VocabularyMetaData.CATEGOTY_ID, categoryId);
                 getContentResolver().insert(VocabularyMetaData.ADD_CATEGORY_TO_TRAINING_URI, cv);
 
-                showSuccessToast();
-                
+                showSuccessToast(2);
+
                 Intent intent = new Intent(getBaseContext(), CategoriesActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
+            @Override
+            public void onClick(final DialogInterface dialog, final int id) {
                 dialog.cancel();
             }
         }).show();
+    }
+
+    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
+
+        private final Cursor cursor;
+
+        public GestureListener(final Cursor cursor) {
+            this.cursor = cursor;
+        }
+
+        @Override
+        public boolean onDown(final MotionEvent e) {
+            return true;
+        }
+
+        @Override
+        public boolean onDoubleTap(final MotionEvent e) {
+            if (!isMultiselectMode) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(TrainingMetaData.WORD_ID, cursor.getInt(cursor.getColumnIndex(VocabularyMetaData._ID)));
+                if (getContentResolver().insert(Uri.withAppendedPath(TrainingMetaData.TRAINING_WORD_URI, "0"), contentValues) != null) { //TODO update
+                    showSuccessToast(1);
+                }
+            }
+            return true;
+        }
     }
 }
