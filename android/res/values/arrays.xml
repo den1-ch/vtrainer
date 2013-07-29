@@ -37,7 +37,7 @@
         <item>aquamarine;аквамарин</item>
         <item>azure;лазурний</item>
         <item>beige;бежевий</item>
-        <item>black;чёрный</item>
+        <item>black;чорний</item>
         <item>blue;голубий</item>
         <item>bronze;бронзовий</item>
         <item>brown;коричневий</item>
@@ -103,7 +103,7 @@
         <item>eyebrow;брова</item>
         <item>eyelash;вія</item>
         <item>eyelid;повіка</item>
-        <item>face;особа</item>
+        <item>face;обличчя</item>
         <item>finger;палець (на руці)</item>
         <item>finger nail;ніготь (на пальці руки)</item>
         <item>fist;кулак</item>
@@ -114,7 +114,7 @@
         <item>gland;гланди</item>
         <item>groin;пах</item>
         <item>hair;волосся</item>
-        <item>hand / left and right;рука (ліва, права)</item>
+        <item>hand/left and right;рука (ліва, права)</item>
         <item>head;голова</item>
         <item>heart;серце</item>
         <item>heel;пятка</item>
@@ -157,11 +157,11 @@
         <item>scar;шрам</item>
         <item>shin;гомілку</item>
         <item>shoulder;плече</item>
-        <item>sinew / tendon;жила, сухожилля</item>
+        <item>sinew/tendon;жила, сухожилля</item>
         <item>skin;шкіра</item>
         <item>skull;череп</item>
         <item>small intestine;тонка кишка</item>
-        <item>sperm / jims / scum / spunk;сперма</item>
+        <item>sperm/jims/scum/spunk;сперма</item>
         <item>spinal cord;спинний мозок</item>
         <item>stomach;шлунок</item>
         <item>temple;скроню</item>
@@ -404,7 +404,6 @@
         <item>rhinoceros;носоріг</item>
         <item>rock lobster;лангуст</item>
         <item>rooster;півень</item>
-        <item>Russian muskrat;хохуля</item>
         <item>sable;соболь</item>
         <item>seal;тюлень</item>
         <item>serpent;велика змія</item>
