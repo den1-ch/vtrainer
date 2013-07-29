@@ -83,7 +83,7 @@ public class ImportContentHelper {
         int vocabularyIdIndex = insertHelper.getColumnIndex(VocabularyMetaData.VOCABULARY_ID);
         int categoryIdIndex = insertHelper.getColumnIndex(VocabularyMetaData.CATEGOTY_ID);
         int translationWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.TRANSLATION_WORD);
-        int foreignWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.FOREIGN_WORD);
+        int nativeWordIndex = insertHelper.getColumnIndex(VocabularyMetaData.NATIVE_WORD);
         int langFlagIndex = insertHelper.getColumnIndex(VocabularyMetaData.LANG_FLAG);
 
         for (int i = 0; i < data.length; i++) {
@@ -93,7 +93,7 @@ public class ImportContentHelper {
 
             insertHelper.bind(categoryIdIndex, categoryId);
             insertHelper.bind(translationWordIndex, words[0]);
-            insertHelper.bind(foreignWordIndex, words[1]);
+            insertHelper.bind(nativeWordIndex, words[1]);
             insertHelper.bind(langFlagIndex, language);
             if (categoryId == VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID) { //static main vocabulary
                 insertHelper.bind(vocabularyIdIndex, VocabularyMetaData.MAIN_VOCABULARY_ID);

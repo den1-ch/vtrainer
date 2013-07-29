@@ -6,11 +6,11 @@
     android:padding="10dp" >
 
     <EditText
-        android:id="@+id/et_foreing_word"
+        android:id="@+id/et_native_word"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:hint="@string/an_hint_foreign_word">
+        android:hint="@string/an_hint_native_word">
 
         <requestFocus />
     </EditText>

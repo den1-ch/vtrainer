@@ -9,7 +9,7 @@ public class ForeignTranslateWordTrainingActivity extends AbsractTranslateWordTr
     }
 	
     protected String getWordQuestionFieldName() {
-        return VocabularyMetaData.FOREIGN_WORD;
+        return VocabularyMetaData.NATIVE_WORD;
     }
     
     protected String getTrainingId() {

@@ -62,7 +62,7 @@
     <!-- "Add new  -->
     
     <string name="an_title">New word</string>
-    <string name="an_hint_foreign_word">foreign word</string>
+    <string name="an_hint_native_word">native word</string>
     <string name="an_hint_translation_word">translation word</string>
     
     <!-- Warning messages -->

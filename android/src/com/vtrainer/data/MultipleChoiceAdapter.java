@@ -39,7 +39,7 @@ public class MultipleChoiceAdapter extends SimpleCursorAdapter {
             convertView = layoutInflater.inflate(R.layout.two_item_in_line_with_checkbox, null);
 
             holder = new ViewHolder();
-            holder.foreignWord = (TextView) convertView.findViewById(R.id.foreign_word);
+            holder.nativeWord = (TextView) convertView.findViewById(R.id.native_word);
             holder.translatedWord = (TextView) convertView.findViewById(R.id.translated_word);
 
             holder.cbSelectWord = (CheckBox) convertView.findViewById(R.id.cb_select_word);
@@ -66,7 +66,7 @@ public class MultipleChoiceAdapter extends SimpleCursorAdapter {
         int _id = getCursor().getInt(getCursor().getColumnIndex(VocabularyMetaData._ID));
         holder.cbSelectWord.setTag(_id);
         
-        holder.foreignWord.setText(getCursor().getString(getCursor().getColumnIndex(VocabularyMetaData.FOREIGN_WORD)));
+        holder.nativeWord.setText(getCursor().getString(getCursor().getColumnIndex(VocabularyMetaData.NATIVE_WORD)));
         holder.translatedWord.setText(getCursor().getString(getCursor().getColumnIndex(VocabularyMetaData.TRANSLATION_WORD)));
         Logger.debug(TAG, Integer.toString(_id) + " " + holder.translatedWord.getText().toString());
         
@@ -80,7 +80,7 @@ public class MultipleChoiceAdapter extends SimpleCursorAdapter {
     }
 
     static class ViewHolder {
-        protected TextView foreignWord;
+        protected TextView nativeWord;
         protected TextView translatedWord;
         protected CheckBox cbSelectWord;
     }

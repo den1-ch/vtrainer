@@ -5,7 +5,7 @@ import com.vtrainer.provider.VocabularyMetaData;
 
 public class NativeTranslateWordTrainingActivity extends AbsractTranslateWordTrainingActivity {
     protected String getWordAnswerFieldName() {
-        return VocabularyMetaData.FOREIGN_WORD;
+        return VocabularyMetaData.NATIVE_WORD;
     }
 	
     protected String getWordQuestionFieldName() {

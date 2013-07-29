@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.view.View;
 
 public class AddNewWordDialog extends Dialog {
-  private EditText etForeingWord;
+  private EditText etNativeWord;
   private EditText etTranslationWord;
   private Button btnSave;
   private Button btnCancel;
@@ -36,7 +36,7 @@ public class AddNewWordDialog extends Dialog {
     
     // setImageResource(R.drawable.add_new_word);
 
-    etForeingWord = (EditText) findViewById(R.id.et_foreing_word);
+    etNativeWord = (EditText) findViewById(R.id.et_native_word);
     etTranslationWord = (EditText) findViewById(R.id.et_translation_word);
     
     btnSave = (Button) findViewById(R.id.btn_save);
@@ -44,12 +44,12 @@ public class AddNewWordDialog extends Dialog {
       
       @Override
       public void onClick(View v) {
-        if (!checkFieldData(etForeingWord) || !checkFieldData(etTranslationWord)) {
+        if (!checkFieldData(etNativeWord) || !checkFieldData(etTranslationWord)) {
           return;
         }
         
         ContentValues cv = new ContentValues();
-        cv.put(VocabularyMetaData.FOREIGN_WORD, etForeingWord.getText().toString());
+        cv.put(VocabularyMetaData.NATIVE_WORD, etNativeWord.getText().toString());
         cv.put(VocabularyMetaData.TRANSLATION_WORD, etTranslationWord.getText().toString());
         cv.put(VocabularyMetaData.CATEGOTY_ID, VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID);
         
@@ -81,12 +81,12 @@ public class AddNewWordDialog extends Dialog {
   }
   
   private void init() {
-    etForeingWord.getText().clear();
-    etForeingWord.setHintTextColor(Constants.FIELD_HINT_COLOR);
+    etNativeWord.getText().clear();
+    etNativeWord.setHintTextColor(Constants.FIELD_HINT_COLOR);
     etTranslationWord.getText().clear();
     etTranslationWord.setHintTextColor(Constants.FIELD_HINT_COLOR);
     
-    etForeingWord.requestFocus();
+    etNativeWord.requestFocus();
   }
 
   public interface OnDataSaveListener {
