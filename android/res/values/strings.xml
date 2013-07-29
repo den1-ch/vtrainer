@@ -97,7 +97,11 @@
     
     <string name="c_mi_add_all_to_study">Add all to study</string>
     <string name="c_mi_select_words_to_study">Select words to study</string>
-    <string name="c_toast_words_added">Words were added to the vocabulary</string>
+    
+    <plurals name="c_toast_words_added">
+        <item quantity="one">Word was added to the vocabulary.</item>
+        <item quantity="other">Words were added to the vocabulary.</item>
+    </plurals>
     
     <string name="cat_clothes_title">Clothes</string>
     <string name="cat_traits_title">Traits</string>

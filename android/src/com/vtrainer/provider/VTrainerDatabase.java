@@ -108,7 +108,7 @@ public class VTrainerDatabase {
         long rowId = db.insert(VocabularyMetaData.TABLE_NAME, null, values);
 
         if (rowId > 0) {
-            addWordToTrainings(rowId);
+            addWordToTrain(rowId);
 
             Uri insertedUri = ContentUris.withAppendedId(VocabularyMetaData.WORDS_URI, rowId);
 
@@ -122,7 +122,7 @@ public class VTrainerDatabase {
     public int addWordsToTrain(final Uri uri, final ContentValues[] values) {
         int result = 0;
         for (ContentValues contentValues : values) {
-            result += addWordToTrainings(contentValues.getAsLong(TrainingMetaData.WORD_ID));
+            result += addWordToTrain(contentValues.getAsLong(TrainingMetaData.WORD_ID));
         }
         return result;
     }
@@ -133,7 +133,7 @@ public class VTrainerDatabase {
         return null;
     }
 
-    private int addWordToTrainings(final long wordId) {
+    public int addWordToTrain(final Long wordId) {
         String where = TrainingMetaData.WORD_ID + " =? AND " + TrainingMetaData.TYPE + " =?";
 
         Cursor cursor = dbHelper.getReadableDatabase().query(
