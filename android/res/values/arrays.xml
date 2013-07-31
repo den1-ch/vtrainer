@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="p_targetLanguges">
+        <item>English</item>
+        <item>Italian</item>
+    </string-array>
+    <string-array name="p_targetLangugesValues">
+        <item>eng</item>
+        <item>it</item>
+    </string-array>
+    
+    <string-array name="test_vocabulary_array_it">
+        <item>possedere [(-iedo, -eggo) vt];володіти, мати</item>
+        <item>dati;дані, свідчення</item>
+        <item>fornire [(-isco) vt];доставляти, завершувати</item>
+        <item>stesso;однаковий, сам, такий само</item>
+        <item>affermare [(-ermo) vt];стверджувати, підтверджувати, закріпляти</item>
+        <item>selva [f];ліс, (перен.) велика кількість, замітки (цитати)</item>
+        <item>oscuro;темний</item>
+        <item>sommo [agg];вищий, (перен.) верховний</item>
+        <item>sommo [m];вершина, найвищий ступінь</item>
+        <item>arco [(pl -chi) m];дуга, вигин, арка, лук, (перен.) скрипаль, (перен.) період часу</item>
+        <item>consentire [(-ento), vi (a)];погоджуватися, допускати, визнавати</item>
+        <item>consentire [ (-ento), vt];погоджуватися, допускати, визнавати</item>
+        <item>risalire [vt];підніматися знову</item>
+        <item>risalire [vi (a, e)];підніматися, підвищуватися, згадувати, (розм.) вибитися в люди</item>
+        <item>convivio [m];бенкет</item>
+        <item>naturare;творити</item>
+        <item>meta [f];половина, середина</item>
+        <item>cioe [avv];тобто</item>
+    </string-array>
+    
+    <!-- Categories -->
+    <string-array name="cat_color_en">
+        <item>amber;бурштиновий</item>
+        <item>aqua;морска хвиля</item>
+        <item>aquamarine;аквамарин</item>
+        <item>azure;лазурний</item>
+        <item>beige;бежевий</item>
+        <item>black;чорний</item>
+        <item>blue;голубий</item>
+        <item>bronze;бронзовий</item>
+        <item>brown;коричневий</item>
+        <item>chocolate;шоколадний</item>
+        <item>copper;мідний</item>
+        <item>crimson;малиновий</item>
+        <item>emerald;смарагдовий</item>
+        <item>gold, golden;золотий</item>
+        <item>green;зелений</item>
+        <item>grey, gray;серий</item>
+        <item>indigo;індиго</item>
+        <item>khaki;хакі</item>
+        <item>lemon;лимонний</item>
+        <item>light green;салатовий</item>
+        <item>lilac;сиреневий</item>
+        <item>mazarine;темно-синій</item>
+        <item>olive;оливковий</item>
+        <item>orange;оранжевий</item>
+        <item>peach;персиковий</item>
+        <item>pink;розовий</item>
+        <item>purple, magenta;пурпурний</item>
+        <item>red;червоний</item>
+        <item>scarlet;алий</item>
+        <item>sienna;охра</item>
+        <item>silver, silvery;срібний</item>
+        <item>snow-white/ niveous;білосніжний</item>
+        <item>turquoise;бирюзовий</item>
+        <item>violet, purple;фиолетовий</item>
+        <item>white;білий</item>
+        <item>yellow;жовтий</item>
+    </string-array>
+    
+    <string-array name="cat_body_en">
+        <item>abdomen;черевна порожнина</item>
+        <item>ankle;кісточка</item>
+        <item>armpit;пахва</item>
+        <item>arteries;артерії</item>
+        <item>back;спина</item>
+        <item>backbone;хребет</item>
+        <item>belly, tummy;stomach;живіт</item>
+        <item>big toe;великий палець (на нозі)</item>
+        <item>bile / gall;жовч</item>
+        <item>bladder;сечовий міхур</item>
+        <item>blood;кров</item>
+        <item>bone;кістка</item>
+        <item>bone marrow;кістковий мозок</item>
+        <item>brain;мозок</item>
+        <item>buttocks;сідниці</item>
+        <item>calf;ікра (ноги)</item>
+        <item>cartilage;хрящ</item>
+        <item>cheek;щока</item>
+        <item>cheek bone;вилиця</item>
+        <item>chest, breast;bosom, bust;груди</item>
+        <item>chin;підборіддя</item>
+        <item>clap hands;плескати</item>
+        <item>collarbone;ключиця</item>
+        <item>ear;вухо</item>
+        <item>earlobe;мочка вуха</item>
+        <item>elbow;лікоть</item>
+        <item>embryo / germ / nucleus;зародок</item>
+        <item>esophagus;стравохід</item>
+        <item>eye;око</item>
+        <item>eyebrow;брова</item>
+        <item>eyelash;вія</item>
+        <item>eyelid;повіка</item>
+        <item>face;обличчя</item>
+        <item>finger;палець (на руці)</item>
+        <item>finger nail;ніготь (на пальці руки)</item>
+        <item>fist;кулак</item>
+        <item>foot (feet);ступня (ступні)</item>
+        <item>forearm;передпліччя</item>
+        <item>forehead, brow;лоб</item>
+        <item>gallbladder;жовчний міхур</item>
+        <item>gland;гланди</item>
+        <item>groin;пах</item>
+        <item>hair;волосся</item>
+        <item>hand/left and right;рука (ліва, права)</item>
+        <item>head;голова</item>
+        <item>heart;серце</item>
+        <item>heel;пятка</item>
+        <item>hip-bone/pelvis;таз</item>
+        <item>hips, thigh;стегно</item>
+        <item>index finger;вказівний палець</item>
+        <item>iris;райдужна оболонка ока</item>
+        <item>jaw;щелепу</item>
+        <item>joint;суглоб</item>
+        <item>kidneys;нирки</item>
+        <item>knee;коліно</item>
+        <item>kneecap;колінна чашечка</item>
+        <item>knuckle;суглоб пальця</item>
+        <item>large intestine;товста кишка</item>
+        <item>larynx;гортань</item>
+        <item>leg;нога (від стегна до ступні)</item>
+        <item>lile duct;жовчний протік</item>
+        <item>lip;губа</item>
+        <item>little finger;мізинець (на руці)</item>
+        <item>little toe;мізинець (на нозі)</item>
+        <item>liver;печінка</item>
+        <item>lungs;легкі</item>
+        <item>lymph-gland;лімфовузол</item>
+        <item>lymphatic vessels;лімфатичні судини</item>
+        <item>middle finger;середній палець</item>
+        <item>moustache;вуса</item>
+        <item>mouth;рот</item>
+        <item>mucouse membrane;слизова оболонка</item>
+        <item>muscle;мускул, мяз</item>
+        <item>neck;шия</item>
+        <item>nod;кивати</item>
+        <item>nose;ніс</item>
+        <item>nostril;ніздря</item>
+        <item>palm;долоня</item>
+        <item>pancreas;підшлункова залоза</item>
+        <item>point;вказувати (пальцем)</item>
+        <item>punch;удар кулаком</item>
+        <item>pupil;зіниця</item>
+        <item>ring finger;безіменний палець</item>
+        <item>scar;шрам</item>
+        <item>shin;гомілку</item>
+        <item>shoulder;плече</item>
+        <item>sinew/tendon;жила, сухожилля</item>
+        <item>skin;шкіра</item>
+        <item>skull;череп</item>
+        <item>small intestine;тонка кишка</item>
+        <item>sperm/jims/scum/spunk;сперма</item>
+        <item>spinal cord;спинний мозок</item>
+        <item>stomach;шлунок</item>
+        <item>temple;скроню</item>
+        <item>throat;горло</item>
+        <item>thumb;великий палець (на руці)</item>
+        <item>toe;палець (на нозі)</item>
+        <item>toenail;ніготь (на пальці ноги)</item>
+        <item>tongue;мова</item>
+        <item>tooth (teeth);зуб (зуби)</item>
+        <item>veins;вени</item>
+        <item>vessel;посудину</item>
+        <item>waist;талія</item>
+        <item>windpipe;трахея</item>
+        <item>wrist;запястя</item>
+      </string-array>
+      
+      <string-array name="cat_transport_en">
+        <item>airbus;аеробус</item>
+        <item>aircraft;літак</item>
+        <item>airplane;літак</item>
+        <item>anchor;якір</item>
+        <item>automobile;автомобіль</item>
+        <item>aviation;авіація</item>
+        <item>barrier;шлагбаум</item>
+        <item>bay;бухта</item>
+        <item>berth;плацкарт</item>
+        <item>breakdown;аварія</item>
+        <item>buddy seat;коляска мотоцикла</item>
+        <item>bulldozer;бульдозер</item>
+        <item>buoy;буй</item>
+        <item>bus;автобус</item>
+        <item>cable;якірний ланцюг</item>
+        <item>cabstand;стоянка таксі</item>
+        <item>captain;капітан</item>
+        <item>car repair shop;автомайстерня</item>
+        <item>compartment;купе</item>
+        <item>crossroad;перехрестя</item>
+        <item>deck;палуба</item>
+        <item>diesel locomotive;тепловоз</item>
+        <item>dust-cart;сміттєвоз</item>
+        <item>electric locomotive;електровоз</item>
+        <item>electric train;електропоїзд</item>
+        <item>express train;експрес</item>
+        <item>ferry;пором</item>
+        <item>garage;автомайстерня</item>
+        <item>hand car;дрезина</item>
+        <item>hang-glider;дельтаплан</item>
+        <item>harbor;гавань</item>
+        <item>helicopter;вертоліт</item>
+        <item>highway;шосе</item>
+        <item>hold;трюм</item>
+        <item>icebreaker;криголам</item>
+        <item>jeep;джип</item>
+        <item>jetty;пристань</item>
+        <item>landrover;всюдихід</item>
+        <item>loader;навантажувач</item>
+        <item>local train;приміський поїзд</item>
+        <item>locomotive;локомотив</item>
+        <item>lorry;вантажівка</item>
+        <item>main;магістраль</item>
+        <item>marine;флот</item>
+        <item>mast;щогла</item>
+        <item>master;капітан</item>
+        <item>metro;метро</item>
+        <item>moorage;причал</item>
+        <item>motor ship;теплохід</item>
+        <item>motorbike;мопед</item>
+        <item>motorcycle;мотоцикл</item>
+        <item>navigation;судноплавство</item>
+        <item>overland;наземний транспорт</item>
+        <item>park;парковка</item>
+        <item>parking place;стоянка</item>
+        <item>passenger compartment;салон авто</item>
+        <item>petrol tanker;бензовоз</item>
+        <item>plane;літак</item>
+        <item>platform;платформа</item>
+        <item>push-cycle;самокат</item>
+        <item>raft;пліт</item>
+        <item>railway;залізниця</item>
+        <item>refuelling;автозаправка</item>
+        <item>reserved seat ticket;плацкарт</item>
+        <item>ring road;кільцева дорога</item>
+        <item>sail;вітрило</item>
+        <item>sailer;вітрильник</item>
+        <item>scull;весло</item>
+        <item>seafaring;мореплавання</item>
+        <item>semaphore;семафор</item>
+        <item>service station;автомайстерня</item>
+        <item>shipping;судноплавство</item>
+        <item>sluice;шлюз</item>
+        <item>station;станція</item>
+        <item>steam locomotive;паровоз</item>
+        <item>steamship;пароплав</item>
+        <item>stern;корми</item>
+        <item>stowaway;пасажир без квитка</item>
+        <item>suburban train;електричка</item>
+        <item>tanker;танкер</item>
+        <item>taxi;таксі</item>
+        <item>tow;буксир</item>
+        <item>traffic lights;світлофор</item>
+        <item>train;поїзд</item>
+        <item>tram;трамвай</item>
+        <item>transit;транзит</item>
+        <item>transport;транспорт</item>
+        <item>trolley bus;тролейбус</item>
+        <item>truck;вантажівка</item>
+        <item>undercarriage;шасі</item>
+        <item>underground;метрополітен</item>
+        <item>water craft;судно, човен</item>
+        <item>yacht;яхта</item>
+    </string-array>
+
+    <string-array name="cat_animals_en">
+        <item>adder;гадюка</item>
+        <item>alligator;алігатор</item>
+        <item>american buffalo;бізон</item>
+        <item>anaconda;анаконда</item>
+        <item>antelope;антилопа</item>
+        <item>arctic fox;песець</item>
+        <item>ass;осел</item>
+        <item>aurochs;зубр</item>
+        <item>baboon;бабуїн</item>
+        <item>badger;борсук</item>
+        <item>bear;ведмідь</item>
+        <item>beaver;бобер</item>
+        <item>billy goat;козел</item>
+        <item>bison;бізон</item>
+        <item>boa;удав</item>
+        <item>boxer;боксер</item>
+        <item>buffalo;буйвол</item>
+        <item>bull;бик</item>
+        <item>bulldog;бульдог</item>
+        <item>calf;теля</item>
+        <item>camel;верблюд</item>
+        <item>cat;кішка</item>
+        <item>cavy;морська свинка</item>
+        <item>chameleon;хамелеон</item>
+        <item>cheetah;гепард</item>
+        <item>chicken;курча</item>
+        <item>chimpanzee;шимпанзе</item>
+        <item>chinchilla;шиншила</item>
+        <item>chipmunk;бурундук</item>
+        <item>cobra;кобра</item>
+        <item>cock;півень</item>
+        <item>collie;колла</item>
+        <item>cougar;пума</item>
+        <item>cow;корова</item>
+        <item>coyote;койот</item>
+        <item>crawfish;рак</item>
+        <item>crayfish;рак</item>
+        <item>crocodile;крокодил</item>
+        <item>dachshund;такса</item>
+        <item>deer;олень</item>
+        <item>desman;хохуля</item>
+        <item>dingo;дінго</item>
+        <item>Dobermann pinscher;доберман</item>
+        <item>dog;собака</item>
+        <item>domestic animal;домашня тварина</item>
+        <item>donkey;осел</item>
+        <item>down;пух</item>
+        <item>duck;качка</item>
+        <item>echidna;єхидна</item>
+        <item>elephant;слон</item>
+        <item>elk;лось</item>
+        <item>fang;ікло</item>
+        <item>feather;перо</item>
+        <item>foal;лоша</item>
+        <item>fox;лисиця</item>
+        <item>frog;жаба</item>
+        <item>gazelle;газель</item>
+        <item>gecko;гекон</item>
+        <item>gibbon;гібон</item>
+        <item>giraffe;жираф</item>
+        <item>gnu;антилопа гну</item>
+        <item>goat;коза</item>
+        <item>goose;гусак</item>
+        <item>gorilla;горила</item>
+        <item>grizzly;грізлі</item>
+        <item>hamadryad;гамадріл</item>
+        <item>hamster;хомяк</item>
+        <item>hare;заєць</item>
+        <item>he-goat;козел</item>
+        <item>hedgehog;їжак</item>
+        <item>heifer;телиця</item>
+        <item>hen;курка</item>
+        <item>herd;стадо</item>
+        <item>hippopotamus;гіпопотам</item>
+        <item>horse;кінь</item>
+        <item>hyena;гієна</item>
+        <item>iguana;ігуана</item>
+        <item>jackal;шакал</item>
+        <item>jaguar;ягуар</item>
+        <item>kangaroo;кенгуру</item>
+        <item>koala;коала</item>
+        <item>lama;лама</item>
+        <item>lemur;лемур</item>
+        <item>leopard;леопард</item>
+        <item>lion;лев</item>
+        <item>lizard;ящірка</item>
+        <item>lobster;омар</item>
+        <item>lynx;рись</item>
+        <item>macaque;макака</item>
+        <item>marmoset;мавпа</item>
+        <item>marmot;бабак</item>
+        <item>marten;куниця</item>
+        <item>milker;молочна корова</item>
+        <item>mole;кріт</item>
+        <item>mollusc;молюск</item>
+        <item>mollusk;молюск</item>
+        <item>mongoose;мангуст</item>
+        <item>mongrel;дворняга</item>
+        <item>monitor lizard;варан</item>
+        <item>monkey;мавпа</item>
+        <item>moose;американський лось</item>
+        <item>mouse;миша</item>
+        <item>nanny goat;коза</item>
+        <item>octopus;восьминіг</item>
+        <item>orang-utan;орангутанг</item>
+        <item>otter;видра</item>
+        <item>ox;бик</item>
+        <item>panda;панда</item>
+        <item>panther;пантера</item>
+        <item>paw;лапа</item>
+        <item>pedigree;родовід</item>
+        <item>penguin;пінгвін</item>
+        <item>polar fox;песець</item>
+        <item>poodle;пудель</item>
+        <item>porcupine;дикобраз</item>
+        <item>predator;хижак</item>
+        <item>primates;примати</item>
+        <item>puma;пума</item>
+        <item>puppy;щеня</item>
+        <item>rabbit;кролик</item>
+        <item>rabies;сказ</item>
+        <item>raccoon;єнот</item>
+        <item>racoon;єнот</item>
+        <item>ram;баран</item>
+        <item>rat;щур</item>
+        <item>reindeer;північний олень</item>
+        <item>rhinoceros;носоріг</item>
+        <item>rock lobster;лангуст</item>
+        <item>rooster;півень</item>
+        <item>sable;соболь</item>
+        <item>seal;тюлень</item>
+        <item>serpent;велика змія</item>
+        <item>shark;акула</item>
+        <item>she-goat;коза</item>
+        <item>sheep;вівця</item>
+        <item>sheep-dog;вівчарка</item>
+        <item>skunk;скунс</item>
+        <item>sloth;лінивець</item>
+        <item>snake;змія</item>
+        <item>snow leopard;ирбис, сніжний барс</item>
+        <item>sow;самка свині</item>
+        <item>spaniel;спанієль</item>
+        <item>spiny lobster;лангуст</item>
+        <item>squirrel;білка</item>
+        <item>st.bernard;сенбернар</item>
+        <item>swine;свиня</item>
+        <item>tiger;тигр</item>
+        <item>toad;жаба</item>
+        <item>tomcat;кіт</item>
+        <item>tortoise;черепаха</item>
+        <item>turkey;індик</item>
+        <item>ungulate animal;копитна тварина</item>
+        <item>viper;гадюка</item>
+        <item>vixen;лисиця</item>
+        <item>walrus;морж</item>
+        <item>whale;кит</item>
+        <item>whisker;вус</item>
+        <item>wild boar;кабан</item>
+        <item>wildebeest;антилопа гну</item>
+        <item>wing;крило</item>
+        <item>wolf;вовк</item>
+        <item>wolf-hound;вовкодав</item>
+        <item>zebra;зебра</item>
+    </string-array>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vocabulary Trainer</string>
+    
+    <string name="vocabulary">Словник</string>
+    <string name="categories">Категорії</string>
+    <string name="exercises">Вправи</string>
+    <string name="library">Бібліотека</string>
+    
+    <string name="add_new_word">Додати..</string>
+    
+    <string name="add_new_word_title">Нове слово</string>
+    <string name="hint_foreign_word">foreign word</string>
+    <string name="hint_translation_word">translation word</string>
+    
+    <string name="add_new_word_save">Save</string>
+    <string name="add_new_word_cancel">Cancel</string>
+    
+    <string name="requered_field_is_empty">Some data is empty</string>
+
+    <!-- Trainings activity -->
+
+    <string name="trainings_title">Trainings</string>
+
+    <string name="t_word_translate_1">Ukr to En</string>
+    <string name="t_word_translate_2">En to Ukr</string>
+    
+    <!-- Training word translate activity -->
+
+    <string name="wt_next_button">Next</string>
+    
+    <string name="wt_translateWord">Translate Word</string>
+    
+    <string name="no_word_for_training">No words for study</string>
+</resources>
