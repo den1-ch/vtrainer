@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:layout_marginLeft="5sp" 
-        android:textSize="16sp">
+        style="@style/listItemStyle">
     </TextView>
 
     <TextView
@@ -17,7 +17,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
-        android:textSize="16sp" >
+        style="@style/listItemStyle">
     </TextView>
     <CheckBox 
         android:id="@+id/cb_select_word"
