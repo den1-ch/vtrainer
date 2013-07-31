@@ -96,7 +96,7 @@ public class ImportContentHelper {
             insertHelper.bind(nativeWordIndex, words[1]);
             insertHelper.bind(langFlagIndex, language);
             if (categoryId == VocabularyMetaData.MAIN_VOCABULARY_CATEGORY_ID) { //static main vocabulary
-                insertHelper.bind(vocabularyIdIndex, VocabularyMetaData.MAIN_VOCABULARY_ID);
+                insertHelper.bind(vocabularyIdIndex, Settings.getCurrentVocabularyId());
             }
 
             // Insert the row into the database.

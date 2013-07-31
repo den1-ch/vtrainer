@@ -26,22 +26,21 @@ public class VTrainerDatabase {
     public static final String DATABASE_NAME = "vtrainer.db";
     public static final int DATABASE_VERSION = 19;
 
+    private static Context context;
     private final DatabaseHelper dbHelper;
 
     public VTrainerDatabase(final Context context) {
         dbHelper = new DatabaseHelper(context);
+        this.context = context;
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
-        private final Context context;
-        private final Settings settings;
+
         private final ImportContentHelper importContentHelper;
 
         public DatabaseHelper(final Context context) {
             super(context, DATABASE_NAME, null, Constants.IS_TEST_MODE ? DATABASE_VERSION * 10 : DATABASE_VERSION);
 
-            this.context = context;
-            settings = new Settings(context);
             importContentHelper = new ImportContentHelper(context);
         }
 
@@ -57,7 +56,7 @@ public class VTrainerDatabase {
                 Logger.debug(TAG, "Create table:" + StatisticMetaData.TABLE_NAME + ". SQL: \n" + SQLBuilder.getStatisticTable());
                 db.execSQL(SQLBuilder.getStatisticTable());
 
-                updateStaticContent(db, settings.getTargetLanguage());
+                updateStaticContent(db, Settings.getTargetLanguage(context));
             } finally {
                 db.setLockingEnabled(true);
             }
@@ -102,21 +101,21 @@ public class VTrainerDatabase {
         }
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        values.put(VocabularyMetaData.LANG_FLAG, dbHelper.settings.getTargetLanguage());
-        values.put(VocabularyMetaData.VOCABULARY_ID, VocabularyMetaData.MAIN_VOCABULARY_ID);
+        values.put(VocabularyMetaData.LANG_FLAG, Settings.getTargetLanguage(context));
+        values.put(VocabularyMetaData.VOCABULARY_ID, Settings.getCurrentVocabularyId());
 
         long rowId = db.insert(VocabularyMetaData.TABLE_NAME, null, values);
 
+        Uri insertedUri = null;
         if (rowId > 0) {
             addWordToTrain(rowId);
 
-            Uri insertedUri = ContentUris.withAppendedId(VocabularyMetaData.WORDS_URI, rowId);
+            insertedUri = ContentUris.withAppendedId(VocabularyMetaData.WORDS_URI, rowId);
 
-            dbHelper.context.getContentResolver().notifyChange(uri, null);
-
-            return insertedUri;
+            context.getContentResolver().notifyChange(uri, null);
         }
-        return null;
+
+        return insertedUri;
     }
 
     public int addWordsToTrain(final Uri uri, final ContentValues[] values) {
@@ -127,31 +126,43 @@ public class VTrainerDatabase {
         return result;
     }
 
-    public Uri addCategoryToTrain(final Uri uri, final ContentValues values) {
+    public Uri addCategoryToTrain(final Uri uri, final ContentValues values) { //TODO update
         dbHelper.fillTrainingData(dbHelper.getWritableDatabase(), values.getAsInteger(VocabularyMetaData.CATEGOTY_ID));
 
         return null;
     }
 
     public int addWordToTrain(final Long wordId) {
-        String where = TrainingMetaData.WORD_ID + " =? AND " + TrainingMetaData.TYPE + " =?";
-
-        Cursor cursor = dbHelper.getReadableDatabase().query(
-           TrainingMetaData.TABLE_NAME, new String[] { TrainingMetaData._ID }, where,
-           new String[] { Long.toString(wordId), Integer.toString(TrainingMetaData.Type.ForeignWordTranslation.getId())}, null, null, null);
-
-        try {
-            if (cursor.moveToFirst()) {
-                return 0;
-            }
-
-            for (Type type : TrainingMetaData.Type.values()) {
-                addWordToTraining(wordId, type.getId());
-            }
-            return 1;
-        } finally {
-            cursor.close();
+        if (isWordAlreadyTrained(wordId.toString())) {
+            return 0;
         }
+
+        for (Type type : TrainingMetaData.Type.values()) {
+            addWordToTraining(wordId, type.getId());
+        }
+        addWordToCurrentVocabulary(wordId);
+        return 1;
+    }
+
+    private void addWordToCurrentVocabulary(final Long wordId) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(VocabularyMetaData.VOCABULARY_ID, Settings.getCurrentVocabularyId());
+
+        dbHelper.getWritableDatabase().update(VocabularyMetaData.TABLE_NAME, contentValues,
+                VocabularyMetaData._ID + " =?", new String[] { wordId.toString() });
+    }
+
+    private boolean isWordAlreadyTrained(final String wordId) {
+        String where = TrainingMetaData.WORD_ID + " =? AND " + TrainingMetaData.TYPE + " =?";
+        Cursor cursor = dbHelper.getReadableDatabase().query(TrainingMetaData.TABLE_NAME,
+                new String[] { TrainingMetaData._ID }, where,
+                new String[] { wordId, Integer.toString(TrainingMetaData.Type.ForeignWordTranslation.getId()) }, null,
+                null, null);
+
+        boolean result = cursor.moveToFirst();
+        cursor.close();
+
+        return result;
     }
 
     private void addWordToTraining(final long wordId, final int trainingId) {
@@ -178,7 +189,7 @@ public class VTrainerDatabase {
     public Cursor getWords(final String[] projection, final String selection, final String[] selectionArgs, final String sortOrder, final String limit) {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(VocabularyMetaData.TABLE_NAME);
-        qb.appendWhere(VocabularyMetaData.LANG_FLAG + "= \"" + dbHelper.settings.getTargetLanguage() + "\"");
+        qb.appendWhere(VocabularyMetaData.LANG_FLAG + "= \"" + Settings.getTargetLanguage(context) + "\"");
 
         return runQuery(projection, selection, selectionArgs, sortOrder, limit, qb);
     }
@@ -207,7 +218,7 @@ public class VTrainerDatabase {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         joinVocabulryToTraining(qb);
 
-        qb.appendWhere(VocabularyMetaData.LANG_FLAG + "= \"" + dbHelper.settings.getTargetLanguage() + "\" AND "
+        qb.appendWhere(VocabularyMetaData.LANG_FLAG + "= \"" + Settings.getTargetLanguage(context) + "\" AND "
             + TrainingMetaData.TYPE + "=" + trainingType + " AND "
             + TrainingMetaData.TABLE_NAME + "." + TrainingMetaData.PROGRESS + " < " + TrainingMetaData.MAX_PROGRESS + " AND "
             + TrainingMetaData.DATE_LAST_STUDY + " < " + (System.currentTimeMillis() - (Constants.IS_TEST_MODE ? 100: TrainingMetaData.TIME_PERIOD_TO_MEMORIZE_WORD)));
