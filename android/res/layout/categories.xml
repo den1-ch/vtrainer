@@ -14,70 +14,70 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_clothes_title" />
 
         <Button
             android:id="@array/cat_traits_array"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_traits_title" />
 
         <Button
             android:id="@array/cat_sport_array"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_sport_title" />
 
         <Button
             android:id="@array/cat_weather_array"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_weather_title" />
 
         <Button
             android:id="@array/cat_body_en"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_body_title" />
 
         <Button
             android:id="@array/cat_work_array"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_work_title" />
 
         <Button
             android:id="@array/cat_study_array"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_study_title" />
 
         <Button
             android:id="@array/cat_color_en"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_color_title" />
 
         <Button
             android:id="@array/cat_transport_en"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_transport_title" />
 
         <Button
             android:id="@array/cat_animals_en"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClick"
+            android:onClick="onCategoryClick"
             android:text="@string/cat_animals_title" />
     </LinearLayout>
 
