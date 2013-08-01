@@ -13,3 +13,4 @@ vtrainerServer/project/project
 vtrainerServer/tmp
 vtrainerServer/dist
 vtrainerServer/.cache
+android/gen/android/support/v7/appcompat/R.java

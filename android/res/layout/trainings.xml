@@ -10,6 +10,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:layout_marginTop="5dp"
+        android:onClick="onTrainingClick"
         android:text="@string/t_word_translate_1" />
 
     <Button 
@@ -18,5 +19,6 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:layout_marginTop="5dp"
+        android:onClick="onTrainingClick"
         android:text="@string/t_word_translate_2" />
 </LinearLayout>

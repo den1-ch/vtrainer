@@ -56,6 +56,7 @@ public class CategoryActivity extends Activity {
         Cursor cursor = getContentResolver().query(VocabularyMetaData.WORDS_URI, PROJECTION, VocabularyMetaData.CATEGOTY_ID + " = ?",
                 new String[] { Integer.toString(categoryId) }, null);
 
+        Logger.debug("!!!!!!!!", Integer.toString(cursor.getCount()));
         BaseAdapter adapter;
         if (isMultiselectMode) {
             adapter = new MultipleChoiceAdapter(this, cursor, COUNM_NAMES, VIEW_IDS);
