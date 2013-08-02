@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/wt_trained_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <TextView
+        android:id="@+id/wt_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <RadioGroup
+        android:id="@+id/wt_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wt_trained_word"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <RadioButton
+            android:id="@+id/wt_word_translate_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:onClick="onRadioButtonClick"/>
+        
+        <RadioButton
+            android:id="@+id/wt_word_translate_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClick"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+        <RadioButton
+            android:id="@+id/wt_word_translate_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:onClick="onRadioButtonClick"/>
+            
+        <RadioButton
+            android:id="@+id/wt_word_translate_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:onClick="onRadioButtonClick"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/wt_know_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="onKnowButtonClick"
+        android:text="@string/wt_know_button" />
+    
+    <Button
+        android:id="@+id/wt_hint_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/wt_know_button"
+        android:onClick="onHintButtonClick"
+        android:text="@string/wt_hint_button" />
+
+    <Button
+        android:id="@+id/wt_next_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/wt_hint_button"
+        android:onClick="onNextButtonClick"
+        android:text="@string/wt_next_button" />
+
+</RelativeLayout>
