@@ -63,7 +63,7 @@ public class VocabularyActivity extends ListFragment implements LoaderManager.Lo
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
         switch (menuItem.getItemId()) {
         case MENU_ITEM_ADD_NEW_WORD:
-           // showAddNewWordDilalog();
+            showAddNewWordDilalog();
             break;
         default:
             Logger.error("VocabularyActivity", "Unknown menu item " + menuItem.getTitle(), null);
@@ -91,23 +91,19 @@ public class VocabularyActivity extends ListFragment implements LoaderManager.Lo
         adapter.changeCursor(null);
     }
 
-//    @Override
-//    protected Dialog onCreateDialog(final int id) {
-//        super.onC
-//        return dlgAddNewWord;
-//    }
-//
-//    private void showAddNewWordDilalog() {
-//        if (dlgAddNewWord == null) {
-//            OnDataSaveListener dataSaveListener = new OnDataSaveListener() {
-//                @Override
-//                public void saved() {
-//                    updateData(); //TODO performance lost
-//                }
-//            };
-//
-//            dlgAddNewWord = new AddNewWordDialog(this, dataSaveListener);
-//        }
-//        dlgAddNewWord.show();
-//    }
+    private void showAddNewWordDilalog() {
+        if (dlgAddNewWord == null) {
+            OnDataSaveListener dataSaveListener = new OnDataSaveListener() {
+                @Override
+                public void saved() {
+                   // getLoaderManager().restartLoader(VOCABLUARY_LOADER_ID, null, this);
+                    adapter.notifyDataSetChanged();
+                }
+            };
+
+            dlgAddNewWord = new AddNewWordDialog();
+            dlgAddNewWord.setDataSaveListener(dataSaveListener);
+        }
+        dlgAddNewWord.show(getFragmentManager(), AddNewWordDialog.class.getSimpleName());
+    }
 }
