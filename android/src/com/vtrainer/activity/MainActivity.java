@@ -14,6 +14,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -49,6 +51,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        actionBar.setDisplayHomeAsUpEnabled(true); //TODO check http://developer.android.com/guide/topics/ui/actionbar.html
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the app.
@@ -81,8 +84,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-       // getMenuInflater().inflate(R. menu.main, menu);
-        return true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -213,26 +218,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
       startActivity(intent);
     }
 
-//    @Override
-//    public void onClick(final View v) {
-//        Intent intent;
-//        switch (v.getId()) {
-//        case R.id.vocabulary:
-//            intent = new Intent(this, VocabularyActivity.class);
-//            break;
-//        case R.id.trainings:
-//            intent = new Intent(this, TrainingsActivity.class);
-//            break;
-//        case R.id.categories:
-//            intent = new Intent(this, CategoriesActivity.class);
-//            break;
-//        case R.id.settings:
-//            intent = new Intent(this, SettingsActivity.class);
-//            break;
-//        default:
-//            return;
-//        }
-//
-//        startActivity(intent);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

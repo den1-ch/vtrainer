@@ -5,16 +5,10 @@
     <string name="confirmation_dialog">Are you sure you want to add words?</string>
     <string name="caption_save">Save</string>
     
-    <!-- Main activity -->
-    
-    <string name="m_vocabulary">Vocabulary</string>
-    <string name="m_categories">Categories</string>
-    <string name="m_trainings">Trainings</string>
-    <string name="m_library">Library</string>
-    <string name="m_settings">Settings</string>
 
     <!-- Preference -->
     
+    <string name="settings_title">Settings</string>
     <string name="p_target_language">Languages</string>
     <string name="p_select_target_language">Select target language</string>
     
@@ -73,8 +67,9 @@
 
     <string name="trainings_title">Trainings</string>
 
-    <string name="t_word_translate_1">Ukr to En</string>
-    <string name="t_word_translate_2">En to Ukr</string>
+    <string name="t_word_translate_1">Translate Ukr to En</string>
+    <string name="t_word_translate_2">Translate En to Ukr</string>
+    <string name="t_write_word">Write word</string>
     
     <!-- Training word translate activity -->
 
