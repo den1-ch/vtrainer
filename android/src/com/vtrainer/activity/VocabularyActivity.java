@@ -4,9 +4,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
 
 import com.vtrainer.R;
@@ -15,7 +21,9 @@ import com.vtrainer.dialog.AddNewWordDialog.OnDataSaveListener;
 import com.vtrainer.logging.Logger;
 import com.vtrainer.provider.VocabularyMetaData;
 
-public class VocabularyActivity extends ListFragment {
+public class VocabularyActivity extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
+    private static final int VOCABLUARY_LOADER_ID = 0;
+
     private final int MENU_GROUP_ID = 1;
 
     private final int MENU_ITEM_ADD_NEW_WORD = 1;
@@ -31,30 +39,17 @@ public class VocabularyActivity extends ListFragment {
         VocabularyMetaData._ID, VocabularyMetaData.NATIVE_WORD, VocabularyMetaData.TRANSLATION_WORD };
 
     private AddNewWordDialog dlgAddNewWord;
+    private SimpleCursorAdapter adapter;
 
     @Override
-    public void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup viewGroup, final Bundle bundle) {
         setHasOptionsMenu(true);
-    }
+        getLoaderManager().initLoader(VOCABLUARY_LOADER_ID, null, this);
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        updateData();
-    }
+        adapter = new SimpleCursorAdapter(getActivity(), R.layout.two_item_in_line, null, COUNM_NAMES, VIEW_IDS);
+        setListAdapter(adapter);
 
-    private void updateData() {
-        Cursor cursor = getActivity().getContentResolver().query(VOCABULARY_URI, PROJECTION, null, null, null);
-
-        SimpleCursorAdapter adapter = (SimpleCursorAdapter) getListAdapter();
-        if (adapter == null) {
-          adapter = new SimpleCursorAdapter(getActivity(), R.layout.two_item_in_line, cursor, COUNM_NAMES, VIEW_IDS);
-          setListAdapter(adapter);
-        } else {
-            adapter.getCursor().close();
-            adapter.changeCursor(cursor);
-        }
+        return super.onCreateView(inflater, viewGroup, bundle);
     }
 
     @Override
@@ -68,7 +63,7 @@ public class VocabularyActivity extends ListFragment {
     public boolean onOptionsItemSelected(final MenuItem menuItem) {
         switch (menuItem.getItemId()) {
         case MENU_ITEM_ADD_NEW_WORD:
-           // showAddNewWordDilalog();
+            showAddNewWordDilalog();
             break;
         default:
             Logger.error("VocabularyActivity", "Unknown menu item " + menuItem.getTitle(), null);
@@ -76,23 +71,39 @@ public class VocabularyActivity extends ListFragment {
         return true;
     }
 
-//    @Override
-//    protected Dialog onCreateDialog(final int id) {
-//        super.onC
-//        return dlgAddNewWord;
-//    }
-//
-//    private void showAddNewWordDilalog() {
-//        if (dlgAddNewWord == null) {
-//            OnDataSaveListener dataSaveListener = new OnDataSaveListener() {
-//                @Override
-//                public void saved() {
-//                    updateData(); //TODO performance lost
-//                }
-//            };
-//
-//            dlgAddNewWord = new AddNewWordDialog(this, dataSaveListener);
-//        }
-//        dlgAddNewWord.show();
-//    }
+    @Override
+    public Loader<Cursor> onCreateLoader(final int loaderId, final Bundle bundle) {
+        switch (loaderId) {
+        case VOCABLUARY_LOADER_ID:
+            return new CursorLoader(getActivity(), VOCABULARY_URI, PROJECTION, null, null, null);
+        default:
+            return null;
+        }
+    }
+
+    @Override
+    public void onLoadFinished(final Loader<Cursor> cursorLoader, final Cursor cursor) {
+        adapter.changeCursor(cursor);
+    }
+
+    @Override
+    public void onLoaderReset(final Loader<Cursor> cursorLoader) {
+        adapter.changeCursor(null);
+    }
+
+    private void showAddNewWordDilalog() {
+        if (dlgAddNewWord == null) {
+            OnDataSaveListener dataSaveListener = new OnDataSaveListener() {
+                @Override
+                public void saved() {
+                   // getLoaderManager().restartLoader(VOCABLUARY_LOADER_ID, null, this);
+                    adapter.notifyDataSetChanged();
+                }
+            };
+
+            dlgAddNewWord = new AddNewWordDialog();
+            dlgAddNewWord.setDataSaveListener(dataSaveListener);
+        }
+        dlgAddNewWord.show(getFragmentManager(), AddNewWordDialog.class.getSimpleName());
+    }
 }
