@@ -33,9 +33,9 @@
     <!-- Categories -->
     <string-array name="cat_color_en">
         <item>amber;бурштиновий</item>
-        <item>aqua;морска хвиля</item>
+        <item>aqua;морська хвиля</item>
         <item>aquamarine;аквамарин</item>
-        <item>azure;лазурний</item>
+        <item>azure;лазуровий</item>
         <item>beige;бежевий</item>
         <item>black;чорний</item>
         <item>blue;голубий</item>
@@ -47,12 +47,12 @@
         <item>emerald;смарагдовий</item>
         <item>gold, golden;золотий</item>
         <item>green;зелений</item>
-        <item>grey, gray;серий</item>
+        <item>grey, gray;сірий</item>
         <item>indigo;індиго</item>
         <item>khaki;хакі</item>
         <item>lemon;лимонний</item>
         <item>light green;салатовий</item>
-        <item>lilac;сиреневий</item>
+        <item>lilac;бузковий</item>
         <item>mazarine;темно-синій</item>
         <item>olive;оливковий</item>
         <item>orange;оранжевий</item>
@@ -60,26 +60,26 @@
         <item>pink;розовий</item>
         <item>purple, magenta;пурпурний</item>
         <item>red;червоний</item>
-        <item>scarlet;алий</item>
+        <item>scarlet;яскраво-червоний</item>
         <item>sienna;охра</item>
         <item>silver, silvery;срібний</item>
-        <item>snow-white/ niveous;білосніжний</item>
-        <item>turquoise;бирюзовий</item>
-        <item>violet, purple;фиолетовий</item>
+        <item>snow-white, niveous;білосніжний</item>
+        <item>turquoise;бірюзовий</item>
+        <item>violet, purple;фіолетовий</item>
         <item>white;білий</item>
         <item>yellow;жовтий</item>
     </string-array>
     
     <string-array name="cat_body_en">
         <item>abdomen;черевна порожнина</item>
-        <item>ankle;кісточка</item>
+        <item>ankle;щиколотка</item>
         <item>armpit;пахва</item>
-        <item>arteries;артерії</item>
+        <item>artery;артерія</item>
         <item>back;спина</item>
         <item>backbone;хребет</item>
-        <item>belly, tummy;stomach;живіт</item>
+        <item>belly, tummy, stomach;живіт</item>
         <item>big toe;великий палець (на нозі)</item>
-        <item>bile / gall;жовч</item>
+        <item>bile, gall;жовч</item>
         <item>bladder;сечовий міхур</item>
         <item>blood;кров</item>
         <item>bone;кістка</item>
@@ -92,12 +92,11 @@
         <item>cheek bone;вилиця</item>
         <item>chest, breast;bosom, bust;груди</item>
         <item>chin;підборіддя</item>
-        <item>clap hands;плескати</item>
         <item>collarbone;ключиця</item>
         <item>ear;вухо</item>
         <item>earlobe;мочка вуха</item>
         <item>elbow;лікоть</item>
-        <item>embryo / germ / nucleus;зародок</item>
+        <item>embryo, germ, nucleus;зародок</item>
         <item>esophagus;стравохід</item>
         <item>eye;око</item>
         <item>eyebrow;брова</item>
@@ -122,7 +121,7 @@
         <item>hips, thigh;стегно</item>
         <item>index finger;вказівний палець</item>
         <item>iris;райдужна оболонка ока</item>
-        <item>jaw;щелепу</item>
+        <item>jaw;щелепа</item>
         <item>joint;суглоб</item>
         <item>kidneys;нирки</item>
         <item>knee;коліно</item>
@@ -138,8 +137,7 @@
         <item>liver;печінка</item>
         <item>lungs;легкі</item>
         <item>lymph-gland;лімфовузол</item>
-        <item>lymphatic vessels;лімфатичні судини</item>
-        <item>middle finger;середній палець</item>
+       <item>middle finger;середній палець</item>
         <item>moustache;вуса</item>
         <item>mouth;рот</item>
         <item>mucouse membrane;слизова оболонка</item>
@@ -155,24 +153,23 @@
         <item>pupil;зіниця</item>
         <item>ring finger;безіменний палець</item>
         <item>scar;шрам</item>
-        <item>shin;гомілку</item>
+        <item>shin;гомілка</item>
         <item>shoulder;плече</item>
         <item>sinew/tendon;жила, сухожилля</item>
         <item>skin;шкіра</item>
         <item>skull;череп</item>
         <item>small intestine;тонка кишка</item>
-        <item>sperm/jims/scum/spunk;сперма</item>
+        <item>sperm, jims, scum, spunk;сперма</item>
         <item>spinal cord;спинний мозок</item>
         <item>stomach;шлунок</item>
-        <item>temple;скроню</item>
+        <item>temple;скроня</item>
         <item>throat;горло</item>
         <item>thumb;великий палець (на руці)</item>
         <item>toe;палець (на нозі)</item>
         <item>toenail;ніготь (на пальці ноги)</item>
-        <item>tongue;мова</item>
+        <item>tongue;язик</item>
         <item>tooth (teeth);зуб (зуби)</item>
-        <item>veins;вени</item>
-        <item>vessel;посудину</item>
+        <item>vein;веа</item>
         <item>waist;талія</item>
         <item>windpipe;трахея</item>
         <item>wrist;запястя</item>
@@ -217,7 +214,7 @@
         <item>jeep;джип</item>
         <item>jetty;пристань</item>
         <item>landrover;всюдихід</item>
-        <item>loader;навантажувач</item>
+        <item>loader;транспортер</item>
         <item>local train;приміський поїзд</item>
         <item>locomotive;локомотив</item>
         <item>lorry;вантажівка</item>
