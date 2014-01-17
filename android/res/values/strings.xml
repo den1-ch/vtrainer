@@ -117,7 +117,6 @@
         <item>gloves;рукавички</item>
         <item>jacket;куртка</item>
         <item>jeans;джинси</item>
-        <item>jumper;перемичка</item>
         <item>overcoat;пальто</item>
         <item>pullover;пуловер</item>
         <item>raincoat;плащ</item>
@@ -153,7 +152,6 @@
         <item>denim;джинси</item>
         <item>leather;шкіра</item>
         <item>linen;білизна</item>
-        <item>rubber;гумовий</item>
         <item>silk;шовк</item>
         <item>suede;замша</item>
         <item>wool;вовна</item>
@@ -190,15 +188,14 @@
         <item>ambitious;честолюбний</item>
         <item>amiable;люб`язний</item>
         <item>angry;сердитий</item>
-        <item>animated;анімаційний</item>
         <item>annoyed;набридливий</item>
-        <item>anxious;тривожний</item>
+        <item>anxious;стривожений</item>
         <item>appreciative;вдячний</item>
         <item>arrogant;зарозумілий</item>
         <item>attentive;уважний</item>
         <item>austere;строгий</item>
         <item>awkward;незграбний</item>
-        <item>babyish;дитячий</item>
+        <item>babyish;наївний</item>
         <item>bad;поганий</item>
         <item>bashful;сором`язливий</item>
         <item>bewildered;спантеличений</item>
@@ -584,7 +581,7 @@
         <item>bicycle;велосипед</item>
         <item>bicycling;їзда на велосипеді</item>
         <item>bike;велосипед</item>
-        <item>biking;велосипедах</item>
+        <item>biking;їзда на велосипедах</item>
         <item>billiards;більярд</item>
         <item>bobsleigh;бобслей</item>
         <item>boomerang;бумеранг</item>
